@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <!-- Home Header -->
+    {% if page.show_home_header %}
+    <div id="home_header" class="full-height-section" 
+        style="background-image: url('{{ page.home_header_image.file.url }}'); 
+            background-size: cover; 
+            background-position: center; 
+            padding: 50px 0; 
+            text-align: center;">
+            <div class="grid-container full">
+                <div class="grid-x">
+                    <div class="cell medium-12">
+                        <h2>PLANTING CHURCHES</h2>
+                        <h2>TRAINING CHURCH PLANTERS</h2>
+                        <h1 class="fade-in">Welcome to {{ page.title }}</h1>
+
+                    </div>
+                </div>
+            </div>
+        <div class="intro">
+            {{ page.intro|richtext }}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Mission of TBM -->
+    {% if page.show_home_mission %}
+        <div id="home_mission" class="full-height-section" 
+             style="background-image: url('{{ page.home_mission_image.file.url }}');">
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell medium-6">
+                        <h2>Mission of TBM</h2>
+                        <p>Content for the mission section goes here.</p>
+                    </div>
+                    <div class="cell medium-6">
+                        <h2>More Mission Details</h2>
+                        <p>Additional content for the mission section.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Values of TBM -->
+    {% if page.show_home_values %}
+        <div id="home_values" class="full-height-section" 
+             style="background-image: url('{{ page.home_values_image.file.url }}');">
+            <h2>Values of TBM</h2>
+            <div class="scroll-slide-right">
+                <p>This content slides in from the right.</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Projects of TBM -->
+    {% if page.show_home_projects %}
+        <div id="home_projects" class="full-height-section" 
+             style="background-image: url('{{ page.home_projects_image.file.url }}');">
+            <h2>Projects of TBM</h2>
+            <p>Content for the projects section goes here.</p>
+        </div>
+    {% endif %}
+
+    <!-- Envision Project -->
+    {% if page.show_home_envision %}
+        <div id="home_envision" class="full-height-section" 
+             style="background-image: url('{{ page.home_envision_image.file.url }}');">
+            <h2>Envision Project</h2>
+            <p>Content for the envision project section goes here.</p>
+        </div>
+    {% endif %}
+
+    <!-- Pray for TBM -->
+    {% if page.show_home_pray %}
+        <div id="home_pray" class="full-height-section" 
+             style="background-image: url('{{ page.home_pray_image.file.url }}');">
+            <h2>Pray for TBM</h2>
+            <p>Content for the prayer section goes here.</p>
+        </div>
+    {% endif %}
+
+    <!-- Promotional Materials of TBM -->
+    {% if page.show_home_promo %}
+        <div id="home_promo" class="full-height-section" 
+             style="background-image: url('{{ page.home_promo_image.file.url }}');">
+            <h2>Promotional Materials of TBM</h2>
+            <p>Content for the promotional materials section goes here.</p>
+        </div>
+    {% endif %}
+{% endblock %}

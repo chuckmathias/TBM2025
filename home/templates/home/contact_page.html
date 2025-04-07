@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div id="contact-page">
+
+    <!-- Full-Height Header Section -->
+    <div id="contact-header" class="full-height-section" 
+         style="background-image: url('{{ page.header_image.file.url }}'); 
+                background-size: cover; 
+                background-position: center;">
+        <div class="overlay">
+            <div class="grid-container">
+                <h1>{{ page.title }}</h1>
+                <p>{{ page.intro|richtext }}</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <small class="help-text">{{ field.help_text }}</small>
+                        {% endif %}
+                        {% for error in field.errors %}
+                        <p class="error">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="button">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

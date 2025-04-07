@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+<div id="all-updates" class="full-height-section">
+    <div class="grid-container">
+        <h1>All Updates for {{ page.name }}</h1>
+        <ul>
+            {% for update in updates %}
+                <li>
+                    <a href="{{ update.url }}">{{ update.title }}</a>
+                    <p>{{ update.date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ page.url }}">Back to Profile</a>
+    </div>
+</div>
+{% endblock %}

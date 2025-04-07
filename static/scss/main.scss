@@ -1,0 +1,427 @@
+// Import Foundation's core styles
+@import "../../node_modules/foundation-sites/scss/foundation";
+
+// Include Foundation's styles
+@include foundation-everything;
+
+// Global styles
+body {
+    font-family: 'Cardo', serif;
+
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato', sans-serif;
+}
+
+// Grid container (Foundation already provides grid utilities)
+.grid-container {
+    width: 100%;
+}
+
+// Transparent navigation bar
+.transparent-nav {
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    padding: 10px 30px;
+    transition: all 0.3s ease;
+
+    .logo {
+        max-height: 50px; // Adjust logo size
+    }
+
+    .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+
+        li {
+            margin: 0 15px;
+
+            a {
+                text-decoration: none;
+                color: white;
+                font-family: "Lato", sans-serif;
+                font-weight: 900;
+                font-size: 1.25rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+
+                &:hover {
+                    color: #FFD700; // Gold color on hover
+                }
+            }
+        }
+    }
+
+    .donate-button {
+        @extend .button; // Use Foundation's button styles
+        background-color: #28a745; // Green button
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+
+        &:hover {
+            background-color: #218838; // Darker green on hover
+        }
+    }
+}
+
+// Missionary profile card
+.missionary-profile {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+// Full-height sections (already defined, but let's ensure it's complete)
+.full-height-section {
+    width: 100%;
+    min-height: 100vh; // Ensures full viewport height
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+
+    h1, h2, h3, p {
+        margin: 10px 0;
+    }
+}
+
+// Overlay for sections (optional, for semi-transparent background over images)
+.full-height-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black overlay
+    z-index: 1;
+}
+
+// Grid container for content inside sections
+.full-height-section .grid-container {
+    position: relative;
+    z-index: 2; // Ensures content is above the overlay
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+// Half-height sections
+.half-height-section {
+    height: 50vh;
+}
+
+// Profile location section
+#profile-location {
+    position: relative;
+    border-top: white solid 2px;
+    border-bottom: white solid 2px;
+
+    h3 {
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+}
+
+// Location title (over the map)
+.location-title {
+    position: absolute;
+    width: 100%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black background
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+// Map styles
+#map {
+    height: 500px;
+    width: 100%;
+    position: relative;
+    background: #000;
+}
+
+// Map attribution box
+.maptalks-attribution {
+    background-color: rgba(0, 0, 0, 0.7); // Black background with 70% transparency
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+// Footer styles
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+
+    a {
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    h4 {
+        margin-bottom: 10px;
+        font-family: 'Cardo', serif;
+    }
+
+    p, ul {
+        margin: 0;
+        font-family: 'Lato', sans-serif;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 5px;
+        }
+    }
+
+    .text-center {
+        text-align: center;
+    }
+}
+
+// Home header styles
+#home_header {
+    h2 {
+        font-family: Lato, sans-serif;
+        font-size: 8rem;
+        font-weight: 900;
+    }
+}
+
+// Buttons (use Foundation's button styles)
+.button {
+    @extend .button; // Use Foundation's button styles
+    background-color: #0078d4; // Primary color
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+
+    &:hover {
+        background-color: darken(#0078d4, 10%);
+    }
+}
+
+// Media queries for responsiveness
+@media (max-width: 768px) {
+    .full-height-section {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .location-title {
+        top: 5%;
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #map {
+        height: 300px;
+    }
+}
+
+.profile-card {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; // Ensure no tiling
+    border-radius: 5px;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transition for hover effects
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); // Semi-transparent overlay
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 1; // Ensure overlay stays above the background
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-family: 'Lato', sans-serif;
+    }
+
+    p {
+        margin: 5px 0;
+        font-size: 1rem;
+        font-family: 'Lato', sans-serif;
+    }
+
+    // Add hover effect
+    &:hover {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); // Add a stronger shadow on hover
+        transform: scale(1.1) rotate(1deg); // Add slight rotation
+
+    }
+
+}
+
+#projects-intro {
+    width: 100%;
+    height: 100vh; // Full viewport height
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); // Semi-transparent overlay
+        z-index: 1;
+    }
+
+    .grid-container {
+        position: relative;
+        z-index: 2; // Ensure content is above the overlay
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-family: 'Lato', sans-serif;
+        margin-bottom: 20px;
+    }
+
+    .intro-content {
+        font-size: 1.25rem;
+        font-family: 'Cardo', serif;
+        line-height: 1.6;
+    }
+}
+
+#contact-header {
+    width: 100%;
+    height: 100vh; // Full viewport height
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5); // Semi-transparent overlay
+        z-index: 1;
+    }
+
+    .grid-container {
+        position: relative;
+        z-index: 2; // Ensure content is above the overlay
+        padding: 20px;
+        max-width: 800px;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-family: 'Lato', sans-serif;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.25rem;
+        font-family: 'Cardo', serif;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    form {
+        .form-group {
+            margin-bottom: 1.5rem;
+
+            label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+
+            input, textarea, select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+
+            .help-text {
+                font-size: 0.875rem;
+                color: #666;
+            }
+
+            .error {
+                color: red;
+                font-size: 0.875rem;
+            }
+        }
+
+        button {
+            background-color: #0078d4;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(#0078d4, 10%);
+            }
+        }
+    }
+}
