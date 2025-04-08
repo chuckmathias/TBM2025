@@ -26,10 +26,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     z-index: 10;
     padding: 10px 30px;
-    transition: all 0.3s ease;
+    transition: all 0.75s ease;
 
     .logo {
-        max-height: 50px; // Adjust logo size
+        max-height: 70px; // Adjust logo size
     }
 
     .menu {
@@ -209,11 +209,65 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 // Home header styles
-#home_header {
+// #home_header {
+//     
+// }
+
+.video-background {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden;
+}
+
+.video-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Send the video to the background */
+    object-fit: cover; /* Ensures the video covers the entire area */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1; /* Content over the video */
+    text-align: center;
+}
+
+.home-header-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    height: 100%; /* Ensure it takes the full height of the header */
+    text-align: center; /* Center-align the text */
+    z-index: 1; /* Ensure it appears above the video */
+    position: relative; /* Ensure proper stacking with the video */
+    color: white; 
+
     h2 {
         font-family: Lato, sans-serif;
-        font-size: 8rem;
+        font-size: 7rem;
         font-weight: 900;
+        line-height: 0.5;
+        // opacity: 0.75;
+        span {
+            font-family: Cardo, serif;
+            font-size: 4.5rem;
+        }
     }
 }
 
@@ -247,6 +301,10 @@ h1, h2, h3, h4, h5, h6 {
     #map {
         height: 300px;
     }
+}
+
+.profile-card-container {
+    overflow: hidden;
 }
 
 .profile-card {

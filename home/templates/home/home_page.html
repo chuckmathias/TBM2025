@@ -4,24 +4,24 @@
 {% block content %}
     <!-- Home Header -->
     {% if page.show_home_header %}
-    <div id="home_header" class="full-height-section" 
-        style="background-image: url('{{ page.home_header_image.file.url }}'); 
-            background-size: cover; 
-            background-position: center; 
-            padding: 50px 0; 
-            text-align: center;">
-            <div class="grid-container full">
-                <div class="grid-x">
-                    <div class="cell medium-12">
-                        <h2>PLANTING CHURCHES</h2>
-                        <h2>TRAINING CHURCH PLANTERS</h2>
-                        <h1 class="fade-in">Welcome to {{ page.title }}</h1>
-
+    <div id="home_header" class="full-height-section" style="padding:0;">
+            <div class="video-background">
+                <video class="video-content" preload="auto" playsinline autoplay muted loop poster="static/videos/TBM-bg2.jpg">
+                    <source src="static/videos/TBM-bg2.mp4" type="video/mp4" />
+                    <source src="static/videos/TBM-bg2.webm" type="video/webm" />
+                    <source src="static/videos/TBM-bg2.ogv" type="video/ogg" />
+                </video>
+                <div class="home-header-content grid-container full">
+                    <div class="grid-x">
+                        <div class="cell medium-12">
+                            <h2>PLANTING CHURCHES</h2>
+                            <h2><span>TRAINING CHURCH PLANTERS</span></h2>
+                            <!-- <h1 class="fade-in">Welcome to {{ page.title }}</h1> -->
+    
+                        </div>
                     </div>
                 </div>
             </div>
-        <div class="intro">
-            {{ page.intro|richtext }}
         </div>
     </div>
     {% endif %}
@@ -47,11 +47,30 @@
 
     <!-- Values of TBM -->
     {% if page.show_home_values %}
-        <div id="home_values" class="full-height-section" 
-             style="background-image: url('{{ page.home_values_image.file.url }}');">
-            <h2>Values of TBM</h2>
-            <div class="scroll-slide-right">
-                <p>This content slides in from the right.</p>
+        <div id="home_values" class="full-height-section" style="padding: 0">
+            <div class="grid-container full" style="padding: 0">
+                <div class="grid-x">
+                    {% for value in page.values %}
+                    <div class="profile-card-container cell small-12 medium-6 large-4">
+                        {% if value.value.link %}
+                            <a href="{{ value.value.link }}">
+                        {% endif %}
+                                <div class="profile-card" 
+                                    {% if value.value.background_image %}
+                                    style="background-image: url('{{ value.value.background_image.file.url }}');"
+                                    {% endif %}>
+                                    <div class="card-content">
+                                        <h3>{{ value.value.title }}</h3>
+                                        <p>{{ value.value.description|richtext }}</p>
+                                        
+                                    </div>
+                                </div>
+                        {% if value.value.link %}
+                            </a>
+                        {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     {% endif %}

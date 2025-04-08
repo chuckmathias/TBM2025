@@ -5,17 +5,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
      // Animate the background color of the navigation bar on scroll
      const nav = document.querySelector(".transparent-nav");
-
+     
     ScrollTrigger.create({
         start: "top top", // Trigger when the top of the page is at the top of the viewport
         end: "bottom top", // Optional: Define when the effect ends
         onUpdate: (self) => {
             if (self.direction === 1) {
                 // Scrolling down
-                nav.style.backgroundColor = "rgba(0, 0, 0, 0.9)"; // Black background
+                // nav.style.backgroundColor = "rgba(0, 0, 0, 0.9)"; // Black background
+                // nav.style.boxShadow = "-1px 37px 17px -12px rgba(0,0,0,0.32) inset;"; // Add shadow
+                nav.style.boxShadow = "rgba(0, 0, 0, 0.95) 0px 70px 200px 0px inset";
             } else if (self.direction === -1 && self.progress === 0) {
                 // Scrolling up and back to the top
-                nav.style.backgroundColor = "transparent"; // Transparent background
+                // nav.style.backgroundColor = "transparent"; // Transparent background
+                nav.style.boxShadow = "rgba(0, 0, 0, 0.25) 0px 70px 20px 0px inset"; // Subtle shadow
             }
         },
     });
