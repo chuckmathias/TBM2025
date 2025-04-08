@@ -6553,6 +6553,24 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Cardo, serif;
   font-size: 4.5rem;
 }
+.home-header-content a {
+  margin-top: 40px;
+}
+
+.header-logo {
+  position: absolute; /* Position the logo relative to the parent container */
+  bottom: 20px; /* Align it at the bottom of the screen with some spacing */
+  left: 50%; /* Move it to the horizontal center */
+  transform: translateX(-50%); /* Center it horizontally */
+  text-align: center; /* Ensure the content inside is centered */
+  width: 100%; /* Optional: Ensure it spans the full width */
+}
+
+.header-logo img {
+  max-width: 100px;
+  height: auto;
+  margin: 0 auto; /* Center the image horizontally */
+}
 
 .button, .transparent-nav .donate-button {
   background-color: #0078d4;
@@ -6614,10 +6632,17 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px;
   z-index: 1;
 }
+.profile-card h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
 .profile-card h3 {
   margin: 0;
-  font-size: 1.5rem;
-  font-family: "Lato", sans-serif;
+  font-size: 2.5rem;
+  font-family: "Cardo", serif;
 }
 .profile-card p {
   margin: 5px 0;
