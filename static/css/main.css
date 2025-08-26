@@ -6445,7 +6445,6 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -6762,6 +6761,55 @@ h1, h2, h3, h4, h5, h6 {
 }
 #contact-header form button:hover {
   background-color: rgb(0, 91.1320754717, 161);
+}
+
+#profile-header h1 {
+  font-size: 5rem;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+/* Map */
+.projects-map-section {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: transparent;
+}
+
+.projects-map-section .world-map-container {
+  background: transparent;
+  box-shadow: none;
+}
+
+.projects-map-section .world-map-title {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.map-region.clickable {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+/* Default state */
+.map-region.clickable {
+  fill: #01577d;
+  fill-opacity: 1;
+}
+
+/* We'll use GSAP for animations, but having this as fallback */
+.map-region.clickable:hover {
+  fill: #0e7caa;
+}
+
+/* Active state when clicked */
+.map-region.active {
+  fill: #0e7caa;
+  stroke: #ffffff;
+  stroke-width: 1px;
 }
 
 /*# sourceMappingURL=main.css.map */

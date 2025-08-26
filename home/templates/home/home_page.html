@@ -83,8 +83,25 @@
     {% if page.show_home_projects %}
         <div id="home_projects" class="full-height-section" 
              style="background-image: url('{{ page.home_projects_image.file.url }}');">
-            <h2>Projects of TBM</h2>
-            <p>Content for the projects section goes here.</p>
+            <div class="grid-container">
+                <div class="grid-x grid-margin-x">
+                    <div class="cell medium-12">
+                        <h2>Projects of TBM</h2>
+                        <p>Content for the projects section goes here.</p>
+                        
+                        <!-- World Map Section -->
+                        {% if page.show_home_map and page.home_map %}
+                            <div class="projects-map-section">
+                                {% for block in page.home_map %}
+                                    {% if block.block_type == 'world_map' %}
+                                        {% include_block block %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
     {% endif %}
 

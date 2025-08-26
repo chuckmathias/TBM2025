@@ -26,24 +26,26 @@
         <div class="grid-x">
             {% for profile in missionary_profiles %}
             <div class="cell large-4 medium-6 small-12" style="overflow: hidden;">
-                <div class="profile-card" 
-                     style="background-image: url('{{ profile.profile_header_image.file.url }}'); 
-                            background-size: cover; 
-                            background-position: center;">
-                    <div class="overlay">
-                        <h3>{{ profile.name }}</h3>
-                        <p><strong>Project:</strong> {{ profile.project }}</p>
-                        <p>
-                            {% if profile.place %}
-                                {{ profile.place }},
-                            {% endif %}
-                            {% if profile.state %}
-                                {{ profile.state }},
-                            {% endif %}
-                            {{ profile.country }}
-                        </p>
+                <a href="{{ profile.url }}" class="profile-link">
+                    <div class="profile-card" 
+                         style="background-image: url('{{ profile.profile_header_image.file.url }}'); 
+                                background-size: cover; 
+                                background-position: center;">
+                        <div class="overlay">
+                            <h3>{{ profile.name }}</h3>
+                            <p><strong>Project:</strong> {{ profile.project }}</p>
+                            <p>
+                                {% if profile.place %}
+                                    {{ profile.place }},
+                                {% endif %}
+                                {% if profile.state %}
+                                    {{ profile.state }},
+                                {% endif %}
+                                {{ profile.country }}
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>

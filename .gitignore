@@ -18,3 +18,7 @@ db.sqlite3
 .DS_Store
 Thumbs.db
 node_modules
+
+# Sass and CSS generated files
+.sass-cache/
+*.css.map

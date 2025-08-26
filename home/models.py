@@ -8,7 +8,7 @@ from django.db import models
 from missionary_profiles.models import MissionaryProfilePage
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from modelcluster.fields import ParentalKey
-
+from components.project_map import WorldMapBlock
 
 class ValueBlock(StructBlock):
     """Block for a single value in the Values section."""
@@ -24,6 +24,7 @@ class ValueBlock(StructBlock):
 
 class HomePage(Page):
     """Home page model."""
+    
     # Visibility toggle for the Values section
     show_home_values = models.BooleanField(default=True, help_text="Show or hide the Values section")
 
@@ -32,6 +33,19 @@ class HomePage(Page):
         [("value", ValueBlock())],
         blank=True,
         help_text="Add, delete, or rearrange values for the Values section"
+    )
+    
+    # ADD THESE NEW FIELDS:
+    show_home_map = models.BooleanField(
+        default=True, 
+        help_text="Show or hide the world map in the Projects section"
+    )
+    
+    home_map = StreamField(
+        [("world_map", WorldMapBlock())],
+        blank=True,
+        max_num=1,  # Only allow one map
+        help_text="Configure the world map for the Projects section"
     )
 
     # Other fields for the home page
@@ -81,7 +95,7 @@ class HomePage(Page):
     # Visibility toggles for other sections
     show_home_header = models.BooleanField(default=True)
     show_home_mission = models.BooleanField(default=True)
-    show_home_projects = models.BooleanField(default=True)
+    show_home_projects = models.BooleanField(default=True, help_text="Show or hide the Projects section")
     show_home_envision = models.BooleanField(default=True)
     show_home_pray = models.BooleanField(default=True)
     show_home_promo = models.BooleanField(default=True)
@@ -95,6 +109,8 @@ class HomePage(Page):
         FieldPanel('values'),
         FieldPanel('home_projects_image'),
         FieldPanel('show_home_projects'),
+        FieldPanel('show_home_map'),        # ADD THIS LINE
+        FieldPanel('home_map'),             # ADD THIS LINE
         FieldPanel('home_envision_image'),
         FieldPanel('show_home_envision'),
         FieldPanel('home_pray_image'),
