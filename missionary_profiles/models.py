@@ -172,3 +172,4 @@ class MissionaryUpdatePage(Page):
             FieldPanel('show_pictures'),
         ], heading="Pictures Section"),
     ]
+

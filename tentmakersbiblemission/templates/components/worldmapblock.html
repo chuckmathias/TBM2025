@@ -4,7 +4,7 @@
     {% endif %}
     
     <div class="world-map-svg-container" data-height="{{ value.map_height|default:'440px' }}">
-        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
         <svg
         version="1.0"
         width="100%"
@@ -88,18 +88,85 @@
 
     </div>
 </div>
-
+<!-- Missionaries by Region Section -->
+<div class="missionaries-by-region-section">
+    <h3 class="section-title">Our Missionaries Around the World</h3>
+    <p class="section-subtitle">Click on a region above to see missionaries serving there, or browse all below</p>
+    
+    <div class="missionaries-regions-container">
+        {% for region_name, missionaries in missionaries_by_region.items %}
+            <div class="region-missionaries" data-region="{{ region_name|lower|cut:' ' }}">
+                <h4 class="region-title">
+                    <span class="region-count">({{ missionaries|length }})</span>
+                    {{ region_name }}
+                </h4>
+                
+                <div class="missionaries-grid">
+                    {% for missionary in missionaries|slice:":4" %}  {# Show max 4 per region initially #}
+                        <div class="missionary-card">
+                            {% if missionary.profile_header_image %}
+                                {% load wagtailimages_tags %}
+                                {% image missionary.profile_header_image fill-200x150 class="missionary-image" %}
+                            {% else %}
+                                <div class="missionary-image-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            {% endif %}
+                            <div class="missionary-info">
+                                <h5 class="missionary-name">{{ missionary.name }}</h5>
+                                <p class="missionary-project">{{ missionary.project }}</p>
+                                {% if missionary.country %}
+                                    <p class="missionary-location">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        {{ missionary.country }}
+                                        {% if missionary.state %}, {{ missionary.state }}{% endif %}
+                                    </p>
+                                {% endif %}
+                                <div class="missionary-actions">
+                                    {% load wagtailcore_tags %}
+                                    <a href="{% pageurl missionary %}" class="btn btn-primary btn-sm">View Profile</a>
+                                    {% if missionary.donation_link %}
+                                        <a href="{{ missionary.donation_link }}" class="btn btn-outline-secondary btn-sm" target="_blank">Donate</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    
+                    {% if missionaries|length > 4 %}
+                        <div class="view-more-card">
+                            <div class="view-more-content">
+                                <p>+{{ missionaries|length|add:"-4" }} more missionaries</p>
+                                <a href="/missionaries/?region={{ region_name }}" class="btn btn-outline-primary">View All in {{ region_name }}</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <p class="no-missionaries">No missionaries found.</p>
+        {% endfor %}
+    </div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     // Map of region IDs to URLs
+    // const regionUrls = {
+    //     'africa': '{{ value.africa_url|default:"/regions/africa/" }}',
+    //     'asia': '{{ value.asia_url|default:"/regions/asia/" }}',
+    //     'europe': '{{ value.europe_url|default:"/regions/europe/" }}',
+    //     'north-america': '{{ value.north_america_url|default:"/regions/north-america/" }}',
+    //     'south-america': '{{ value.south_america_url|default:"/regions/south-america/" }}',
+    //     'oceania': '{{ value.oceania_url|default:"/regions/oceania/" }}'
+    // };
     const regionUrls = {
-        'africa': '{{ value.africa_url|default:"/regions/africa/" }}',
-        'asia': '{{ value.asia_url|default:"/regions/asia/" }}',
-        'europe': '{{ value.europe_url|default:"/regions/europe/" }}',
-        'north-america': '{{ value.north_america_url|default:"/regions/north-america/" }}',
-        'south-america': '{{ value.south_america_url|default:"/regions/south-america/" }}',
-        'oceania': '{{ value.oceania_url|default:"/regions/oceania/" }}'
+        'africa': '/regions/africa/',  // Should match your RegionPage URLs
+        'asia': '/regions/asia/',
+        'europe': '/regions/europe/',
+        'north-america': '/regions/north-america/',
+        'south-america': '/regions/south-america/',
+        'oceania': '/regions/oceania/'
     };
     
     const clickableRegions = document.querySelectorAll('.map-region.clickable');
