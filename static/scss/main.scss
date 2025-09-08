@@ -100,6 +100,20 @@ h1, h2, h3, h4, h5, h6 {
     h1, h2, h3, p {
         margin: 10px 0;
     }
+
+    .grid-container {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .grid-x {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 // Overlay for sections (optional, for semi-transparent background over images)
@@ -302,6 +316,10 @@ h1, h2, h3, h4, h5, h6 {
     &:hover {
         background-color: darken(#0078d4, 10%);
     }
+}
+
+.get-involved-button {
+    margin: 0;
 }
 
 // Media queries for responsiveness

@@ -12,9 +12,13 @@
                 background-position: center;">
         <div class="overlay">
             <div class="grid-container">
-                <h1>{{ page.title }}</h1>
-                <div class="intro-content">
-                    {{ page.intro|richtext }}
+                <div class="grid-x align-center align-middle">
+                    <div class="cell medium-12">
+                        <h1>{{ page.title }}</h1>
+                        <div class="intro-content">
+                            {{ page.intro|richtext }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

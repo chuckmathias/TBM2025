@@ -6405,6 +6405,18 @@ h1, h2, h3, h4, h5, h6 {
 .full-height-section h1, .full-height-section h2, .full-height-section h3, .full-height-section p {
   margin: 10px 0;
 }
+.full-height-section .grid-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.full-height-section .grid-x {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .full-height-section .overlay {
   position: absolute;
@@ -6580,6 +6592,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 .button:hover, .transparent-nav .donate-button:hover {
   background-color: rgb(0, 91.1320754717, 161);
+}
+
+.get-involved-button {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
