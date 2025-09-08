@@ -1,2 +1,4 @@
 Django>=5.1,<5.2
 wagtail>=6.4,<6.5
+
+# Hi, this is me Malachi taking over everything HAHAHAHAHA
