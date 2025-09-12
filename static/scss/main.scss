@@ -55,7 +55,7 @@ h1, h2, h3, h4, h5, h6 {
                 letter-spacing: 0.05em;
 
                 &:hover {
-                    color: #29b0ff; // Gold color on hover
+                    color: #0078d4; // Blue color on hover
                 }
             }
         }
@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #000000;
 }
 
 // Full-height sections (already defined, but let's ensure it's complete)
@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 20px;
 
