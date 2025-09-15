@@ -37,9 +37,15 @@
             {% for update in page.related_updates.live.all|slice:":3" %}
                 <div class="cell small-12 medium-4">
                     <div class="update-card">
+                        {% if update.header_image %}
                         <img src="{{ update.header_image.file.url }}" alt="Missionary Update">
                         <a href="{{ update.url }}">{{ update.title }}</a>
                         <p>{{ update.date }}</p>
+                        <div>{{ update.summary|richtext }}</div>
+                        {% else %}
+                        <img src="{{ page.profile_header_image.file.url }}" alt="Default Update Image">
+                        <a href="{{ update.url }}">{{ update.title }}</a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

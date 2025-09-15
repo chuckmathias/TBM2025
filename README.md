@@ -12,9 +12,10 @@ python -c "import sqlite3; print(sqlite3.sqlite_version)"
 python manage.py runserver
 
 # How to update your main.scss
+Run this in another terminal
 npx sass --watch static/scss/main.scss:static/css/main.css
-Then press Ctrl + C
-Then Runserver to see changes
+Make Changes
+Then Hard Refresh the Page (Ctrl+Shift+R)
 
 # GitHub Project Managment...
 git pull origin main
