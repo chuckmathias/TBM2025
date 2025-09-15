@@ -29,7 +29,8 @@
     </div>
 
     <!-- Section: Updates -->
-    <div id="missionary-updates" class="half-height-section" style="background: #000";>
+    {% if page.related_updates.live.all %}
+    <div id="missionary-updates" class="half-height-section" style="background: #ffffff;">
         <div class="grid-container">
             <h2>Recent Updates</h2>
             <ul>
@@ -43,12 +44,13 @@
             <a href="{{ page.url }}updates/">View All Updates</a>
         </div>
     </div>
+    {% endif %}
     
     <!-- Section: Map -->
     <div id="profile-location" class="half-height-section">
         <div class="grid-container full text-center">
             <div class="location-title">
-                <h3>Serving in 
+                <h2>Serving in 
                     {% if page.place %}{{ page.place }}{% endif %}
                     {% if page.state %}
                         {% if page.place %}, {% endif %}{{ page.state }}
@@ -56,7 +58,7 @@
                     {% if page.country and page.country != "United States" %}
                         {% if page.place or page.state %}, {% endif %}{{ page.country }}
                     {% endif %}
-                </h3>
+                </h2>
             </div>
             <div id="map" 
                  data-latitude="{{ page.latitude }}" 

@@ -6662,7 +6662,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  text-shadow: 1px 1px 5px rgb(255, 255, 255);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.479);
 }
 .profile-card h3 {
   margin: 0;
