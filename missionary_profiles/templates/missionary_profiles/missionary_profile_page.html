@@ -32,20 +32,24 @@
     {% if page.related_updates.live.all %}
     <div id="missionary-updates" class="half-height-section" style="background: #ffffff;">
         <div class="grid-container">
-            <h2>Recent Updates</h2>
-            <ul>
-                {% for update in page.related_updates.live.all|slice:":4" %}
-                    <li>
+            <h2 class="text-center">Recent Updates</h2>
+            <div class="grid-x grid-margin-x">
+            {% for update in page.related_updates.live.all|slice:":3" %}
+                <div class="cell small-12 medium-4">
+                    <div class="update-card">
                         <a href="{{ update.url }}">{{ update.title }}</a>
                         <p>{{ update.date }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-            <a href="{{ page.url }}updates/">View All Updates</a>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <div class="text-center">
+            <a href="{{ page.url }}updates/" class="button">View All Updates</a>
+            </div>
         </div>
     </div>
     {% endif %}
-    
+
     <!-- Section: Map -->
     <div id="profile-location" class="half-height-section">
         <div class="grid-container full text-center">
