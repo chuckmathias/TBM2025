@@ -26,16 +26,18 @@
                 background-size: cover; 
                 background-position: center; 
                 width: 100%; 
-                height: 100vh;
-                background-color: black;">
+                height: 100vh;">
         <div class="grid-container">
-            <h2>Information</h2>
-            <div class="information-content">
-                {{ page.information|richtext }}
+            <div class="text-center">
+                <div class="information-content">
+                    <h2>Information</h2>
+                    {{ page.information|richtext }}
+                </div>
+                {% if page.pdf_document %}
+                <a href="{{ page.pdf_document.url }}" class="button" target="_blank">Download PDF</a>
+                {% endif %}
             </div>
-            {% if page.pdf_document %}
-            <a href="{{ page.pdf_document.url }}" class="button" target="_blank">Download PDF</a>
-            {% endif %}
+            
         </div>
     </div>
     {% endif %}

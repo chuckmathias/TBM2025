@@ -6386,7 +6386,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ffffff;
+  color: #000000;
   text-align: center;
   padding: 20px;
 }
@@ -6414,6 +6414,21 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+}
+
+.information-content {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.637);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
+}
+.information-content h2 {
+  color: #0078d4;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .full-height-section .grid-container {

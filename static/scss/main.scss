@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: #000000;
     text-align: center;
     padding: 20px;
 
@@ -114,6 +114,25 @@ h1, h2, h3, h4, h5, h6 {
     background-color: rgba(0, 0, 0, 0.5); // Semi-transparent black overlay
     z-index: 1;
 }
+
+// Information Section on missionary update page
+.information-content {
+
+    h2 {
+        color: #0078d4;        // Accent color for headings
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 60px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    color: #000000;  
+    background-color: rgba(255, 255, 255, 0.637);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+}
+
 
 // Grid container for content inside sections
 .full-height-section .grid-container {
