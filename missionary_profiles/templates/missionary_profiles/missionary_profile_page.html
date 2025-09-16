@@ -29,33 +29,35 @@
     </div>
 
     <!-- Section: Updates -->
-    {% if page.related_updates.live.all %}
-    <div id="missionary-updates" class="half-height-section" style="background: #ffffff;">
-        <div class="grid-container">
-            <h2 class="text-center">Recent Updates</h2>
-            <div class="grid-x grid-margin-x align-center">
-            {% for update in page.related_updates.live.all|slice:":3" %}
-                <div class="cell small-12 medium-4">
+{% if page.related_updates.live.all %}
+<div id="missionary-updates" class="half-height-section" style="background: #ffffff;">
+    <div class="grid-container">
+        <h2 class="text-center">Recent Updates</h2>
+        <div class="grid-x grid-margin-x align-center">
+        {% for update in page.related_updates.live.all|slice:":3" %}
+            <div class="cell small-12 medium-4">
+                <a href="{{ update.url }}" class="update-card-link">
                     <div class="update-card">
                         {% if update.header_image %}
                         <img src="{{ update.header_image.file.url }}" alt="Missionary Update">
-                        <a href="{{ update.url }}">{{ update.title }}</a>
+                        <h4>{{ update.title }}</h4>
                         <p>{{ update.date }}</p>
                         <div>{{ update.summary|richtext }}</div>
                         {% else %}
                         <img src="{{ page.profile_header_image.file.url }}" alt="Default Update Image">
-                        <a href="{{ update.url }}">{{ update.title }}</a>
+                        <h4>{{ update.title }}</h4>
                         {% endif %}
                     </div>
-                </div>
-            {% endfor %}
+                </a>
             </div>
-            <div class="text-center">
-            <a href="{{ page.url }}updates/" class="button view-all-updates-button">View All Updates</a>
-            </div>
+        {% endfor %}
+        </div>
+        <div class="text-center">
+        <a href="{{ page.url }}updates/" class="button view-all-updates-button">View All Updates</a>
         </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
 
     <!-- Section: Map -->
     <div id="profile-location" class="half-height-section">
