@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     "sites.home",
+    "sites.churchmission",
     "apps.search",
     "apps.components",
     "apps.missionary_profiles",
