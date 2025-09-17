@@ -6454,39 +6454,78 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+.card-link:hover {
+  transform: translateY(-5px);
+}
+.card-link:hover .update-card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card-link:hover .update-card .card-image img {
+  transform: scale(1.05);
+}
+
 .update-card {
   background: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.update-card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.update-card .card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f0f0f0;
 }
-.update-card a {
-  display: block;
-  font-weight: bold;
+.update-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.update-card .card-content {
+  padding: 1.5rem;
+  background: white;
+}
+.update-card .card-content h3 {
   color: #0078d4;
-  text-decoration: none;
-  margin-bottom: 5px;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
-.update-card a:hover {
-  text-decoration: underline;
-}
-.update-card p {
-  margin: 0;
-  font-size: 0.9rem;
+.update-card .card-content .date {
   color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
-.update-card:hover {
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-  transform: translateY(-5px);
+.update-card .card-content .summary {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.update-card .card-content .summary p {
+  margin-bottom: 0.5rem;
+}
+
+#missionary-updates {
+  padding: 0rem 0;
+  background: #f5f5f5;
+}
+#missionary-updates h2 {
+  margin-bottom: 2.5rem;
+  color: #0078d4;
+  font-weight: 600;
+}
+#missionary-updates .grid-margin-x {
+  margin-bottom: 2rem;
 }
 
 #profile-location {
@@ -6653,7 +6692,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .view-all-updates-button {
-  margin: 60px 0;
+  margin: 0px 0;
 }
 
 .get-involved-button {

@@ -36,24 +36,27 @@
         <div class="grid-x grid-margin-x align-center">
         {% for update in page.related_updates.live.all|slice:":3" %}
             <div class="cell small-12 medium-4">
-                <a href="{{ update.url }}" class="update-card-link">
+                <a href="{{ update.url }}" class="card-link">
                     <div class="update-card">
-                        {% if update.header_image %}
-                        <img src="{{ update.header_image.file.url }}" alt="Missionary Update">
-                        <h4>{{ update.title }}</h4>
-                        <p>{{ update.date }}</p>
-                        <div>{{ update.summary|richtext }}</div>
-                        {% else %}
-                        <img src="{{ page.profile_header_image.file.url }}" alt="Default Update Image">
-                        <h4>{{ update.title }}</h4>
-                        {% endif %}
+                        <div class="card-image">
+                            {% if update.header_image %}
+                            <img src="{{ update.header_image.file.url }}" alt="Missionary Update">
+                            {% else %}
+                            <img src="{{ page.profile_header_image.file.url }}" alt="Default Update Image">
+                            {% endif %}
+                        </div>
+                        <div class="card-content">
+                            <h3>{{ update.title }}</h3>
+                            <p class="date">{{ update.date }}</p>
+                            <div class="summary">{{ update.summary|richtext }}</div>
+                        </div>
                     </div>
                 </a>
             </div>
         {% endfor %}
         </div>
         <div class="text-center">
-        <a href="{{ page.url }}updates/" class="button view-all-updates-button">View All Updates</a>
+            <a href="{{ page.url }}updates/" class="button view-all-updates-button">View All Updates</a>
         </div>
     </div>
 </div>
