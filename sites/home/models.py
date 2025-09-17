@@ -5,10 +5,10 @@ from wagtail.blocks import StructBlock, BooleanBlock, CharBlock, RichTextBlock, 
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail import blocks
 from django.db import models
-from missionary_profiles.models import MissionaryProfilePage
+from apps.missionary_profiles.models import MissionaryProfilePage
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 from modelcluster.fields import ParentalKey
-from components.project_map import WorldMapBlock
+from apps.components.project_map import WorldMapBlock
 
 class ValueBlock(StructBlock):
     """Block for a single value in the Values section."""

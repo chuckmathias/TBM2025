@@ -64,7 +64,7 @@ class WorldMapBlock(StructBlock):
         
         # Import here to avoid circular imports
         try:
-            from missionary_profiles.models import MissionaryProfilePage
+            from apps.missionary_profiles.models import MissionaryProfilePage
             
             # Get missionaries grouped by region
             missionaries = MissionaryProfilePage.objects.live().select_related()

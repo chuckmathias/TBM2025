@@ -1,6 +1,6 @@
 # filepath: /home/chuck/Programs/tentmakersbiblemission/menus/templatetags/menu_tags.py
 from django import template
-from menus.models import Menu
+from apps.menus.models import Menu
 
 register = template.Library()
 
