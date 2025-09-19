@@ -43,7 +43,7 @@
     {% endif %}
 
     <!-- Pictures Section -->
-    {% if page.show_pictures and page.pictures %}
+    {% if page.show_pictures and page.pictures and page.pictures.file %}
     <div id="pictures-section" class="full-height-section" 
          style="background-image: url('{{ page.pictures.file.url }}'); 
                 background-size: cover; 

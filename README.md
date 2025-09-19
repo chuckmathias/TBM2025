@@ -22,3 +22,8 @@ git pull origin main
 git add .
 git commit -m "Describe your changes here"
 git push origin main
+
+# Making Migrations
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
