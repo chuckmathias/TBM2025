@@ -14,6 +14,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato', sans-serif;
+
 }
 
 // Grid container (Foundation already provides grid utilities)
@@ -55,22 +56,9 @@ h1, h2, h3, h4, h5, h6 {
                 letter-spacing: 0.05em;
 
                 &:hover {
-                    color: #FFD700; // Gold color on hover
+                    color: #0078d4; // Blue color on hover
                 }
             }
-        }
-    }
-
-    .donate-button {
-        @extend .button; // Use Foundation's button styles
-        background-color: #28a745; // Green button
-        color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: bold;
-
-        &:hover {
-            background-color: #218838; // Darker green on hover
         }
     }
 }
@@ -80,7 +68,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #000000be;
 }
 
 // Full-height sections (already defined, but let's ensure it's complete)
@@ -93,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #ffffff;
     text-align: center;
     padding: 20px;
 
@@ -127,6 +115,25 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1;
 }
 
+// Information Section on missionary update page
+.information-content {
+
+    h2 {
+        color: #0078d4;        // Accent color for headings
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 60px;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    color: #000000;  
+    background-color: rgba(255, 255, 255, 0.637);
+    border-radius: 10px;
+    padding: 30px;
+    margin: 20px 0;
+}
+ 
+
 // Grid container for content inside sections
 .full-height-section .grid-container {
     position: relative;
@@ -140,6 +147,106 @@ h1, h2, h3, h4, h5, h6 {
 .half-height-section {
     height: 50vh;
 }
+
+// Missionary Updates Recent Updates section
+#missionary-updates {
+    h2 {
+        font-weight: 900;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+    background: #f9f9f9;
+    padding: 40px 20px;
+    margin: 40px 0;
+
+}
+// Update card styles
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 100%;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        
+        .update-card {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            
+            .card-image img {
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+
+.update-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 100%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    
+    .card-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        background: #f0f0f0;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    }
+    
+    .card-content {
+        padding: 1.5rem;
+        background: white;
+        
+        h3 {
+            color: #0078d4;
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            
+            p {
+                margin-bottom: 0.5rem;
+            }
+        }
+    }
+}
+
+#missionary-updates {
+    padding: 0rem 0;
+    background: #f5f5f5;
+    
+    h2 {
+        margin-bottom: 2.5rem;
+        color: #0078d4;
+        font-weight: 600;
+    }
+    
+    .grid-margin-x {
+        margin-bottom: 2rem;
+    }
+}
+
 
 // Profile location section
 #profile-location {
@@ -328,6 +435,10 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.view-all-updates-button {
+    margin: 0px 0; // Adds space above and below the button
+}
+
 .get-involved-button {
     margin: 0;
 }
@@ -392,7 +503,7 @@ h1, h2, h3, h4, h5, h6 {
         font-family: 'Lato', sans-serif;
         font-weight: 900;
         text-transform: uppercase;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.479);
     }
 
     h3 {
@@ -424,7 +535,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: #ffffff;
     text-align: center;
     position: relative;
 

@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class MissionaryProfilesConfig(AppConfig):
+class MenusConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'missionary_profiles'
+    name = 'apps.menus'

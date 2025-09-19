@@ -3000,7 +3000,7 @@ ul.no-bullet, ol.no-bullet {
     height: calc(100vh + 1.875rem);
   }
 }
-.button, .transparent-nav .donate-button {
+.button {
   display: inline-block;
   vertical-align: middle;
   margin: 0 0 1rem 0;
@@ -3015,168 +3015,168 @@ ul.no-bullet, ol.no-bullet {
   cursor: pointer;
   padding: 0.85em 1em;
 }
-[data-whatinput=mouse] .button, [data-whatinput=mouse] .transparent-nav .donate-button, .transparent-nav [data-whatinput=mouse] .donate-button {
+[data-whatinput=mouse] .button {
   outline: 0;
 }
-.button.tiny, .transparent-nav .tiny.donate-button {
+.button.tiny {
   font-size: 0.6rem;
 }
-.button.small, .transparent-nav .small.donate-button {
+.button.small {
   font-size: 0.75rem;
 }
-.button.large, .transparent-nav .large.donate-button {
+.button.large {
   font-size: 1.25rem;
 }
-.button.expanded, .transparent-nav .expanded.donate-button {
+.button.expanded {
   display: block;
   width: 100%;
   margin-right: 0;
   margin-left: 0;
 }
-.button, .transparent-nav .donate-button, .button.disabled, .button[disabled], .button.disabled:hover, .button[disabled]:hover, .button.disabled:focus, .button[disabled]:focus {
+.button, .button.disabled, .button[disabled], .button.disabled:hover, .button[disabled]:hover, .button.disabled:focus, .button[disabled]:focus {
   background-color: #1779ba;
   color: #fefefe;
 }
-.button:hover, .transparent-nav .donate-button:hover, .button:focus, .transparent-nav .donate-button:focus {
+.button:hover, .button:focus {
   background-color: rgb(19.55, 102.85, 158.1);
   color: #fefefe;
 }
-.button.primary, .transparent-nav .primary.donate-button, .button.primary.disabled, .button.primary[disabled], .button.primary.disabled:hover, .button.primary[disabled]:hover, .button.primary.disabled:focus, .button.primary[disabled]:focus {
+.button.primary, .button.primary.disabled, .button.primary[disabled], .button.primary.disabled:hover, .button.primary[disabled]:hover, .button.primary.disabled:focus, .button.primary[disabled]:focus {
   background-color: #1779ba;
   color: #fefefe;
 }
-.button.primary:hover, .transparent-nav .primary.donate-button:hover, .button.primary:focus, .transparent-nav .primary.donate-button:focus {
+.button.primary:hover, .button.primary:focus {
   background-color: rgb(18.4, 96.8, 148.8);
   color: #fefefe;
 }
-.button.secondary, .transparent-nav .secondary.donate-button, .button.secondary.disabled, .button.secondary[disabled], .button.secondary.disabled:hover, .button.secondary[disabled]:hover, .button.secondary.disabled:focus, .button.secondary[disabled]:focus {
+.button.secondary, .button.secondary.disabled, .button.secondary[disabled], .button.secondary.disabled:hover, .button.secondary[disabled]:hover, .button.secondary.disabled:focus, .button.secondary[disabled]:focus {
   background-color: #767676;
   color: #fefefe;
 }
-.button.secondary:hover, .transparent-nav .secondary.donate-button:hover, .button.secondary:focus, .transparent-nav .secondary.donate-button:focus {
+.button.secondary:hover, .button.secondary:focus {
   background-color: rgb(94.4, 94.4, 94.4);
   color: #fefefe;
 }
-.button.success, .transparent-nav .success.donate-button, .button.success.disabled, .button.success[disabled], .button.success.disabled:hover, .button.success[disabled]:hover, .button.success.disabled:focus, .button.success[disabled]:focus {
+.button.success, .button.success.disabled, .button.success[disabled], .button.success.disabled:hover, .button.success[disabled]:hover, .button.success.disabled:focus, .button.success[disabled]:focus {
   background-color: #3adb76;
   color: #0a0a0a;
 }
-.button.success:hover, .transparent-nav .success.donate-button:hover, .button.success:focus, .transparent-nav .success.donate-button:focus {
+.button.success:hover, .button.success:focus {
   background-color: rgb(34.2386266094, 187.3613733906, 91.3030042918);
   color: #0a0a0a;
 }
-.button.warning, .transparent-nav .warning.donate-button, .button.warning.disabled, .button.warning[disabled], .button.warning.disabled:hover, .button.warning[disabled]:hover, .button.warning.disabled:focus, .button.warning[disabled]:focus {
+.button.warning, .button.warning.disabled, .button.warning[disabled], .button.warning.disabled:hover, .button.warning[disabled]:hover, .button.warning.disabled:focus, .button.warning[disabled]:focus {
   background-color: #ffae00;
   color: #0a0a0a;
 }
-.button.warning:hover, .transparent-nav .warning.donate-button:hover, .button.warning:focus, .transparent-nav .warning.donate-button:focus {
+.button.warning:hover, .button.warning:focus {
   background-color: rgb(204, 139.2, 0);
   color: #0a0a0a;
 }
-.button.alert, .transparent-nav .alert.donate-button, .button.alert.disabled, .button.alert[disabled], .button.alert.disabled:hover, .button.alert[disabled]:hover, .button.alert.disabled:focus, .button.alert[disabled]:focus {
+.button.alert, .button.alert.disabled, .button.alert[disabled], .button.alert.disabled:hover, .button.alert[disabled]:hover, .button.alert.disabled:focus, .button.alert[disabled]:focus {
   background-color: #cc4b37;
   color: #fefefe;
 }
-.button.alert:hover, .transparent-nav .alert.donate-button:hover, .button.alert:focus, .transparent-nav .alert.donate-button:focus {
+.button.alert:hover, .button.alert:focus {
   background-color: rgb(165.0996015936, 58.6103585657, 42.1003984064);
   color: #fefefe;
 }
-.button.hollow, .transparent-nav .hollow.donate-button, .button.hollow:hover, .button.hollow:focus, .button.hollow.disabled, .button.hollow.disabled:hover, .button.hollow.disabled:focus, .button.hollow[disabled], .button.hollow[disabled]:hover, .button.hollow[disabled]:focus {
+.button.hollow, .button.hollow:hover, .button.hollow:focus, .button.hollow.disabled, .button.hollow.disabled:hover, .button.hollow.disabled:focus, .button.hollow[disabled], .button.hollow[disabled]:hover, .button.hollow[disabled]:focus {
   background-color: transparent;
 }
-.button.hollow, .transparent-nav .hollow.donate-button, .button.hollow.disabled, .button.hollow[disabled], .button.hollow.disabled:hover, .button.hollow[disabled]:hover, .button.hollow.disabled:focus, .button.hollow[disabled]:focus {
+.button.hollow, .button.hollow.disabled, .button.hollow[disabled], .button.hollow.disabled:hover, .button.hollow[disabled]:hover, .button.hollow.disabled:focus, .button.hollow[disabled]:focus {
   border: 1px solid #1779ba;
   color: #1779ba;
 }
-.button.hollow:hover, .transparent-nav .hollow.donate-button:hover, .button.hollow:focus, .transparent-nav .hollow.donate-button:focus {
+.button.hollow:hover, .button.hollow:focus {
   border-color: rgb(11.5, 60.5, 93);
   color: rgb(11.5, 60.5, 93);
 }
-.button.hollow.primary, .transparent-nav .hollow.primary.donate-button, .button.hollow.primary.disabled, .button.hollow.primary[disabled], .button.hollow.primary.disabled:hover, .button.hollow.primary[disabled]:hover, .button.hollow.primary.disabled:focus, .button.hollow.primary[disabled]:focus {
+.button.hollow.primary, .button.hollow.primary.disabled, .button.hollow.primary[disabled], .button.hollow.primary.disabled:hover, .button.hollow.primary[disabled]:hover, .button.hollow.primary.disabled:focus, .button.hollow.primary[disabled]:focus {
   border: 1px solid #1779ba;
   color: #1779ba;
 }
-.button.hollow.primary:hover, .transparent-nav .hollow.primary.donate-button:hover, .button.hollow.primary:focus, .transparent-nav .hollow.primary.donate-button:focus {
+.button.hollow.primary:hover, .button.hollow.primary:focus {
   border-color: rgb(11.5, 60.5, 93);
   color: rgb(11.5, 60.5, 93);
 }
-.button.hollow.secondary, .transparent-nav .hollow.secondary.donate-button, .button.hollow.secondary.disabled, .button.hollow.secondary[disabled], .button.hollow.secondary.disabled:hover, .button.hollow.secondary[disabled]:hover, .button.hollow.secondary.disabled:focus, .button.hollow.secondary[disabled]:focus {
+.button.hollow.secondary, .button.hollow.secondary.disabled, .button.hollow.secondary[disabled], .button.hollow.secondary.disabled:hover, .button.hollow.secondary[disabled]:hover, .button.hollow.secondary.disabled:focus, .button.hollow.secondary[disabled]:focus {
   border: 1px solid #767676;
   color: #767676;
 }
-.button.hollow.secondary:hover, .transparent-nav .hollow.secondary.donate-button:hover, .button.hollow.secondary:focus, .transparent-nav .hollow.secondary.donate-button:focus {
+.button.hollow.secondary:hover, .button.hollow.secondary:focus {
   border-color: #3b3b3b;
   color: #3b3b3b;
 }
-.button.hollow.success, .transparent-nav .hollow.success.donate-button, .button.hollow.success.disabled, .button.hollow.success[disabled], .button.hollow.success.disabled:hover, .button.hollow.success[disabled]:hover, .button.hollow.success.disabled:focus, .button.hollow.success[disabled]:focus {
+.button.hollow.success, .button.hollow.success.disabled, .button.hollow.success[disabled], .button.hollow.success.disabled:hover, .button.hollow.success[disabled]:hover, .button.hollow.success.disabled:focus, .button.hollow.success[disabled]:focus {
   border: 1px solid #3adb76;
   color: #3adb76;
 }
-.button.hollow.success:hover, .transparent-nav .hollow.success.donate-button:hover, .button.hollow.success:focus, .transparent-nav .hollow.success.donate-button:focus {
+.button.hollow.success:hover, .button.hollow.success:focus {
   border-color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
   color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
 }
-.button.hollow.warning, .transparent-nav .hollow.warning.donate-button, .button.hollow.warning.disabled, .button.hollow.warning[disabled], .button.hollow.warning.disabled:hover, .button.hollow.warning[disabled]:hover, .button.hollow.warning.disabled:focus, .button.hollow.warning[disabled]:focus {
+.button.hollow.warning, .button.hollow.warning.disabled, .button.hollow.warning[disabled], .button.hollow.warning.disabled:hover, .button.hollow.warning[disabled]:hover, .button.hollow.warning.disabled:focus, .button.hollow.warning[disabled]:focus {
   border: 1px solid #ffae00;
   color: #ffae00;
 }
-.button.hollow.warning:hover, .transparent-nav .hollow.warning.donate-button:hover, .button.hollow.warning:focus, .transparent-nav .hollow.warning.donate-button:focus {
+.button.hollow.warning:hover, .button.hollow.warning:focus {
   border-color: rgb(127.5, 87, 0);
   color: rgb(127.5, 87, 0);
 }
-.button.hollow.alert, .transparent-nav .hollow.alert.donate-button, .button.hollow.alert.disabled, .button.hollow.alert[disabled], .button.hollow.alert.disabled:hover, .button.hollow.alert[disabled]:hover, .button.hollow.alert.disabled:focus, .button.hollow.alert[disabled]:focus {
+.button.hollow.alert, .button.hollow.alert.disabled, .button.hollow.alert[disabled], .button.hollow.alert.disabled:hover, .button.hollow.alert[disabled]:hover, .button.hollow.alert.disabled:focus, .button.hollow.alert[disabled]:focus {
   border: 1px solid #cc4b37;
   color: #cc4b37;
 }
-.button.hollow.alert:hover, .transparent-nav .hollow.alert.donate-button:hover, .button.hollow.alert:focus, .transparent-nav .hollow.alert.donate-button:focus {
+.button.hollow.alert:hover, .button.hollow.alert:focus {
   border-color: rgb(103.187250996, 36.6314741036, 26.312749004);
   color: rgb(103.187250996, 36.6314741036, 26.312749004);
 }
-.button.clear, .transparent-nav .clear.donate-button, .button.clear:hover, .button.clear:focus, .button.clear.disabled, .button.clear.disabled:hover, .button.clear.disabled:focus, .button.clear[disabled], .button.clear[disabled]:hover, .button.clear[disabled]:focus {
+.button.clear, .button.clear:hover, .button.clear:focus, .button.clear.disabled, .button.clear.disabled:hover, .button.clear.disabled:focus, .button.clear[disabled], .button.clear[disabled]:hover, .button.clear[disabled]:focus {
   border-color: transparent;
   background-color: transparent;
 }
-.button.clear, .transparent-nav .clear.donate-button, .button.clear.disabled, .button.clear[disabled], .button.clear.disabled:hover, .button.clear[disabled]:hover, .button.clear.disabled:focus, .button.clear[disabled]:focus {
+.button.clear, .button.clear.disabled, .button.clear[disabled], .button.clear.disabled:hover, .button.clear[disabled]:hover, .button.clear.disabled:focus, .button.clear[disabled]:focus {
   color: #1779ba;
 }
-.button.clear:hover, .transparent-nav .clear.donate-button:hover, .button.clear:focus, .transparent-nav .clear.donate-button:focus {
+.button.clear:hover, .button.clear:focus {
   color: rgb(11.5, 60.5, 93);
 }
-.button.clear.primary, .transparent-nav .clear.primary.donate-button, .button.clear.primary.disabled, .button.clear.primary[disabled], .button.clear.primary.disabled:hover, .button.clear.primary[disabled]:hover, .button.clear.primary.disabled:focus, .button.clear.primary[disabled]:focus {
+.button.clear.primary, .button.clear.primary.disabled, .button.clear.primary[disabled], .button.clear.primary.disabled:hover, .button.clear.primary[disabled]:hover, .button.clear.primary.disabled:focus, .button.clear.primary[disabled]:focus {
   color: #1779ba;
 }
-.button.clear.primary:hover, .transparent-nav .clear.primary.donate-button:hover, .button.clear.primary:focus, .transparent-nav .clear.primary.donate-button:focus {
+.button.clear.primary:hover, .button.clear.primary:focus {
   color: rgb(11.5, 60.5, 93);
 }
-.button.clear.secondary, .transparent-nav .clear.secondary.donate-button, .button.clear.secondary.disabled, .button.clear.secondary[disabled], .button.clear.secondary.disabled:hover, .button.clear.secondary[disabled]:hover, .button.clear.secondary.disabled:focus, .button.clear.secondary[disabled]:focus {
+.button.clear.secondary, .button.clear.secondary.disabled, .button.clear.secondary[disabled], .button.clear.secondary.disabled:hover, .button.clear.secondary[disabled]:hover, .button.clear.secondary.disabled:focus, .button.clear.secondary[disabled]:focus {
   color: #767676;
 }
-.button.clear.secondary:hover, .transparent-nav .clear.secondary.donate-button:hover, .button.clear.secondary:focus, .transparent-nav .clear.secondary.donate-button:focus {
+.button.clear.secondary:hover, .button.clear.secondary:focus {
   color: #3b3b3b;
 }
-.button.clear.success, .transparent-nav .clear.success.donate-button, .button.clear.success.disabled, .button.clear.success[disabled], .button.clear.success.disabled:hover, .button.clear.success[disabled]:hover, .button.clear.success.disabled:focus, .button.clear.success[disabled]:focus {
+.button.clear.success, .button.clear.success.disabled, .button.clear.success[disabled], .button.clear.success.disabled:hover, .button.clear.success[disabled]:hover, .button.clear.success.disabled:focus, .button.clear.success[disabled]:focus {
   color: #3adb76;
 }
-.button.clear.success:hover, .transparent-nav .clear.success.donate-button:hover, .button.clear.success:focus, .transparent-nav .clear.success.donate-button:focus {
+.button.clear.success:hover, .button.clear.success:focus {
   color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
 }
-.button.clear.warning, .transparent-nav .clear.warning.donate-button, .button.clear.warning.disabled, .button.clear.warning[disabled], .button.clear.warning.disabled:hover, .button.clear.warning[disabled]:hover, .button.clear.warning.disabled:focus, .button.clear.warning[disabled]:focus {
+.button.clear.warning, .button.clear.warning.disabled, .button.clear.warning[disabled], .button.clear.warning.disabled:hover, .button.clear.warning[disabled]:hover, .button.clear.warning.disabled:focus, .button.clear.warning[disabled]:focus {
   color: #ffae00;
 }
-.button.clear.warning:hover, .transparent-nav .clear.warning.donate-button:hover, .button.clear.warning:focus, .transparent-nav .clear.warning.donate-button:focus {
+.button.clear.warning:hover, .button.clear.warning:focus {
   color: rgb(127.5, 87, 0);
 }
-.button.clear.alert, .transparent-nav .clear.alert.donate-button, .button.clear.alert.disabled, .button.clear.alert[disabled], .button.clear.alert.disabled:hover, .button.clear.alert[disabled]:hover, .button.clear.alert.disabled:focus, .button.clear.alert[disabled]:focus {
+.button.clear.alert, .button.clear.alert.disabled, .button.clear.alert[disabled], .button.clear.alert.disabled:hover, .button.clear.alert[disabled]:hover, .button.clear.alert.disabled:focus, .button.clear.alert[disabled]:focus {
   color: #cc4b37;
 }
-.button.clear.alert:hover, .transparent-nav .clear.alert.donate-button:hover, .button.clear.alert:focus, .transparent-nav .clear.alert.donate-button:focus {
+.button.clear.alert:hover, .button.clear.alert:focus {
   color: rgb(103.187250996, 36.6314741036, 26.312749004);
 }
-.button.disabled, .transparent-nav .disabled.donate-button, .button[disabled], .transparent-nav [disabled].donate-button {
+.button.disabled, .button[disabled] {
   opacity: 0.25;
   cursor: not-allowed;
 }
-.button.dropdown::after, .transparent-nav .dropdown.donate-button::after {
+.button.dropdown::after {
   display: block;
   width: 0;
   height: 0;
@@ -3191,31 +3191,31 @@ ul.no-bullet, ol.no-bullet {
   float: right;
   margin-left: 1em;
 }
-.button.dropdown.hollow::after, .transparent-nav .dropdown.hollow.donate-button::after, .button.dropdown.clear::after, .transparent-nav .dropdown.clear.donate-button::after {
+.button.dropdown.hollow::after, .button.dropdown.clear::after {
   border-top-color: #1779ba;
 }
-.button.dropdown.hollow.primary::after, .transparent-nav .dropdown.hollow.primary.donate-button::after, .button.dropdown.clear.primary::after, .transparent-nav .dropdown.clear.primary.donate-button::after {
+.button.dropdown.hollow.primary::after, .button.dropdown.clear.primary::after {
   border-top-color: #1779ba;
 }
-.button.dropdown.hollow.secondary::after, .transparent-nav .dropdown.hollow.secondary.donate-button::after, .button.dropdown.clear.secondary::after, .transparent-nav .dropdown.clear.secondary.donate-button::after {
+.button.dropdown.hollow.secondary::after, .button.dropdown.clear.secondary::after {
   border-top-color: #767676;
 }
-.button.dropdown.hollow.success::after, .transparent-nav .dropdown.hollow.success.donate-button::after, .button.dropdown.clear.success::after, .transparent-nav .dropdown.clear.success.donate-button::after {
+.button.dropdown.hollow.success::after, .button.dropdown.clear.success::after {
   border-top-color: #3adb76;
 }
-.button.dropdown.hollow.warning::after, .transparent-nav .dropdown.hollow.warning.donate-button::after, .button.dropdown.clear.warning::after, .transparent-nav .dropdown.clear.warning.donate-button::after {
+.button.dropdown.hollow.warning::after, .button.dropdown.clear.warning::after {
   border-top-color: #ffae00;
 }
-.button.dropdown.hollow.alert::after, .transparent-nav .dropdown.hollow.alert.donate-button::after, .button.dropdown.clear.alert::after, .transparent-nav .dropdown.clear.alert.donate-button::after {
+.button.dropdown.hollow.alert::after, .button.dropdown.clear.alert::after {
   border-top-color: #cc4b37;
 }
-.button.arrow-only::after, .transparent-nav .arrow-only.donate-button::after {
+.button.arrow-only::after {
   top: -0.1em;
   float: none;
   margin-left: 0;
 }
 
-a.button:hover, .transparent-nav a.donate-button:hover, a.button:focus, .transparent-nav a.donate-button:focus {
+a.button:hover, a.button:focus {
   text-decoration: none;
 }
 
@@ -3238,185 +3238,185 @@ a.button:hover, .transparent-nav a.donate-button:hover, a.button:focus, .transpa
 .button-group::after {
   clear: both;
 }
-.button-group .button, .button-group .transparent-nav .donate-button, .transparent-nav .button-group .donate-button {
+.button-group .button {
   margin: 0;
   margin-right: 1px;
   margin-bottom: 1px;
   font-size: 0.9rem;
   flex: 0 0 auto;
 }
-.button-group .button:last-child, .button-group .transparent-nav .donate-button:last-child, .transparent-nav .button-group .donate-button:last-child {
+.button-group .button:last-child {
   margin-right: 0;
 }
-.button-group.tiny .button, .button-group.tiny .transparent-nav .donate-button, .transparent-nav .button-group.tiny .donate-button {
+.button-group.tiny .button {
   font-size: 0.6rem;
 }
-.button-group.small .button, .button-group.small .transparent-nav .donate-button, .transparent-nav .button-group.small .donate-button {
+.button-group.small .button {
   font-size: 0.75rem;
 }
-.button-group.large .button, .button-group.large .transparent-nav .donate-button, .transparent-nav .button-group.large .donate-button {
+.button-group.large .button {
   font-size: 1.25rem;
 }
-.button-group.expanded .button, .button-group.expanded .transparent-nav .donate-button, .transparent-nav .button-group.expanded .donate-button {
+.button-group.expanded .button {
   flex: 1 1 0px;
 }
-.button-group.primary .button, .button-group.primary .transparent-nav .donate-button, .transparent-nav .button-group.primary .donate-button, .button-group.primary .button.disabled, .button-group.primary .button[disabled], .button-group.primary .button.disabled:hover, .button-group.primary .button[disabled]:hover, .button-group.primary .button.disabled:focus, .button-group.primary .button[disabled]:focus {
+.button-group.primary .button, .button-group.primary .button.disabled, .button-group.primary .button[disabled], .button-group.primary .button.disabled:hover, .button-group.primary .button[disabled]:hover, .button-group.primary .button.disabled:focus, .button-group.primary .button[disabled]:focus {
   background-color: #1779ba;
   color: #fefefe;
 }
-.button-group.primary .button:hover, .button-group.primary .transparent-nav .donate-button:hover, .transparent-nav .button-group.primary .donate-button:hover, .button-group.primary .button:focus, .button-group.primary .transparent-nav .donate-button:focus, .transparent-nav .button-group.primary .donate-button:focus {
+.button-group.primary .button:hover, .button-group.primary .button:focus {
   background-color: rgb(18.4, 96.8, 148.8);
   color: #fefefe;
 }
-.button-group.secondary .button, .button-group.secondary .transparent-nav .donate-button, .transparent-nav .button-group.secondary .donate-button, .button-group.secondary .button.disabled, .button-group.secondary .button[disabled], .button-group.secondary .button.disabled:hover, .button-group.secondary .button[disabled]:hover, .button-group.secondary .button.disabled:focus, .button-group.secondary .button[disabled]:focus {
+.button-group.secondary .button, .button-group.secondary .button.disabled, .button-group.secondary .button[disabled], .button-group.secondary .button.disabled:hover, .button-group.secondary .button[disabled]:hover, .button-group.secondary .button.disabled:focus, .button-group.secondary .button[disabled]:focus {
   background-color: #767676;
   color: #fefefe;
 }
-.button-group.secondary .button:hover, .button-group.secondary .transparent-nav .donate-button:hover, .transparent-nav .button-group.secondary .donate-button:hover, .button-group.secondary .button:focus, .button-group.secondary .transparent-nav .donate-button:focus, .transparent-nav .button-group.secondary .donate-button:focus {
+.button-group.secondary .button:hover, .button-group.secondary .button:focus {
   background-color: rgb(94.4, 94.4, 94.4);
   color: #fefefe;
 }
-.button-group.success .button, .button-group.success .transparent-nav .donate-button, .transparent-nav .button-group.success .donate-button, .button-group.success .button.disabled, .button-group.success .button[disabled], .button-group.success .button.disabled:hover, .button-group.success .button[disabled]:hover, .button-group.success .button.disabled:focus, .button-group.success .button[disabled]:focus {
+.button-group.success .button, .button-group.success .button.disabled, .button-group.success .button[disabled], .button-group.success .button.disabled:hover, .button-group.success .button[disabled]:hover, .button-group.success .button.disabled:focus, .button-group.success .button[disabled]:focus {
   background-color: #3adb76;
   color: #0a0a0a;
 }
-.button-group.success .button:hover, .button-group.success .transparent-nav .donate-button:hover, .transparent-nav .button-group.success .donate-button:hover, .button-group.success .button:focus, .button-group.success .transparent-nav .donate-button:focus, .transparent-nav .button-group.success .donate-button:focus {
+.button-group.success .button:hover, .button-group.success .button:focus {
   background-color: rgb(34.2386266094, 187.3613733906, 91.3030042918);
   color: #0a0a0a;
 }
-.button-group.warning .button, .button-group.warning .transparent-nav .donate-button, .transparent-nav .button-group.warning .donate-button, .button-group.warning .button.disabled, .button-group.warning .button[disabled], .button-group.warning .button.disabled:hover, .button-group.warning .button[disabled]:hover, .button-group.warning .button.disabled:focus, .button-group.warning .button[disabled]:focus {
+.button-group.warning .button, .button-group.warning .button.disabled, .button-group.warning .button[disabled], .button-group.warning .button.disabled:hover, .button-group.warning .button[disabled]:hover, .button-group.warning .button.disabled:focus, .button-group.warning .button[disabled]:focus {
   background-color: #ffae00;
   color: #0a0a0a;
 }
-.button-group.warning .button:hover, .button-group.warning .transparent-nav .donate-button:hover, .transparent-nav .button-group.warning .donate-button:hover, .button-group.warning .button:focus, .button-group.warning .transparent-nav .donate-button:focus, .transparent-nav .button-group.warning .donate-button:focus {
+.button-group.warning .button:hover, .button-group.warning .button:focus {
   background-color: rgb(204, 139.2, 0);
   color: #0a0a0a;
 }
-.button-group.alert .button, .button-group.alert .transparent-nav .donate-button, .transparent-nav .button-group.alert .donate-button, .button-group.alert .button.disabled, .button-group.alert .button[disabled], .button-group.alert .button.disabled:hover, .button-group.alert .button[disabled]:hover, .button-group.alert .button.disabled:focus, .button-group.alert .button[disabled]:focus {
+.button-group.alert .button, .button-group.alert .button.disabled, .button-group.alert .button[disabled], .button-group.alert .button.disabled:hover, .button-group.alert .button[disabled]:hover, .button-group.alert .button.disabled:focus, .button-group.alert .button[disabled]:focus {
   background-color: #cc4b37;
   color: #fefefe;
 }
-.button-group.alert .button:hover, .button-group.alert .transparent-nav .donate-button:hover, .transparent-nav .button-group.alert .donate-button:hover, .button-group.alert .button:focus, .button-group.alert .transparent-nav .donate-button:focus, .transparent-nav .button-group.alert .donate-button:focus {
+.button-group.alert .button:hover, .button-group.alert .button:focus {
   background-color: rgb(165.0996015936, 58.6103585657, 42.1003984064);
   color: #fefefe;
 }
-.button-group.hollow .button, .button-group.hollow .transparent-nav .donate-button, .transparent-nav .button-group.hollow .donate-button, .button-group.hollow .button:hover, .button-group.hollow .button:focus, .button-group.hollow .button.disabled, .button-group.hollow .button.disabled:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled], .button-group.hollow .button[disabled]:hover, .button-group.hollow .button[disabled]:focus {
+.button-group.hollow .button, .button-group.hollow .button:hover, .button-group.hollow .button:focus, .button-group.hollow .button.disabled, .button-group.hollow .button.disabled:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled], .button-group.hollow .button[disabled]:hover, .button-group.hollow .button[disabled]:focus {
   background-color: transparent;
 }
-.button-group.hollow .button, .button-group.hollow .transparent-nav .donate-button, .transparent-nav .button-group.hollow .donate-button, .button-group.hollow .button.disabled, .button-group.hollow .button[disabled], .button-group.hollow .button.disabled:hover, .button-group.hollow .button[disabled]:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled]:focus {
+.button-group.hollow .button, .button-group.hollow .button.disabled, .button-group.hollow .button[disabled], .button-group.hollow .button.disabled:hover, .button-group.hollow .button[disabled]:hover, .button-group.hollow .button.disabled:focus, .button-group.hollow .button[disabled]:focus {
   border: 1px solid #1779ba;
   color: #1779ba;
 }
-.button-group.hollow .button:hover, .button-group.hollow .transparent-nav .donate-button:hover, .transparent-nav .button-group.hollow .donate-button:hover, .button-group.hollow .button:focus, .button-group.hollow .transparent-nav .donate-button:focus, .transparent-nav .button-group.hollow .donate-button:focus {
+.button-group.hollow .button:hover, .button-group.hollow .button:focus {
   border-color: rgb(11.5, 60.5, 93);
   color: rgb(11.5, 60.5, 93);
 }
-.button-group.hollow.primary .button, .button-group.hollow.primary .transparent-nav .donate-button, .transparent-nav .button-group.hollow.primary .donate-button, .button-group.hollow.primary .button.disabled, .button-group.hollow.primary .button[disabled], .button-group.hollow.primary .button.disabled:hover, .button-group.hollow.primary .button[disabled]:hover, .button-group.hollow.primary .button.disabled:focus, .button-group.hollow.primary .button[disabled]:focus, .button-group.hollow .button.primary, .button-group.hollow .transparent-nav .primary.donate-button, .transparent-nav .button-group.hollow .primary.donate-button, .button-group.hollow .button.primary.disabled, .button-group.hollow .button.primary[disabled], .button-group.hollow .button.primary.disabled:hover, .button-group.hollow .button.primary[disabled]:hover, .button-group.hollow .button.primary.disabled:focus, .button-group.hollow .button.primary[disabled]:focus {
+.button-group.hollow.primary .button, .button-group.hollow.primary .button.disabled, .button-group.hollow.primary .button[disabled], .button-group.hollow.primary .button.disabled:hover, .button-group.hollow.primary .button[disabled]:hover, .button-group.hollow.primary .button.disabled:focus, .button-group.hollow.primary .button[disabled]:focus, .button-group.hollow .button.primary, .button-group.hollow .button.primary.disabled, .button-group.hollow .button.primary[disabled], .button-group.hollow .button.primary.disabled:hover, .button-group.hollow .button.primary[disabled]:hover, .button-group.hollow .button.primary.disabled:focus, .button-group.hollow .button.primary[disabled]:focus {
   border: 1px solid #1779ba;
   color: #1779ba;
 }
-.button-group.hollow.primary .button:hover, .button-group.hollow.primary .transparent-nav .donate-button:hover, .transparent-nav .button-group.hollow.primary .donate-button:hover, .button-group.hollow.primary .button:focus, .button-group.hollow.primary .transparent-nav .donate-button:focus, .transparent-nav .button-group.hollow.primary .donate-button:focus, .button-group.hollow .button.primary:hover, .button-group.hollow .transparent-nav .primary.donate-button:hover, .transparent-nav .button-group.hollow .primary.donate-button:hover, .button-group.hollow .button.primary:focus, .button-group.hollow .transparent-nav .primary.donate-button:focus, .transparent-nav .button-group.hollow .primary.donate-button:focus {
+.button-group.hollow.primary .button:hover, .button-group.hollow.primary .button:focus, .button-group.hollow .button.primary:hover, .button-group.hollow .button.primary:focus {
   border-color: rgb(11.5, 60.5, 93);
   color: rgb(11.5, 60.5, 93);
 }
-.button-group.hollow.secondary .button, .button-group.hollow.secondary .transparent-nav .donate-button, .transparent-nav .button-group.hollow.secondary .donate-button, .button-group.hollow.secondary .button.disabled, .button-group.hollow.secondary .button[disabled], .button-group.hollow.secondary .button.disabled:hover, .button-group.hollow.secondary .button[disabled]:hover, .button-group.hollow.secondary .button.disabled:focus, .button-group.hollow.secondary .button[disabled]:focus, .button-group.hollow .button.secondary, .button-group.hollow .transparent-nav .secondary.donate-button, .transparent-nav .button-group.hollow .secondary.donate-button, .button-group.hollow .button.secondary.disabled, .button-group.hollow .button.secondary[disabled], .button-group.hollow .button.secondary.disabled:hover, .button-group.hollow .button.secondary[disabled]:hover, .button-group.hollow .button.secondary.disabled:focus, .button-group.hollow .button.secondary[disabled]:focus {
+.button-group.hollow.secondary .button, .button-group.hollow.secondary .button.disabled, .button-group.hollow.secondary .button[disabled], .button-group.hollow.secondary .button.disabled:hover, .button-group.hollow.secondary .button[disabled]:hover, .button-group.hollow.secondary .button.disabled:focus, .button-group.hollow.secondary .button[disabled]:focus, .button-group.hollow .button.secondary, .button-group.hollow .button.secondary.disabled, .button-group.hollow .button.secondary[disabled], .button-group.hollow .button.secondary.disabled:hover, .button-group.hollow .button.secondary[disabled]:hover, .button-group.hollow .button.secondary.disabled:focus, .button-group.hollow .button.secondary[disabled]:focus {
   border: 1px solid #767676;
   color: #767676;
 }
-.button-group.hollow.secondary .button:hover, .button-group.hollow.secondary .transparent-nav .donate-button:hover, .transparent-nav .button-group.hollow.secondary .donate-button:hover, .button-group.hollow.secondary .button:focus, .button-group.hollow.secondary .transparent-nav .donate-button:focus, .transparent-nav .button-group.hollow.secondary .donate-button:focus, .button-group.hollow .button.secondary:hover, .button-group.hollow .transparent-nav .secondary.donate-button:hover, .transparent-nav .button-group.hollow .secondary.donate-button:hover, .button-group.hollow .button.secondary:focus, .button-group.hollow .transparent-nav .secondary.donate-button:focus, .transparent-nav .button-group.hollow .secondary.donate-button:focus {
+.button-group.hollow.secondary .button:hover, .button-group.hollow.secondary .button:focus, .button-group.hollow .button.secondary:hover, .button-group.hollow .button.secondary:focus {
   border-color: #3b3b3b;
   color: #3b3b3b;
 }
-.button-group.hollow.success .button, .button-group.hollow.success .transparent-nav .donate-button, .transparent-nav .button-group.hollow.success .donate-button, .button-group.hollow.success .button.disabled, .button-group.hollow.success .button[disabled], .button-group.hollow.success .button.disabled:hover, .button-group.hollow.success .button[disabled]:hover, .button-group.hollow.success .button.disabled:focus, .button-group.hollow.success .button[disabled]:focus, .button-group.hollow .button.success, .button-group.hollow .transparent-nav .success.donate-button, .transparent-nav .button-group.hollow .success.donate-button, .button-group.hollow .button.success.disabled, .button-group.hollow .button.success[disabled], .button-group.hollow .button.success.disabled:hover, .button-group.hollow .button.success[disabled]:hover, .button-group.hollow .button.success.disabled:focus, .button-group.hollow .button.success[disabled]:focus {
+.button-group.hollow.success .button, .button-group.hollow.success .button.disabled, .button-group.hollow.success .button[disabled], .button-group.hollow.success .button.disabled:hover, .button-group.hollow.success .button[disabled]:hover, .button-group.hollow.success .button.disabled:focus, .button-group.hollow.success .button[disabled]:focus, .button-group.hollow .button.success, .button-group.hollow .button.success.disabled, .button-group.hollow .button.success[disabled], .button-group.hollow .button.success.disabled:hover, .button-group.hollow .button.success[disabled]:hover, .button-group.hollow .button.success.disabled:focus, .button-group.hollow .button.success[disabled]:focus {
   border: 1px solid #3adb76;
   color: #3adb76;
 }
-.button-group.hollow.success .button:hover, .button-group.hollow.success .transparent-nav .donate-button:hover, .transparent-nav .button-group.hollow.success .donate-button:hover, .button-group.hollow.success .button:focus, .button-group.hollow.success .transparent-nav .donate-button:focus, .transparent-nav .button-group.hollow.success .donate-button:focus, .button-group.hollow .button.success:hover, .button-group.hollow .transparent-nav .success.donate-button:hover, .transparent-nav .button-group.hollow .success.donate-button:hover, .button-group.hollow .button.success:focus, .button-group.hollow .transparent-nav .success.donate-button:focus, .transparent-nav .button-group.hollow .success.donate-button:focus {
+.button-group.hollow.success .button:hover, .button-group.hollow.success .button:focus, .button-group.hollow .button.success:hover, .button-group.hollow .button.success:focus {
   border-color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
   color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
 }
-.button-group.hollow.warning .button, .button-group.hollow.warning .transparent-nav .donate-button, .transparent-nav .button-group.hollow.warning .donate-button, .button-group.hollow.warning .button.disabled, .button-group.hollow.warning .button[disabled], .button-group.hollow.warning .button.disabled:hover, .button-group.hollow.warning .button[disabled]:hover, .button-group.hollow.warning .button.disabled:focus, .button-group.hollow.warning .button[disabled]:focus, .button-group.hollow .button.warning, .button-group.hollow .transparent-nav .warning.donate-button, .transparent-nav .button-group.hollow .warning.donate-button, .button-group.hollow .button.warning.disabled, .button-group.hollow .button.warning[disabled], .button-group.hollow .button.warning.disabled:hover, .button-group.hollow .button.warning[disabled]:hover, .button-group.hollow .button.warning.disabled:focus, .button-group.hollow .button.warning[disabled]:focus {
+.button-group.hollow.warning .button, .button-group.hollow.warning .button.disabled, .button-group.hollow.warning .button[disabled], .button-group.hollow.warning .button.disabled:hover, .button-group.hollow.warning .button[disabled]:hover, .button-group.hollow.warning .button.disabled:focus, .button-group.hollow.warning .button[disabled]:focus, .button-group.hollow .button.warning, .button-group.hollow .button.warning.disabled, .button-group.hollow .button.warning[disabled], .button-group.hollow .button.warning.disabled:hover, .button-group.hollow .button.warning[disabled]:hover, .button-group.hollow .button.warning.disabled:focus, .button-group.hollow .button.warning[disabled]:focus {
   border: 1px solid #ffae00;
   color: #ffae00;
 }
-.button-group.hollow.warning .button:hover, .button-group.hollow.warning .transparent-nav .donate-button:hover, .transparent-nav .button-group.hollow.warning .donate-button:hover, .button-group.hollow.warning .button:focus, .button-group.hollow.warning .transparent-nav .donate-button:focus, .transparent-nav .button-group.hollow.warning .donate-button:focus, .button-group.hollow .button.warning:hover, .button-group.hollow .transparent-nav .warning.donate-button:hover, .transparent-nav .button-group.hollow .warning.donate-button:hover, .button-group.hollow .button.warning:focus, .button-group.hollow .transparent-nav .warning.donate-button:focus, .transparent-nav .button-group.hollow .warning.donate-button:focus {
+.button-group.hollow.warning .button:hover, .button-group.hollow.warning .button:focus, .button-group.hollow .button.warning:hover, .button-group.hollow .button.warning:focus {
   border-color: rgb(127.5, 87, 0);
   color: rgb(127.5, 87, 0);
 }
-.button-group.hollow.alert .button, .button-group.hollow.alert .transparent-nav .donate-button, .transparent-nav .button-group.hollow.alert .donate-button, .button-group.hollow.alert .button.disabled, .button-group.hollow.alert .button[disabled], .button-group.hollow.alert .button.disabled:hover, .button-group.hollow.alert .button[disabled]:hover, .button-group.hollow.alert .button.disabled:focus, .button-group.hollow.alert .button[disabled]:focus, .button-group.hollow .button.alert, .button-group.hollow .transparent-nav .alert.donate-button, .transparent-nav .button-group.hollow .alert.donate-button, .button-group.hollow .button.alert.disabled, .button-group.hollow .button.alert[disabled], .button-group.hollow .button.alert.disabled:hover, .button-group.hollow .button.alert[disabled]:hover, .button-group.hollow .button.alert.disabled:focus, .button-group.hollow .button.alert[disabled]:focus {
+.button-group.hollow.alert .button, .button-group.hollow.alert .button.disabled, .button-group.hollow.alert .button[disabled], .button-group.hollow.alert .button.disabled:hover, .button-group.hollow.alert .button[disabled]:hover, .button-group.hollow.alert .button.disabled:focus, .button-group.hollow.alert .button[disabled]:focus, .button-group.hollow .button.alert, .button-group.hollow .button.alert.disabled, .button-group.hollow .button.alert[disabled], .button-group.hollow .button.alert.disabled:hover, .button-group.hollow .button.alert[disabled]:hover, .button-group.hollow .button.alert.disabled:focus, .button-group.hollow .button.alert[disabled]:focus {
   border: 1px solid #cc4b37;
   color: #cc4b37;
 }
-.button-group.hollow.alert .button:hover, .button-group.hollow.alert .transparent-nav .donate-button:hover, .transparent-nav .button-group.hollow.alert .donate-button:hover, .button-group.hollow.alert .button:focus, .button-group.hollow.alert .transparent-nav .donate-button:focus, .transparent-nav .button-group.hollow.alert .donate-button:focus, .button-group.hollow .button.alert:hover, .button-group.hollow .transparent-nav .alert.donate-button:hover, .transparent-nav .button-group.hollow .alert.donate-button:hover, .button-group.hollow .button.alert:focus, .button-group.hollow .transparent-nav .alert.donate-button:focus, .transparent-nav .button-group.hollow .alert.donate-button:focus {
+.button-group.hollow.alert .button:hover, .button-group.hollow.alert .button:focus, .button-group.hollow .button.alert:hover, .button-group.hollow .button.alert:focus {
   border-color: rgb(103.187250996, 36.6314741036, 26.312749004);
   color: rgb(103.187250996, 36.6314741036, 26.312749004);
 }
-.button-group.clear .button, .button-group.clear .transparent-nav .donate-button, .transparent-nav .button-group.clear .donate-button, .button-group.clear .button:hover, .button-group.clear .button:focus, .button-group.clear .button.disabled, .button-group.clear .button.disabled:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled], .button-group.clear .button[disabled]:hover, .button-group.clear .button[disabled]:focus {
+.button-group.clear .button, .button-group.clear .button:hover, .button-group.clear .button:focus, .button-group.clear .button.disabled, .button-group.clear .button.disabled:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled], .button-group.clear .button[disabled]:hover, .button-group.clear .button[disabled]:focus {
   border-color: transparent;
   background-color: transparent;
 }
-.button-group.clear .button, .button-group.clear .transparent-nav .donate-button, .transparent-nav .button-group.clear .donate-button, .button-group.clear .button.disabled, .button-group.clear .button[disabled], .button-group.clear .button.disabled:hover, .button-group.clear .button[disabled]:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled]:focus {
+.button-group.clear .button, .button-group.clear .button.disabled, .button-group.clear .button[disabled], .button-group.clear .button.disabled:hover, .button-group.clear .button[disabled]:hover, .button-group.clear .button.disabled:focus, .button-group.clear .button[disabled]:focus {
   color: #1779ba;
 }
-.button-group.clear .button:hover, .button-group.clear .transparent-nav .donate-button:hover, .transparent-nav .button-group.clear .donate-button:hover, .button-group.clear .button:focus, .button-group.clear .transparent-nav .donate-button:focus, .transparent-nav .button-group.clear .donate-button:focus {
+.button-group.clear .button:hover, .button-group.clear .button:focus {
   color: rgb(11.5, 60.5, 93);
 }
-.button-group.clear.primary .button, .button-group.clear.primary .transparent-nav .donate-button, .transparent-nav .button-group.clear.primary .donate-button, .button-group.clear.primary .button.disabled, .button-group.clear.primary .button[disabled], .button-group.clear.primary .button.disabled:hover, .button-group.clear.primary .button[disabled]:hover, .button-group.clear.primary .button.disabled:focus, .button-group.clear.primary .button[disabled]:focus, .button-group.clear .button.primary, .button-group.clear .transparent-nav .primary.donate-button, .transparent-nav .button-group.clear .primary.donate-button, .button-group.clear .button.primary.disabled, .button-group.clear .button.primary[disabled], .button-group.clear .button.primary.disabled:hover, .button-group.clear .button.primary[disabled]:hover, .button-group.clear .button.primary.disabled:focus, .button-group.clear .button.primary[disabled]:focus {
+.button-group.clear.primary .button, .button-group.clear.primary .button.disabled, .button-group.clear.primary .button[disabled], .button-group.clear.primary .button.disabled:hover, .button-group.clear.primary .button[disabled]:hover, .button-group.clear.primary .button.disabled:focus, .button-group.clear.primary .button[disabled]:focus, .button-group.clear .button.primary, .button-group.clear .button.primary.disabled, .button-group.clear .button.primary[disabled], .button-group.clear .button.primary.disabled:hover, .button-group.clear .button.primary[disabled]:hover, .button-group.clear .button.primary.disabled:focus, .button-group.clear .button.primary[disabled]:focus {
   color: #1779ba;
 }
-.button-group.clear.primary .button:hover, .button-group.clear.primary .transparent-nav .donate-button:hover, .transparent-nav .button-group.clear.primary .donate-button:hover, .button-group.clear.primary .button:focus, .button-group.clear.primary .transparent-nav .donate-button:focus, .transparent-nav .button-group.clear.primary .donate-button:focus, .button-group.clear .button.primary:hover, .button-group.clear .transparent-nav .primary.donate-button:hover, .transparent-nav .button-group.clear .primary.donate-button:hover, .button-group.clear .button.primary:focus, .button-group.clear .transparent-nav .primary.donate-button:focus, .transparent-nav .button-group.clear .primary.donate-button:focus {
+.button-group.clear.primary .button:hover, .button-group.clear.primary .button:focus, .button-group.clear .button.primary:hover, .button-group.clear .button.primary:focus {
   color: rgb(11.5, 60.5, 93);
 }
-.button-group.clear.secondary .button, .button-group.clear.secondary .transparent-nav .donate-button, .transparent-nav .button-group.clear.secondary .donate-button, .button-group.clear.secondary .button.disabled, .button-group.clear.secondary .button[disabled], .button-group.clear.secondary .button.disabled:hover, .button-group.clear.secondary .button[disabled]:hover, .button-group.clear.secondary .button.disabled:focus, .button-group.clear.secondary .button[disabled]:focus, .button-group.clear .button.secondary, .button-group.clear .transparent-nav .secondary.donate-button, .transparent-nav .button-group.clear .secondary.donate-button, .button-group.clear .button.secondary.disabled, .button-group.clear .button.secondary[disabled], .button-group.clear .button.secondary.disabled:hover, .button-group.clear .button.secondary[disabled]:hover, .button-group.clear .button.secondary.disabled:focus, .button-group.clear .button.secondary[disabled]:focus {
+.button-group.clear.secondary .button, .button-group.clear.secondary .button.disabled, .button-group.clear.secondary .button[disabled], .button-group.clear.secondary .button.disabled:hover, .button-group.clear.secondary .button[disabled]:hover, .button-group.clear.secondary .button.disabled:focus, .button-group.clear.secondary .button[disabled]:focus, .button-group.clear .button.secondary, .button-group.clear .button.secondary.disabled, .button-group.clear .button.secondary[disabled], .button-group.clear .button.secondary.disabled:hover, .button-group.clear .button.secondary[disabled]:hover, .button-group.clear .button.secondary.disabled:focus, .button-group.clear .button.secondary[disabled]:focus {
   color: #767676;
 }
-.button-group.clear.secondary .button:hover, .button-group.clear.secondary .transparent-nav .donate-button:hover, .transparent-nav .button-group.clear.secondary .donate-button:hover, .button-group.clear.secondary .button:focus, .button-group.clear.secondary .transparent-nav .donate-button:focus, .transparent-nav .button-group.clear.secondary .donate-button:focus, .button-group.clear .button.secondary:hover, .button-group.clear .transparent-nav .secondary.donate-button:hover, .transparent-nav .button-group.clear .secondary.donate-button:hover, .button-group.clear .button.secondary:focus, .button-group.clear .transparent-nav .secondary.donate-button:focus, .transparent-nav .button-group.clear .secondary.donate-button:focus {
+.button-group.clear.secondary .button:hover, .button-group.clear.secondary .button:focus, .button-group.clear .button.secondary:hover, .button-group.clear .button.secondary:focus {
   color: #3b3b3b;
 }
-.button-group.clear.success .button, .button-group.clear.success .transparent-nav .donate-button, .transparent-nav .button-group.clear.success .donate-button, .button-group.clear.success .button.disabled, .button-group.clear.success .button[disabled], .button-group.clear.success .button.disabled:hover, .button-group.clear.success .button[disabled]:hover, .button-group.clear.success .button.disabled:focus, .button-group.clear.success .button[disabled]:focus, .button-group.clear .button.success, .button-group.clear .transparent-nav .success.donate-button, .transparent-nav .button-group.clear .success.donate-button, .button-group.clear .button.success.disabled, .button-group.clear .button.success[disabled], .button-group.clear .button.success.disabled:hover, .button-group.clear .button.success[disabled]:hover, .button-group.clear .button.success.disabled:focus, .button-group.clear .button.success[disabled]:focus {
+.button-group.clear.success .button, .button-group.clear.success .button.disabled, .button-group.clear.success .button[disabled], .button-group.clear.success .button.disabled:hover, .button-group.clear.success .button[disabled]:hover, .button-group.clear.success .button.disabled:focus, .button-group.clear.success .button[disabled]:focus, .button-group.clear .button.success, .button-group.clear .button.success.disabled, .button-group.clear .button.success[disabled], .button-group.clear .button.success.disabled:hover, .button-group.clear .button.success[disabled]:hover, .button-group.clear .button.success.disabled:focus, .button-group.clear .button.success[disabled]:focus {
   color: #3adb76;
 }
-.button-group.clear.success .button:hover, .button-group.clear.success .transparent-nav .donate-button:hover, .transparent-nav .button-group.clear.success .donate-button:hover, .button-group.clear.success .button:focus, .button-group.clear.success .transparent-nav .donate-button:focus, .transparent-nav .button-group.clear.success .donate-button:focus, .button-group.clear .button.success:hover, .button-group.clear .transparent-nav .success.donate-button:hover, .transparent-nav .button-group.clear .success.donate-button:hover, .button-group.clear .button.success:focus, .button-group.clear .transparent-nav .success.donate-button:focus, .transparent-nav .button-group.clear .success.donate-button:focus {
+.button-group.clear.success .button:hover, .button-group.clear.success .button:focus, .button-group.clear .button.success:hover, .button-group.clear .button.success:focus {
   color: rgb(21.3991416309, 117.1008583691, 57.0643776824);
 }
-.button-group.clear.warning .button, .button-group.clear.warning .transparent-nav .donate-button, .transparent-nav .button-group.clear.warning .donate-button, .button-group.clear.warning .button.disabled, .button-group.clear.warning .button[disabled], .button-group.clear.warning .button.disabled:hover, .button-group.clear.warning .button[disabled]:hover, .button-group.clear.warning .button.disabled:focus, .button-group.clear.warning .button[disabled]:focus, .button-group.clear .button.warning, .button-group.clear .transparent-nav .warning.donate-button, .transparent-nav .button-group.clear .warning.donate-button, .button-group.clear .button.warning.disabled, .button-group.clear .button.warning[disabled], .button-group.clear .button.warning.disabled:hover, .button-group.clear .button.warning[disabled]:hover, .button-group.clear .button.warning.disabled:focus, .button-group.clear .button.warning[disabled]:focus {
+.button-group.clear.warning .button, .button-group.clear.warning .button.disabled, .button-group.clear.warning .button[disabled], .button-group.clear.warning .button.disabled:hover, .button-group.clear.warning .button[disabled]:hover, .button-group.clear.warning .button.disabled:focus, .button-group.clear.warning .button[disabled]:focus, .button-group.clear .button.warning, .button-group.clear .button.warning.disabled, .button-group.clear .button.warning[disabled], .button-group.clear .button.warning.disabled:hover, .button-group.clear .button.warning[disabled]:hover, .button-group.clear .button.warning.disabled:focus, .button-group.clear .button.warning[disabled]:focus {
   color: #ffae00;
 }
-.button-group.clear.warning .button:hover, .button-group.clear.warning .transparent-nav .donate-button:hover, .transparent-nav .button-group.clear.warning .donate-button:hover, .button-group.clear.warning .button:focus, .button-group.clear.warning .transparent-nav .donate-button:focus, .transparent-nav .button-group.clear.warning .donate-button:focus, .button-group.clear .button.warning:hover, .button-group.clear .transparent-nav .warning.donate-button:hover, .transparent-nav .button-group.clear .warning.donate-button:hover, .button-group.clear .button.warning:focus, .button-group.clear .transparent-nav .warning.donate-button:focus, .transparent-nav .button-group.clear .warning.donate-button:focus {
+.button-group.clear.warning .button:hover, .button-group.clear.warning .button:focus, .button-group.clear .button.warning:hover, .button-group.clear .button.warning:focus {
   color: rgb(127.5, 87, 0);
 }
-.button-group.clear.alert .button, .button-group.clear.alert .transparent-nav .donate-button, .transparent-nav .button-group.clear.alert .donate-button, .button-group.clear.alert .button.disabled, .button-group.clear.alert .button[disabled], .button-group.clear.alert .button.disabled:hover, .button-group.clear.alert .button[disabled]:hover, .button-group.clear.alert .button.disabled:focus, .button-group.clear.alert .button[disabled]:focus, .button-group.clear .button.alert, .button-group.clear .transparent-nav .alert.donate-button, .transparent-nav .button-group.clear .alert.donate-button, .button-group.clear .button.alert.disabled, .button-group.clear .button.alert[disabled], .button-group.clear .button.alert.disabled:hover, .button-group.clear .button.alert[disabled]:hover, .button-group.clear .button.alert.disabled:focus, .button-group.clear .button.alert[disabled]:focus {
+.button-group.clear.alert .button, .button-group.clear.alert .button.disabled, .button-group.clear.alert .button[disabled], .button-group.clear.alert .button.disabled:hover, .button-group.clear.alert .button[disabled]:hover, .button-group.clear.alert .button.disabled:focus, .button-group.clear.alert .button[disabled]:focus, .button-group.clear .button.alert, .button-group.clear .button.alert.disabled, .button-group.clear .button.alert[disabled], .button-group.clear .button.alert.disabled:hover, .button-group.clear .button.alert[disabled]:hover, .button-group.clear .button.alert.disabled:focus, .button-group.clear .button.alert[disabled]:focus {
   color: #cc4b37;
 }
-.button-group.clear.alert .button:hover, .button-group.clear.alert .transparent-nav .donate-button:hover, .transparent-nav .button-group.clear.alert .donate-button:hover, .button-group.clear.alert .button:focus, .button-group.clear.alert .transparent-nav .donate-button:focus, .transparent-nav .button-group.clear.alert .donate-button:focus, .button-group.clear .button.alert:hover, .button-group.clear .transparent-nav .alert.donate-button:hover, .transparent-nav .button-group.clear .alert.donate-button:hover, .button-group.clear .button.alert:focus, .button-group.clear .transparent-nav .alert.donate-button:focus, .transparent-nav .button-group.clear .alert.donate-button:focus {
+.button-group.clear.alert .button:hover, .button-group.clear.alert .button:focus, .button-group.clear .button.alert:hover, .button-group.clear .button.alert:focus {
   color: rgb(103.187250996, 36.6314741036, 26.312749004);
 }
-.button-group.no-gaps .button, .button-group.no-gaps .transparent-nav .donate-button, .transparent-nav .button-group.no-gaps .donate-button {
+.button-group.no-gaps .button {
   margin-right: -0.0625rem;
 }
-.button-group.no-gaps .button + .button, .button-group.no-gaps .transparent-nav .donate-button + .button, .transparent-nav .button-group.no-gaps .donate-button + .button, .button-group.no-gaps .transparent-nav .button + .donate-button, .transparent-nav .button-group.no-gaps .button + .donate-button, .button-group.no-gaps .transparent-nav .donate-button + .donate-button, .transparent-nav .button-group.no-gaps .donate-button + .donate-button {
+.button-group.no-gaps .button + .button {
   border-left-color: transparent;
 }
 .button-group.stacked, .button-group.stacked-for-small, .button-group.stacked-for-medium {
   flex-wrap: wrap;
 }
-.button-group.stacked .button, .button-group.stacked .transparent-nav .donate-button, .transparent-nav .button-group.stacked .donate-button, .button-group.stacked-for-small .button, .button-group.stacked-for-small .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-small .donate-button, .button-group.stacked-for-medium .button, .button-group.stacked-for-medium .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-medium .donate-button {
+.button-group.stacked .button, .button-group.stacked-for-small .button, .button-group.stacked-for-medium .button {
   flex: 0 0 100%;
 }
-.button-group.stacked .button:last-child, .button-group.stacked .transparent-nav .donate-button:last-child, .transparent-nav .button-group.stacked .donate-button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-small .transparent-nav .donate-button:last-child, .transparent-nav .button-group.stacked-for-small .donate-button:last-child, .button-group.stacked-for-medium .button:last-child, .button-group.stacked-for-medium .transparent-nav .donate-button:last-child, .transparent-nav .button-group.stacked-for-medium .donate-button:last-child {
+.button-group.stacked .button:last-child, .button-group.stacked-for-small .button:last-child, .button-group.stacked-for-medium .button:last-child {
   margin-bottom: 0;
 }
-.button-group.stacked.expanded .button, .button-group.stacked.expanded .transparent-nav .donate-button, .transparent-nav .button-group.stacked.expanded .donate-button, .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-small.expanded .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-small.expanded .donate-button, .button-group.stacked-for-medium.expanded .button, .button-group.stacked-for-medium.expanded .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-medium.expanded .donate-button {
+.button-group.stacked.expanded .button, .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-medium.expanded .button {
   flex: 1 1 0px;
 }
 @media print, screen and (min-width: 40em) {
-  .button-group.stacked-for-small .button, .button-group.stacked-for-small .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-small .donate-button {
+  .button-group.stacked-for-small .button {
     flex: 0 0 auto;
     margin-bottom: 0;
   }
 }
 @media print, screen and (min-width: 64em) {
-  .button-group.stacked-for-medium .button, .button-group.stacked-for-medium .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-medium .donate-button {
+  .button-group.stacked-for-medium .button {
     flex: 0 0 auto;
     margin-bottom: 0;
   }
@@ -3425,7 +3425,7 @@ a.button:hover, .transparent-nav a.donate-button:hover, a.button:focus, .transpa
   .button-group.stacked-for-small.expanded {
     display: block;
   }
-  .button-group.stacked-for-small.expanded .button, .button-group.stacked-for-small.expanded .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-small.expanded .donate-button {
+  .button-group.stacked-for-small.expanded .button {
     display: block;
     margin-right: 0;
   }
@@ -3434,7 +3434,7 @@ a.button:hover, .transparent-nav a.donate-button:hover, a.button:focus, .transpa
   .button-group.stacked-for-medium.expanded {
     display: block;
   }
-  .button-group.stacked-for-medium.expanded .button, .button-group.stacked-for-medium.expanded .transparent-nav .donate-button, .transparent-nav .button-group.stacked-for-medium.expanded .donate-button {
+  .button-group.stacked-for-medium.expanded .button {
     display: block;
     margin-right: 0;
   }
@@ -4548,9 +4548,7 @@ a.thumbnail image {
   outline: 0;
 }
 .menu a,
-.menu .button,
-.menu .transparent-nav .donate-button,
-.transparent-nav .menu .donate-button {
+.menu .button {
   line-height: 1;
   text-decoration: none;
   display: block;
@@ -5859,7 +5857,7 @@ html.is-reveal-open body {
   width: 100%;
   margin-right: 0;
 }
-.top-bar input.button, .top-bar .transparent-nav input.donate-button, .transparent-nav .top-bar input.donate-button {
+.top-bar input.button {
   width: auto;
 }
 
@@ -6369,24 +6367,14 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
 }
 .transparent-nav .menu li a:hover {
-  color: #FFD700;
-}
-.transparent-nav .donate-button {
-  background-color: #28a745;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-weight: bold;
-}
-.transparent-nav .donate-button:hover {
-  background-color: #218838;
+  color: #0078d4;
 }
 
 .missionary-profile {
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.7450980392);
 }
 
 .full-height-section {
@@ -6398,7 +6386,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #ffffff;
   text-align: center;
   padding: 20px;
 }
@@ -6428,6 +6416,21 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1;
 }
 
+.information-content {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.637);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px 0;
+}
+.information-content h2 {
+  color: #0078d4;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 60px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
 .full-height-section .grid-container {
   position: relative;
   z-index: 2;
@@ -6438,6 +6441,91 @@ h1, h2, h3, h4, h5, h6 {
 
 .half-height-section {
   height: 50vh;
+}
+
+#missionary-updates {
+  background: #f9f9f9;
+  padding: 40px 20px;
+  margin: 40px 0;
+}
+#missionary-updates h2 {
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+.card-link:hover {
+  transform: translateY(-5px);
+}
+.card-link:hover .update-card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.card-link:hover .update-card .card-image img {
+  transform: scale(1.05);
+}
+
+.update-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.update-card .card-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.update-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.update-card .card-content {
+  padding: 1.5rem;
+  background: white;
+}
+.update-card .card-content h3 {
+  color: #0078d4;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.update-card .card-content .date {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.update-card .card-content .summary {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.update-card .card-content .summary p {
+  margin-bottom: 0.5rem;
+}
+
+#missionary-updates {
+  padding: 0rem 0;
+  background: #f5f5f5;
+}
+#missionary-updates h2 {
+  margin-bottom: 2.5rem;
+  color: #0078d4;
+  font-weight: 600;
+}
+#missionary-updates .grid-margin-x {
+  margin-bottom: 2rem;
 }
 
 #profile-location {
@@ -6592,15 +6680,19 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 auto; /* Center the image horizontally */
 }
 
-.button, .transparent-nav .donate-button {
+.button {
   background-color: #0078d4;
   color: white;
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
 }
-.button:hover, .transparent-nav .donate-button:hover {
+.button:hover {
   background-color: rgb(0, 91.1320754717, 161);
+}
+
+.view-all-updates-button {
+  margin: 0px 0;
 }
 
 .get-involved-button {
@@ -6662,7 +6754,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.479);
 }
 .profile-card h3 {
   margin: 0;
@@ -6687,7 +6779,7 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #ffffff;
   text-align: center;
   position: relative;
 }
