@@ -1,9 +1,9 @@
-<div class="world-map-container {% if value.css_class %}{{ value.css_class }}{% endif %}">
+<div style="width:100%" class="world-map-container {% if value.css_class %}{{ value.css_class }}{% endif %}">
     {% if value.show_title and value.title %}
         <h2 class="world-map-title">{{ value.title }}</h2>
     {% endif %}
     
-    <div class="world-map-svg-container" data-height="{{ value.map_height|default:'440px' }}">
+    <div style="width:100%" class="world-map-svg-container" data-height="{{ value.map_height|default:'440px' }}">
 
         <svg
         version="1.0"
@@ -55,7 +55,7 @@
     </div>
     
     <!-- Map legend -->
-    <div class="map-legend">
+    <!-- <div class="map-legend">
         <h4>Mission Regions</h4>
         <div class="grid-container">
             <div class="grid-x">
@@ -84,68 +84,61 @@
                     <span>Oceania</span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-    </div>
+    <!-- </div>  -->
 </div>
-<!-- Missionaries by Region Section -->
-<div class="missionaries-by-region-section">
-    <h3 class="section-title">Our Missionaries Around the World</h3>
-    <p class="section-subtitle">Click on a region above to see missionaries serving there, or browse all below</p>
-    
-    <div class="missionaries-regions-container">
-        {% for region_name, missionaries in missionaries_by_region.items %}
-            <div class="region-missionaries" data-region="{{ region_name|lower|cut:' ' }}">
-                <h4 class="region-title">
-                    <span class="region-count">({{ missionaries|length }})</span>
-                    {{ region_name }}
-                </h4>
-                
-                <div class="missionaries-grid">
-                    {% for missionary in missionaries|slice:":4" %}  {# Show max 4 per region initially #}
-                        <div class="missionary-card">
-                            {% if missionary.profile_header_image %}
-                                {% load wagtailimages_tags %}
-                                {% image missionary.profile_header_image fill-200x150 class="missionary-image" %}
-                            {% else %}
-                                <div class="missionary-image-placeholder">
-                                    <i class="fas fa-user"></i>
-                                </div>
+<!-- Missionaries Slider Section -->
+<div class="missionaries-slider-section">
+    <!-- <h3 class="section-title">Our Missionaries Around the World</h3>
+    <p class="section-subtitle">Browse all missionaries below</p> -->
+
+    <div class="orbit" role="region" aria-label="All Missionaries" data-orbit>
+        <ul class="orbit-container">
+            {% for region_name, missionaries in missionaries_by_region.items %}
+                {% for missionary in missionaries %}
+                <li class="orbit-slide{% if forloop.parentloop.first and forloop.first %} is-active{% endif %}">
+                    <div class="missionary-card">
+                        {% if missionary.profile_header_image %}
+                            {% load wagtailimages_tags %}
+                            {% image missionary.profile_header_image fill-300x200 class="missionary-image" %}
+                        {% else %}
+                            <div class="missionary-image-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                        {% endif %}
+                        <div class="missionary-info">
+                            <h5 class="missionary-name">{{ missionary.name }}</h5>
+                            <p class="missionary-project">{{ missionary.project }}</p>
+                            {% if missionary.country %}
+                                <p class="missionary-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ missionary.country }}
+                                    {% if missionary.state %}, {{ missionary.state }}{% endif %}
+                                </p>
                             {% endif %}
-                            <div class="missionary-info">
-                                <h5 class="missionary-name">{{ missionary.name }}</h5>
-                                <p class="missionary-project">{{ missionary.project }}</p>
-                                {% if missionary.country %}
-                                    <p class="missionary-location">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        {{ missionary.country }}
-                                        {% if missionary.state %}, {{ missionary.state }}{% endif %}
-                                    </p>
+                            <div class="missionary-actions">
+                                {% load wagtailcore_tags %}
+                                <a href="{% pageurl missionary %}" class="button">View Profile</a>
+                                {% if missionary.donation_link %}
+                                    <a href="{{ missionary.donation_link }}" class="button button-outline" target="_blank">Donate</a>
                                 {% endif %}
-                                <div class="missionary-actions">
-                                    {% load wagtailcore_tags %}
-                                    <a href="{% pageurl missionary %}" class="button">View Profile</a>
-                                    {% if missionary.donation_link %}
-                                        <a href="{{ missionary.donation_link }}" class="button button-outline" target="_blank">Donate</a>
-                                    {% endif %}
-                                </div>
                             </div>
                         </div>
-                    {% endfor %}
-                    
-                    {% if missionaries|length > 4 %}
-                        <div class="view-more-card">
-                            <div class="view-more-content">
-                                <p>+{{ missionaries|length|add:"-4" }} more missionaries</p>
-                                <a href="/missionaries/?region={{ region_name }}" class="btn btn-outline-primary">View All in {{ region_name }}</a>
-                            </div>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        {% empty %}
-            <p class="no-missionaries">No missionaries found.</p>
-        {% endfor %}
+                    </div>
+                </li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+        <nav class="orbit-bullets">
+            {% for region_name, missionaries in missionaries_by_region.items %}
+                {% for missionary in missionaries %}
+                <button {% if forloop.parentloop.first and forloop.first %}class="is-active"{% endif %} data-slide="{{ forloop.parentloop.counter0|add:forloop.counter0 }}">
+                    <span class="show-for-sr">{{ missionary.name }}</span>
+                </button>
+                {% endfor %}
+            {% endfor %}
+        </nav>
     </div>
 </div>
 

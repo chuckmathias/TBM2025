@@ -6394,13 +6394,15 @@ h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
 }
 .full-height-section .grid-container {
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .full-height-section .grid-x {
-  height: 100%;
+  min-height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
