@@ -89,57 +89,45 @@
     <!-- </div>  -->
 </div>
 <!-- Missionaries Slider Section -->
-<div class="missionaries-slider-section">
-    <!-- <h3 class="section-title">Our Missionaries Around the World</h3>
-    <p class="section-subtitle">Browse all missionaries below</p> -->
-
-    <div class="orbit" role="region" aria-label="All Missionaries" data-orbit>
-        <ul class="orbit-container">
-            {% for region_name, missionaries in missionaries_by_region.items %}
-                {% for missionary in missionaries %}
-                <li class="orbit-slide{% if forloop.parentloop.first and forloop.first %} is-active{% endif %}">
-                    <div class="missionary-card">
-                        {% if missionary.profile_header_image %}
-                            {% load wagtailimages_tags %}
-                            {% image missionary.profile_header_image fill-300x200 class="missionary-image" %}
-                        {% else %}
-                            <div class="missionary-image-placeholder">
-                                <i class="fas fa-user"></i>
-                            </div>
+<div class="simple-slider" id="missionary-slider">
+    <button class="slider-arrow slider-arrow-left" aria-label="Previous">&#8592;</button>
+    <div class="slider-track">
+        {% for region_name, missionaries in missionaries_by_region.items %}
+            {% for missionary in missionaries %}
+            <div class="slider-slide">
+                <div class="missionary-card">
+                    {% if missionary.profile_header_image %}
+                        {% load wagtailimages_tags %}
+                        {% image missionary.profile_header_image fill-300x200 class="missionary-image" %}
+                    {% else %}
+                        <div class="missionary-image-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    {% endif %}
+                    <div class="missionary-info">
+                        <h5 class="missionary-name">{{ missionary.name }}</h5>
+                        <p class="missionary-project">{{ missionary.project }}</p>
+                        {% if missionary.country %}
+                            <p class="missionary-location">
+                                <i class="fas fa-map-marker-alt"></i>
+                                {{ missionary.country }}
+                                {% if missionary.state %}, {{ missionary.state }}{% endif %}
+                            </p>
                         {% endif %}
-                        <div class="missionary-info">
-                            <h5 class="missionary-name">{{ missionary.name }}</h5>
-                            <p class="missionary-project">{{ missionary.project }}</p>
-                            {% if missionary.country %}
-                                <p class="missionary-location">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    {{ missionary.country }}
-                                    {% if missionary.state %}, {{ missionary.state }}{% endif %}
-                                </p>
+                        <div class="missionary-actions">
+                            {% load wagtailcore_tags %}
+                            <a href="{% pageurl missionary %}" class="button">View Profile</a>
+                            {% if missionary.donation_link %}
+                                <a href="{{ missionary.donation_link }}" class="button button-outline" target="_blank">Donate</a>
                             {% endif %}
-                            <div class="missionary-actions">
-                                {% load wagtailcore_tags %}
-                                <a href="{% pageurl missionary %}" class="button">View Profile</a>
-                                {% if missionary.donation_link %}
-                                    <a href="{{ missionary.donation_link }}" class="button button-outline" target="_blank">Donate</a>
-                                {% endif %}
-                            </div>
                         </div>
                     </div>
-                </li>
-                {% endfor %}
+                </div>
+            </div>
             {% endfor %}
-        </ul>
-        <nav class="orbit-bullets">
-            {% for region_name, missionaries in missionaries_by_region.items %}
-                {% for missionary in missionaries %}
-                <button {% if forloop.parentloop.first and forloop.first %}class="is-active"{% endif %} data-slide="{{ forloop.parentloop.counter0|add:forloop.counter0 }}">
-                    <span class="show-for-sr">{{ missionary.name }}</span>
-                </button>
-                {% endfor %}
-            {% endfor %}
-        </nav>
+        {% endfor %}
     </div>
+    <button class="slider-arrow slider-arrow-right" aria-label="Next">&#8594;</button>
 </div>
 
 <script>

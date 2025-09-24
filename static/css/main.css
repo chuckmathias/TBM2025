@@ -6530,6 +6530,50 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
 }
 
+.simple-slider {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+  will-change: transform;
+}
+
+.slider-slide {
+  flex: 0 0 25%; /* Four across */
+  box-sizing: border-box;
+  padding: 1rem;
+  display: block;
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #01577d;
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+.slider-arrow-left {
+  left: 10px;
+}
+
+.slider-arrow-right {
+  right: 10px;
+}
+
 #profile-location {
   position: relative;
   border-top: white solid 2px;
