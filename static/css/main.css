@@ -6975,6 +6975,17 @@ h1, h2, h3, h4, h5, h6 {
   stroke-width: 1px;
 }
 
+/* Map Legend Styling */
+.color-box {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 3px;
+  margin-right: 8px;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+}
+
 /* Map Html */
 .missionary-card {
   background: rgba(63, 63, 63, 0.7333333333);
