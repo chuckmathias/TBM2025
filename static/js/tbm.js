@@ -50,6 +50,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    const pagination = document.getElementById('slider-pagination');
+
+    function renderPagination() {
+        // Calculate number of groups
+        const groupCount = Math.ceil(filteredSlides.length / visibleCount);
+        pagination.innerHTML = '';
+        for (let i = 0; i < groupCount; i++) {
+            const bullet = document.createElement('button');
+            bullet.className = 'slider-bullet';
+            if (i === Math.floor(current / visibleCount)) bullet.classList.add('active');
+            bullet.setAttribute('data-group', i);
+            bullet.innerHTML = (i + 1); // Or use • for dots
+            bullet.addEventListener('click', function() {
+                current = i * visibleCount;
+                updateSlider();
+                renderPagination();
+            });
+            pagination.appendChild(bullet);
+        }
+    }
+
+    // Update updateSlider to call renderPagination
+    function updateSlider() {
+        allSlides.forEach(slide => slide.style.display = 'none');
+        filteredSlides.forEach((slide, idx) => {
+            if (idx >= current && idx < current + visibleCount) {
+                slide.style.display = 'block';
+            }
+        });
+        renderPagination();
+    }
     // Initialize
     updateSlider();
 });

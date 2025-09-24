@@ -296,6 +296,31 @@ h1, h2, h3, h4, h5, h6 {
     right: 10px;
 }
 
+.slider-pagination {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.slider-bullet {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    margin: 0 0.25em;
+    border-radius: 50%;
+    background: #eee;
+    color: #0078d4;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 1em;
+}
+
+.slider-bullet.active {
+    background: #0078d4;
+    color: #fff;
+}
+
 // Profile location section
 #profile-location {
     position: relative;
