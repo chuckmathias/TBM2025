@@ -96,10 +96,6 @@
             {% for missionary in missionaries %}
             <div class="slider-slide" data-region="{{ region_name|slugify }}">
                 <div class="missionary-card">
-                    <!-- This is where you can add a colored indicator for the region if desired...
-                    <span class="region-indicator" style="background-color: {{ region_color_map[region_name|slugify] }};">
-                    {{ region_name }}
-                    </span> -->
                     {% if missionary.profile_header_image %}
                         {% load wagtailimages_tags %}
                         {% image missionary.profile_header_image fill-300x200 class="missionary-image" %}
