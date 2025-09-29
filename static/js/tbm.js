@@ -11,8 +11,15 @@ document.addEventListener('DOMContentLoaded', function() {
     let current = 0;
 
     function updateSlider() {
-        const slideWidth = allSlides[0].offsetWidth;
-        track.style.transform = `translateX(-${current * slideWidth}px)`;
+        allSlides.forEach((slide, idx) => {
+            if (idx >= current && idx < current + visibleCount) {
+                slide.classList.add('visible');
+            } else {
+                slide.classList.remove('visible');
+            }
+        });
+        // Optionally, keep your transform for animation
+        track.style.transform = `translateX(-${current * allSlides[0].offsetWidth}px)`;
         renderPagination();
     }
 

@@ -90,45 +90,47 @@
 </div>
 <!-- Missionaries Slider Section -->
 <div class="simple-slider" id="missionary-slider">
-    <button class="slider-arrow slider-arrow-left" aria-label="Previous">&#8592;</button>
-    <div class="slider-track">
-        {% for region_name, missionaries in missionaries_by_region.items %}
-            {% for missionary in missionaries %}
-            <div class="slider-slide" data-region="{{ region_name|slugify }}">
-                <div class="missionary-card">
-                    {% if missionary.profile_header_image %}
-                        {% load wagtailimages_tags %}
-                        {% image missionary.profile_header_image fill-300x200 class="missionary-image" %}
-                    {% else %}
-                        <div class="missionary-image-placeholder">
-                            <i class="fas fa-user"></i>
-                        </div>
-                    {% endif %}
-                    <div class="region-line region-{{ region_name|slugify }}"></div>
-                    <div class="missionary-info">
-                        <h5 class="missionary-name">{{ missionary.name }}</h5>
-                        <p class="missionary-project">{{ missionary.project }}</p>
-                        {% if missionary.country %}
-                            <p class="missionary-location">
-                                <i class="fas fa-map-marker-alt"></i>
-                                {{ missionary.country }}
-                                {% if missionary.state %}, {{ missionary.state }}{% endif %}
-                            </p>
+    <div class="slider-flex">
+        <button class="slider-arrow slider-arrow-left" aria-label="Previous">&#8592;</button>
+        <div class="slider-track">
+            {% for region_name, missionaries in missionaries_by_region.items %}
+                {% for missionary in missionaries %}
+                <div class="slider-slide" data-region="{{ region_name|slugify }}">
+                    <div class="missionary-card">
+                        {% if missionary.profile_header_image %}
+                            {% load wagtailimages_tags %}
+                            {% image missionary.profile_header_image fill-300x200 class="missionary-image" %}
+                        {% else %}
+                            <div class="missionary-image-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
                         {% endif %}
-                        <div class="missionary-actions">
-                            {% load wagtailcore_tags %}
-                            <a href="{% pageurl missionary %}" class="button">View Profile</a>
-                            {% if missionary.donation_link %}
-                                <a href="{{ missionary.donation_link }}" class="button button-outline" target="_blank">Donate</a>
+                        <div class="region-line region-{{ region_name|slugify }}"></div>
+                        <div class="missionary-info">
+                            <h5 class="missionary-name">{{ missionary.name }}</h5>
+                            <p class="missionary-project">{{ missionary.project }}</p>
+                            {% if missionary.country %}
+                                <p class="missionary-location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    {{ missionary.country }}
+                                    {% if missionary.state %}, {{ missionary.state }}{% endif %}
+                                </p>
                             {% endif %}
+                            <div class="missionary-actions">
+                                {% load wagtailcore_tags %}
+                                <a href="{% pageurl missionary %}" class="button">View Profile</a>
+                                {% if missionary.donation_link %}
+                                    <a href="{{ missionary.donation_link }}" class="button button-outline" target="_blank">Donate</a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+        </div>
+        <button class="slider-arrow slider-arrow-right" aria-label="Next">&#8594;</button>
     </div>
-    <button class="slider-arrow slider-arrow-right" aria-label="Next">&#8594;</button>
 </div>
 
 <div class="slider-pagination text-center" id="slider-pagination"></div>
