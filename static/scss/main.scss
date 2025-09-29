@@ -262,6 +262,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .slider-track {
     display: flex;
+    align-items: stretch; // Ensures all children have equal height
+    gap: 1.5rem;
     transition: transform 0.4s cubic-bezier(.77,0,.18,1);
     will-change: transform;
 }
@@ -270,7 +272,9 @@ h1, h2, h3, h4, h5, h6 {
     flex: 0 0 25%; /* Four across */
     box-sizing: border-box;
     padding: 1rem;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%; // Ensures the slide fills the track height
 }
 
 .slider-arrow {
@@ -791,6 +795,11 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Map Html */
 .missionary-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; // Forces all cards to be the same height as the tallest
+    min-height: 350px; // Optional: set a minimum height
     background: #3f3f3fbb;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -821,3 +830,21 @@ h1, h2, h3, h4, h5, h6 {
         }
     }
 }
+
+.region-line {
+    width: 100%;
+    height: 6px;
+    border-radius: 0 0 8px 8px;
+    margin-bottom: 1rem;
+    margin-top: -6px; // Pulls the line up to touch the image
+}
+
+/* Region colors */
+.region-north-america { background: #4a90e2; }
+.region-south-america { background: #f39c12; }
+.region-europe        { background: #e74c3c; }
+.region-africa        { background: #d9534f; }
+.region-asia          { background: #5bc0de; }
+.region-home-office   { background: #9b59b6; }
+.region-oceania       { background: #5bc0de; }
+.region-unassigned    { background: #cccccc; }
