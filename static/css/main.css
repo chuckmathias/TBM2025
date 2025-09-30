@@ -7076,35 +7076,43 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Region colors */
 .region-north-america {
-  background: #4a90e2;
+  background: #4a90e2 !important;
+  fill: #4a90e2 !important;
 }
 
 .region-south-america {
-  background: #f39c12;
+  background: #f39c12 !important;
+  fill: #f39c12 !important;
 }
 
 .region-europe {
-  background: #e74c3c;
+  background: #e74c3c !important;
+  fill: #e74c3c !important;
 }
 
 .region-africa {
-  background: #d9534f;
+  background: #d9534f !important;
+  fill: #d9534f !important;
 }
 
 .region-asia {
-  background: #5bc0de;
+  background: #5bc0de !important;
+  fill: #5bc0de !important;
 }
 
 .region-home-office {
-  background: #9b59b6;
+  background: #9b59b6 !important;
+  fill: #9b59b6 !important;
 }
 
 .region-oceania {
-  background: #5bc0de;
+  background: #5bc0de !important;
+  fill: #5bc0de !important;
 }
 
 .region-unassigned {
-  background: #cccccc;
+  background: #cccccc !important;
+  fill: #cccccc !important;
 }
 
 /*# sourceMappingURL=main.css.map */
