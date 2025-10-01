@@ -16,35 +16,35 @@ class WorldMapBlock(StructBlock):
     )
     
     # Regional URLs for clickable map areas
-    north_america_url = URLBlock(
-        required=False,
-        help_text="URL to navigate to when North America is clicked"
-    )
+    # north_america_url = URLBlock(
+    #     required=False,
+    #     help_text="URL to navigate to when North America is clicked"
+    # )
     
-    south_america_url = URLBlock(
-        required=False,
-        help_text="URL to navigate to when South America is clicked"
-    )
+    # south_america_url = URLBlock(
+    #     required=False,
+    #     help_text="URL to navigate to when South America is clicked"
+    # )
     
-    europe_url = URLBlock(
-        required=False,
-        help_text="URL to navigate to when Europe is clicked"
-    )
+    # europe_url = URLBlock(
+    #     required=False,
+    #     help_text="URL to navigate to when Europe is clicked"
+    # )
     
-    africa_url = URLBlock(
-        required=False,
-        help_text="URL to navigate to when Africa is clicked"
-    )
+    # africa_url = URLBlock(
+    #     required=False,
+    #     help_text="URL to navigate to when Africa is clicked"
+    # )
     
-    asia_url = URLBlock(
-        required=False,
-        help_text="URL to navigate to when Asia is clicked"
-    )
+    # asia_url = URLBlock(
+    #     required=False,
+    #     help_text="URL to navigate to when Asia is clicked"
+    # )
     
-    oceania_url = URLBlock(
-        required=False,
-        help_text="URL to navigate to when Oceania is clicked"
-    )
+    # oceania_url = URLBlock(
+    #     required=False,
+    #     help_text="URL to navigate to when Oceania is clicked"
+    # )
     
     # Styling options
     css_class = CharBlock(
