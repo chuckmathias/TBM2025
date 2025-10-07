@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "sites.churchmission",
     "apps.search",
     "apps.components",
+    "apps.board_profiles",
     "apps.missionary_profiles",
     "apps.menus",
     "wagtail.contrib.forms",
