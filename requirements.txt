@@ -1,2 +1,4 @@
 Django>=5.1,<5.2
 wagtail>=6.4,<6.5
+# SQLite with FTS5 support
+pysqlite3-binary>=0.5.0
