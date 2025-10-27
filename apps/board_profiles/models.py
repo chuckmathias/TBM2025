@@ -6,8 +6,8 @@ from django.db import models
 
 class BoardMembersIndexPage(Page):
     """Landing page for board members"""
-    
-    parent_page_types = ['home.HomePage']
+
+    parent_page_types = ['home.CustomPage']
     subpage_types = ['board_profiles.BoardProfilePage']
     max_count = 1  # Only allow one board members page
     
