@@ -25,6 +25,26 @@
     </div>
     {% endif %}
 
+     <!-- Child Pages Navigation Section -->
+    {% with child_pages=page.get_children.live %}
+      {% if child_pages %}
+        <nav class="subpage-nav">
+          <div class="subpage-nav-grid grid-container">
+            {% for subpage in child_pages %}
+              <a class="subpage-nav-card" href="{% pageurl subpage.specific %}">
+                <div class="subpage-nav-card-content">
+                  <h3>{{ subpage.specific.title }}</h3>
+                  {% if subpage.specific.intro %}
+                    <p>{{ subpage.specific.intro|richtext }}</p>
+                  {% endif %}
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </nav>
+      {% endif %}
+    {% endwith %}
+
     <!-- Dynamic Sections -->
     {% for section in page.sections %}
     {% if section.value.visible %}

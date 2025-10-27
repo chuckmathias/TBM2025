@@ -1,3 +1,4 @@
+from wagtail.images.models import Image
 from wagtail.models import Page
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
@@ -13,7 +14,18 @@ class BoardMembersIndexPage(Page):
     
     intro = RichTextField(blank=True)
     
+    # New field for header image
+    header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="Header image for the board members page"
+    )
+    
     content_panels = Page.content_panels + [
+        FieldPanel('header_image'),
         FieldPanel('intro'),
     ]
     

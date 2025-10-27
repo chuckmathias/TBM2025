@@ -2,25 +2,53 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="board-members-page">
-    <h1>{{ page.title }}</h1>
-    
-    {% if page.intro %}
-        <div class="intro">
-            {{ page.intro|richtext }}
+<div class="board-members-index">
+
+    <!-- Header Section with fallback -->
+    {% if page.header_image %}
+    <div class="full-height-section board-header-section"
+         style="background-image: url('{{ page.header_image.file.url }}'); background-size: cover; background-position: center;">
+        <div class="overlay">
+            <div class="grid-container">
+                <h1>{{ page.title }}</h1>
+                {% if page.intro %}
+                    <div class="intro">{{ page.intro|richtext }}</div>
+                {% endif %}
+            </div>
         </div>
+    </div>
+    {% else %}
+    <div class="board-header-section no-image" style="background: #0078d4; color: #fff;">
+        <div class="grid-container">
+            <h1>{{ page.title }}</h1>
+            {% if page.intro %}
+                <div class="intro">{{ page.intro|richtext }}</div>
+            {% endif %}
+        </div>
+    </div>
     {% endif %}
-    
+
+    <!-- Board Members Grid (your cards go here) -->
     <div class="board-members-grid">
         {% for member in board_members %}
-            <div class="board-member-card">
+            <div class="board-member-card-modern">
                 {% if member.profile_image %}
+                <div class="member-image">
                     {% image member.profile_image fill-300x300 %}
+                </div>
                 {% endif %}
-                <h3><a href="{% pageurl member %}">{{ member.title }}</a></h3>
-                {% if member.position %}
-                    <p class="position">{{ member.position }}</p>
-                {% endif %}
+                <div class="member-info">
+                    <h3><a href="{% pageurl member %}">{{ member.title }}</a></h3>
+                    {% if member.position %}
+                        <p class="position">{{ member.position }}</p>
+                    {% endif %}
+                    {% if member.occupation %}
+                        <p class="occupation">{{ member.occupation }}</p>
+                    {% endif %}
+                    {% if member.bio %}
+                        <div class="bio">{{ member.bio|richtext }}</div>
+                    {% endif %}
+                </div>
             </div>
         {% endfor %}
     </div>
