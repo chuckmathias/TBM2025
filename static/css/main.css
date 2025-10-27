@@ -7304,5 +7304,143 @@ h1, h2, h3, h4, h5, h6 {
     padding: 2rem 0.5rem;
   }
 }
+.board-profile-page-modern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2.5rem 0 3rem 0;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(0, 120, 212, 0.1);
+  padding: 2.5rem 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 420px;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.profile-image-container {
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-image {
+  border-radius: 50%;
+  border: 4px solid #0078d4;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  background: #e6f1fa;
+  box-shadow: 0 2px 12px rgba(0, 120, 212, 0.08);
+}
+
+.profile-image.placeholder {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: #e6f1fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-main-info {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+.profile-main-info h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0078d4;
+}
+
+.position {
+  font-size: 1.1rem;
+  color: #1766a3;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.occupation {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.profile-contact {
+  margin-top: 1.2rem;
+  text-align: center;
+}
+
+.profile-contact h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #0078d4;
+  font-weight: 700;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1766a3;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.contact-link:hover {
+  color: #0078d4;
+  text-decoration: underline;
+}
+
+.contact-link .icon {
+  margin-right: 0.5em;
+  font-size: 1.1em;
+}
+
+.profile-bio-card {
+  background: #f5faff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 120, 212, 0.07);
+  padding: 2rem 2rem 1.5rem 2rem;
+  max-width: 700px;
+  width: 100%;
+}
+
+.profile-bio-card h2 {
+  margin-top: 0;
+  color: #0078d4;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.bio-content {
+  color: #222;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .profile-card, .profile-bio-card {
+    padding: 1.2rem 0.7rem;
+  }
+  .profile-image, .profile-image.placeholder {
+    width: 110px;
+    height: 110px;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */
