@@ -1,7 +1,7 @@
 from wagtail.images.models import Image
 from wagtail.models import Page
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel
 from django.db import models
 
 
@@ -31,8 +31,9 @@ class BoardMembersIndexPage(Page):
     
     def get_context(self, request):
         context = super().get_context(request)
-        # Get all live board member profiles
-        context['board_members'] = BoardProfilePage.objects.child_of(self).live().order_by('title')
+        all_profiles = BoardProfilePage.objects.child_of(self).live().order_by('title')
+        context['board_members'] = all_profiles.filter(is_board_member=True)
+        context['board_consultants'] = all_profiles.filter(is_board_member=False)
         return context
     
     class Meta:
@@ -50,11 +51,6 @@ class BoardProfilePage(Page):
     occupation = models.CharField(max_length=200, blank=True)
     bio = RichTextField(blank=True)
     
-    # Contact and links
-    email = models.EmailField(blank=True)
-    phone = models.CharField(max_length=20, blank=True)
-    personal_links = models.TextField(blank=True, help_text="Links to personal website, LinkedIn, etc.")
-    
     # Images
     profile_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -63,25 +59,17 @@ class BoardProfilePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+
     
-    # Term information
-    term_start = models.DateField(null=True, blank=True)
-    term_end = models.DateField(null=True, blank=True, help_text="Leave blank if currently serving")
+    # New fields for member type
+    is_board_member = models.BooleanField(default=True, verbose_name="Is Board Member")
     
     content_panels = Page.content_panels + [
         FieldPanel('position'),
         FieldPanel('occupation'),
         FieldPanel('bio'),
         FieldPanel('profile_image'),
-        MultiFieldPanel([
-            FieldPanel('email'),
-            FieldPanel('phone'),
-            FieldPanel('personal_links'),
-        ], heading="Contact Information"),
-        MultiFieldPanel([
-            FieldPanel('term_start'),
-            FieldPanel('term_end'),
-        ], heading="Board Term"),
+        FieldPanel('is_board_member'),
     ]
     
     class Meta:

@@ -20,44 +20,29 @@
                 <div class="occupation">{{ page.occupation }}</div>
             {% endif %}
         </div>
-        {% if page.email or page.phone %}
-        <div class="profile-contact">
-            <h3>Contact</h3>
-            {% if page.email %}
-                <a class="contact-link" href="mailto:{{ page.email }}">
-                    <span class="icon">@</span> {{ page.email }}
-                </a>
-            {% endif %}
-            {% if page.phone %}
-                <div class="contact-link">
-                    <span class="icon">📞</span> {{ page.phone }}
-                </div>
-            {% endif %}
+        </div>
+        {% if page.gallery_images.all %}
+        <div class="profile-gallery-card">
+            <h2>Gallery</h2>
+            <div class="gallery-images">
+                {% for img in page.gallery_images.all %}
+                    <div class="gallery-image">
+                        {% image img.image fill-200x200 %}
+                        {% if img.caption %}
+                            <div class="caption">{{ img.caption }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
         {% endif %}
-    </div>
-    {% if page.gallery_images.all %}
-    <div class="profile-gallery-card">
-        <h2>Gallery</h2>
-        <div class="gallery-images">
-            {% for img in page.gallery_images.all %}
-                <div class="gallery-image">
-                    {% image img.image fill-200x200 %}
-                    {% if img.caption %}
-                        <div class="caption">{{ img.caption }}</div>
-                    {% endif %}
-                </div>
-            {% endfor %}
+        {% if page.bio %}
+        <div class="profile-bio-card" style="margin-top:2rem;">
+            <h2>About {{ page.title }}</h2>
+            <div class="bio-content">
+                {{ page.bio|richtext }}
+            </div>
         </div>
-    </div>
-    {% endif %}
-    {% if page.bio %}
-    <div class="profile-bio-card" style="margin-top:2rem;">
-        <h2>About {{ page.title }}</h2>
-        <div class="bio-content">
-            {{ page.bio|richtext }}
-        </div>
-    </div>
-    {% endif %}
+        {% endif %}
 </div>
 {% endblock %}

@@ -28,6 +28,24 @@
     </div>
     {% endif %}
 
+    <!-- Title Section with fallback -->
+    {% if page.board_members %}
+    <div class="full-height-section board-member title-section"
+         style="background-image: url('{{ page.board_members.first.profile_image.file.url }}'); background-size: cover; background-position: center;">
+        <div class="overlay">
+            <div class="grid-container">
+                <h2>Meet Our Board Members</h2>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="board-member title-section no-image" style="background: #005a9e; color: #fff;">
+        <div class="grid-container">
+            <h2>Meet Our Board Members</h2>
+        </div>
+    </div>
+    {% endif %}
+
     <!-- Board Members Grid (your cards go here) -->
     <div class="board-members-grid-modern">
         {% for member in board_members %}
@@ -52,5 +70,48 @@
             </a>
         {% endfor %}
     </div>
+
+    <!-- Title Section with fallback -->
+    {% if page.board_members %}
+    <div class="full-height-section board-member-consultants title-section"
+         style="background-image: url('{{ page.board_members.first.profile_image.file.url }}'); background-size: cover; background-position: center;">
+        <div class="overlay">
+            <div class="grid-container">
+                <h2>Meet Our Consultants to the Board</h2>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="board-member title-section no-image" style="background: #005a9e; color: #fff;">
+        <div class="grid-container">
+            <h2>Meet Our Consultants to the Board</h2>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Consultants Grid (your cards go here) -->
+    <div class="board-members-grid-modern">
+        {% for member in board_consultants %}
+            <a href="{% pageurl member %}" class="board-member-card-modern-link" id="member-{{ member.id }}">
+                <div class="board-member-card-modern">
+                    {% if member.profile_image %}
+                    <div class="member-image">
+                        {% image member.profile_image fill-300x300 %}
+                    </div>
+                    {% endif %}
+                    <div class="member-info">
+                        <h3>{{ member.title }}</h3>
+                        {% if member.position %}
+                            <p class="position">{{ member.position }}</p>
+                        {% endif %}
+                        {% if member.occupation %}
+                            <p class="occupation">{{ member.occupation }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+
 </div>
 {% endblock %}
