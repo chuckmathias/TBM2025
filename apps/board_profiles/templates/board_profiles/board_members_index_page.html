@@ -29,27 +29,27 @@
     {% endif %}
 
     <!-- Board Members Grid (your cards go here) -->
-    <div class="board-members-grid">
+    <div class="board-members-grid-modern">
         {% for member in board_members %}
-            <div class="board-member-card-modern">
-                {% if member.profile_image %}
-                <div class="member-image">
-                    {% image member.profile_image fill-300x300 %}
+            <a href="{% pageurl member %}" class="board-member-card-modern-link" id="member-{{ member.id }}">
+                <div class="board-member-card-modern">
+                    {% if member.profile_image %}
+                    <div class="member-image">
+                        {% image member.profile_image fill-300x300 %}
+                    </div>
+                    {% endif %}
+                    <div class="member-info">
+                        <h3>{{ member.title }}</h3>
+                        {% if member.position %}
+                            <p class="position">{{ member.position }}</p>
+                        {% endif %}
+                        {% if member.occupation %}
+                            <p class="occupation">{{ member.occupation }}</p>
+                        {% endif %}
+                        <!-- Bio is intentionally hidden on index page -->
+                    </div>
                 </div>
-                {% endif %}
-                <div class="member-info">
-                    <h3><a href="{% pageurl member %}">{{ member.title }}</a></h3>
-                    {% if member.position %}
-                        <p class="position">{{ member.position }}</p>
-                    {% endif %}
-                    {% if member.occupation %}
-                        <p class="occupation">{{ member.occupation }}</p>
-                    {% endif %}
-                    {% if member.bio %}
-                        <div class="bio">{{ member.bio|richtext }}</div>
-                    {% endif %}
-                </div>
-            </div>
+            </a>
         {% endfor %}
     </div>
 </div>

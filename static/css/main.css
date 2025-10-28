@@ -7224,70 +7224,90 @@ h1, h2, h3, h4, h5, h6 {
   color: #fff;
 }
 
-.board-members-grid {
-  display: flex;
-  flex-direction: column;
+.board-members-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  max-width: 900px;
+  max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
 
+@media (max-width: 900px) {
+  .board-members-grid-modern {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .board-members-grid-modern {
+    grid-template-columns: 1fr;
+  }
+}
+.board-member-card-modern-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: box-shadow 0.2s, transform 0.2s;
+  border-radius: 1rem;
+}
+.board-member-card-modern-link:hover, .board-member-card-modern-link:focus {
+  box-shadow: 0 8px 32px rgba(0, 120, 212, 0.13);
+  transform: translateY(-2px) scale(1.02);
+  outline: none;
+}
+
 .board-member-card-modern {
   display: flex;
+  flex-direction: column;
   background: #fff;
   border-radius: 1rem;
   box-shadow: 0 2px 16px rgba(0, 120, 212, 0.08);
   overflow: hidden;
-  align-items: stretch;
+  align-items: center;
   min-height: 220px;
   transition: box-shadow 0.2s, transform 0.2s;
+  padding: 1.2rem;
+  position: relative;
 }
-.board-member-card-modern:hover {
-  box-shadow: 0 8px 32px rgba(0, 120, 212, 0.13);
-  transform: translateY(-2px) scale(1.02);
-}
-.board-member-card-modern .member-image {
-  flex: 0 0 220px;
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.board-member-card-modern .member-image img {
-  border-radius: 1rem 0 0 1rem;
+
+.member-image {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
 }
-.board-member-card-modern .member-info {
+.member-image img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  box-shadow: 0 2px 12px rgba(0, 120, 212, 0.08);
+}
+
+.member-info {
   flex: 1 1 auto;
-  padding: 2rem 2rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
-.board-member-card-modern .member-info h3 {
+.member-info h3 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #0078d4;
 }
-.board-member-card-modern .member-info .position {
+.member-info .position {
   font-size: 1.05rem;
   color: #1766a3;
   font-weight: 600;
   margin-bottom: 0.3rem;
 }
-.board-member-card-modern .member-info .occupation {
+.member-info .occupation {
   font-size: 0.98rem;
   color: #555;
   margin-bottom: 0.7rem;
-}
-.board-member-card-modern .member-info .bio {
-  font-size: 0.97rem;
-  color: #222;
-  margin-top: 0.5rem;
 }
 
 @media (max-width: 700px) {
@@ -7311,18 +7331,21 @@ h1, h2, h3, h4, h5, h6 {
   margin: 2.5rem 0 3rem 0;
 }
 
-.profile-card {
-  background: #fff;
-  border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(0, 120, 212, 0.1);
-  padding: 2.5rem 2rem 2rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 420px;
-  width: 100%;
-  margin-bottom: 2.5rem;
+.profile-card-board {
   position: relative;
+  width: 100%;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .profile-image-container {

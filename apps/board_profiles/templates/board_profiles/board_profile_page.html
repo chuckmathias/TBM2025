@@ -2,8 +2,8 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="board-profile-page-modern">
-    <div class="profile-card">
+<div class="board-profile-page-modern" style="margin-top: 0px;">
+    <div class="profile-card-board">
         <div class="profile-image-container">
             {% if page.profile_image %}
                 {% image page.profile_image fill-300x300 class="profile-image" %}
@@ -36,8 +36,23 @@
         </div>
         {% endif %}
     </div>
+    {% if page.gallery_images.all %}
+    <div class="profile-gallery-card">
+        <h2>Gallery</h2>
+        <div class="gallery-images">
+            {% for img in page.gallery_images.all %}
+                <div class="gallery-image">
+                    {% image img.image fill-200x200 %}
+                    {% if img.caption %}
+                        <div class="caption">{{ img.caption }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
     {% if page.bio %}
-    <div class="profile-bio-card">
+    <div class="profile-bio-card" style="margin-top:2rem;">
         <h2>About {{ page.title }}</h2>
         <div class="bio-content">
             {{ page.bio|richtext }}
