@@ -157,7 +157,7 @@ class MissionaryUpdatePage(Page):
     # Admin panels
     content_panels = Page.content_panels + [
         MultiFieldPanel([
-            FieldPanel('missionary_profile'),  # Add this field to the admin interface
+            FieldPanel('missionary_profile'),
             FieldPanel('header_image'),
             FieldPanel('show_header'),
         ], heading="Header Section"),

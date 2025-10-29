@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="board-profile-page-modern" style="margin-top: 0px;">
+<div class="board-profile-page-modern" style="margin-top: 80px;">
     <div class="profile-card-board">
         <div class="profile-image-container">
             {% if page.profile_image %}
@@ -20,29 +20,46 @@
                 <div class="occupation">{{ page.occupation }}</div>
             {% endif %}
         </div>
+    </div>
+
+    <!-- Pictures Section (Single Image - Optional, for backward compatibility) -->
+    {% if page.show_pictures and page.pictures and page.pictures.file %}
+    <div id="pictures-section" class="full-height-section" 
+        style="background-image: url('{{ page.pictures.file.url }}'); 
+                background-size: cover; 
+                background-position: center; 
+                width: 100%; height: 100vh;">
+        <div class="grid-container text-center">
+            <img src="{{ page.pictures.file.url }}" alt="Pictures Section" style="max-width: 100%; height: auto;">
         </div>
-        {% if page.gallery_images.all %}
-        <div class="profile-gallery-card">
-            <h2>Gallery</h2>
-            <div class="gallery-images">
-                {% for img in page.gallery_images.all %}
-                    <div class="gallery-image">
-                        {% image img.image fill-200x200 %}
-                        {% if img.caption %}
-                            <div class="caption">{{ img.caption }}</div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
+    </div>
+    {% endif %}
+
+    <!-- Bio Section -->
+    {% if page.bio %}
+    <div class="profile-bio-card" style="margin-top:2rem;">
+        <h2>About {{ page.title }}</h2>
+        <div class="bio-content">
+            {{ page.bio|richtext }}
         </div>
-        {% endif %}
-        {% if page.bio %}
-        <div class="profile-bio-card" style="margin-top:2rem;">
-            <h2>About {{ page.title }}</h2>
-            <div class="bio-content">
-                {{ page.bio|richtext }}
-            </div>
+    </div>
+    {% endif %}
+
+    <!-- Gallery Section (Multiple Images) -->
+    {% if page.gallery_images.all %}
+    <div class="profile-gallery-card">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            {% for img in page.gallery_images.all %}
+                <div class="gallery-item">
+                    {% image img.image fill-400x300 %}
+                    {% if img.caption %}
+                        <p class="caption">{{ img.caption }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
         </div>
-        {% endif %}
+    </div>
+    {% endif %}
 </div>
 {% endblock %}

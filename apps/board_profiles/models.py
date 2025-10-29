@@ -1,8 +1,13 @@
 from wagtail.images.models import Image
 from wagtail.models import Page
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel, InlinePanel
 from django.db import models
+from django.shortcuts import render
+from django.http import Http404
+from wagtail.images.models import Image
+from modelcluster.fields import ParentalKey
+from wagtail.models import Orderable
 
 
 class BoardMembersIndexPage(Page):
@@ -40,6 +45,21 @@ class BoardMembersIndexPage(Page):
         verbose_name = "Board Members Index Page"
 
 
+class BoardProfileGalleryImage(Orderable):
+    page = ParentalKey('BoardProfilePage', related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=250, blank=True)
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
+    ]
+
+
 class BoardProfilePage(Page):
     """Individual board member profile"""
     
@@ -51,25 +71,46 @@ class BoardProfilePage(Page):
     occupation = models.CharField(max_length=200, blank=True)
     bio = RichTextField(blank=True)
     
-    # Images
-    profile_image = models.ForeignKey(
+    # Pictures Section
+    pictures = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    show_pictures = models.BooleanField(default=True)
 
     
-    # New fields for member type
+    # Member or Consultant Checkbox
     is_board_member = models.BooleanField(default=True, verbose_name="Is Board Member")
-    
+
+    # Profile Image
+    profile_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="Main profile image"
+    )
+
+    # Admin panels
     content_panels = Page.content_panels + [
-        FieldPanel('position'),
-        FieldPanel('occupation'),
-        FieldPanel('bio'),
-        FieldPanel('profile_image'),
-        FieldPanel('is_board_member'),
+        MultiFieldPanel([
+            FieldPanel('profile_image'),
+            FieldPanel('is_board_member'),
+            FieldPanel('position'),
+            FieldPanel('occupation'),
+            FieldPanel('bio'),
+        ], heading="Profile Information"),
+        MultiFieldPanel([
+            FieldPanel('pictures'),
+            FieldPanel('show_pictures'),
+        ], heading="Pictures Section (Single Image)"),
+        MultiFieldPanel([
+            InlinePanel('gallery_images', label="Gallery Images", min_num=0, max_num=20),
+        ], heading="Gallery Section (Multiple Images)"),
     ]
     
     class Meta:
