@@ -7,11 +7,11 @@
     <!-- Header Section -->
 
     {% if page.header_image %}
-    <div id="header-section" class="full-height-section" 
+    <div id="header-section" class="full-height-section"
         style="background-image: url('{{ page.header_image.file.url }}'); 
-                background-size: cover; 
-                background-position: center; 
-                width: 100%; height: 100vh;">
+               background-size: cover; 
+               background-position: center; 
+               width: 100%; height: 100vh;">
         <div class="overlay">
             <div class="grid-container">
                 <div class="grid-x align-middle">
@@ -23,6 +23,9 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div id="header-section" class="full-height-section no-bg-image"
+        style="width: 100%; height: 100vh;">
     {% endif %}
 
      <!-- Child Pages Navigation Section -->
@@ -48,11 +51,15 @@
     <!-- Dynamic Sections -->
     {% for section in page.sections %}
     {% if section.value.visible %}
-    <div class="full-height-section" 
-        style="background-image: url('{{ section.value.background_image.file.url }}'); 
-                background-size: cover; 
-                background-position: center; 
-                width: 100%; height: 100vh;">
+    <div class="full-height-section{% if not section.value.background_image %} no-bg-image{% endif %}"
+        {% if section.value.background_image %}
+            style="background-image: url('{{ section.value.background_image.file.url }}'); 
+                   background-size: cover; 
+                   background-position: center; 
+                   width: 100%; height: 100vh;"
+        {% else %}
+            style="width: 100%; height: 100vh;"
+        {% endif %}>
         <div class="grid-container">
             {% if section.value.title %}
             <h2>{{ section.value.title }}</h2>

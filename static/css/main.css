@@ -6397,6 +6397,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100%;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -6406,6 +6407,10 @@ h1, h2, h3, h4, h5, h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.full-height-section.no-bg-image {
+  background-color: #000000;
 }
 
 .full-height-section .overlay {
@@ -6437,7 +6442,7 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   z-index: 2;
   padding: 20px;
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
 }
 
