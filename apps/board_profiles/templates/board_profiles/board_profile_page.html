@@ -2,7 +2,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block content %}
-<div class="board-profile-page-modern" style="margin-top: 80px;">
+<div class="board-profile-page-modern" style="margin-top: 0%;">
     <div class="profile-card-board">
         <div class="profile-image-container">
             {% if page.profile_image %}
@@ -22,6 +22,16 @@
         </div>
     </div>
 
+    <!-- Bio Section -->
+    {% if page.bio %}
+    <div class="profile-bio-card" style="margin-top:2rem;">
+        <h2>About {{ page.title }}</h2>
+        <div class="bio-content">
+            {{ page.bio|richtext }}
+        </div>
+    </div>
+    {% endif %}
+
     <!-- Pictures Section (Single Image - Optional, for backward compatibility) -->
     {% if page.show_pictures and page.pictures and page.pictures.file %}
     <div id="pictures-section" class="full-height-section" 
@@ -31,16 +41,6 @@
                 width: 100%; height: 100vh;">
         <div class="grid-container text-center">
             <img src="{{ page.pictures.file.url }}" alt="Pictures Section" style="max-width: 100%; height: auto;">
-        </div>
-    </div>
-    {% endif %}
-
-    <!-- Bio Section -->
-    {% if page.bio %}
-    <div class="profile-bio-card" style="margin-top:2rem;">
-        <h2>About {{ page.title }}</h2>
-        <div class="bio-content">
-            {{ page.bio|richtext }}
         </div>
     </div>
     {% endif %}
