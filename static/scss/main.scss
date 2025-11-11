@@ -400,9 +400,9 @@ h1, h2, h3, h4, h5, h6 {
     
     .footer-divider {
         position: absolute;
-        top: -99px; 
+        top: 0; 
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -90%);
         width: 100%;
         // max-width: 600px; 
         height: auto;
@@ -438,6 +438,12 @@ h1, h2, h3, h4, h5, h6 {
     .text-center {
         text-align: center;
     }
+
+    @media (max-width: 700px) {
+    .footer-divider {
+        max-width: 95vw;
+    }
+}
 }
 
 // Home header styles
@@ -539,8 +545,40 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0px 0; // Adds space above and below the button
 }
 
+.donate-button,
 .get-involved-button {
-    margin: 0;
+    @extend .button; // Use Foundation's button styles
+    padding: 0.6em 1.2em;
+    font-size: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    min-width: 120px; // Ensures same minimum width
+    display: inline-block;
+    text-align: center;
+    transition: background 0.2s;
+}
+
+.donate-button {
+    background-color: #0c9400;
+    color: white;
+    &:hover {
+        background-color: darken(#0c9400, 10%);
+    }
+}
+
+.get-involved-button {
+    background-color: #0078d4;
+    color: white;
+    &:hover {
+        background-color: darken(#0078d4, 10%);
+    }
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5em;
 }
 
 // Media queries for responsiveness
@@ -716,6 +754,7 @@ h1, h2, h3, h4, h5, h6 {
                 display: block;
                 font-weight: bold;
                 margin-bottom: 0.5rem;
+                color: white;
             }
 
             input, textarea, select {
