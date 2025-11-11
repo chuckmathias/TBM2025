@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+{% load static %}
 
 {% block content %}
     <!-- Home Header -->
@@ -107,11 +108,51 @@
 
     <!-- Envision Project -->
     {% if page.show_home_envision %}
-        <div id="home_envision" class="full-height-section" 
-             style="background-image: url('{{ page.home_envision_image.file.url }}');">
-            <h2>Envision Project</h2>
-            <p>Content for the envision project section goes here.</p>
+    <div id="home_envision" class="full-height-section envision-section" 
+        style="background-image: url('{{ page.home_envision_image.file.url }}');">
+        <div class="grid-container envision-grid-bg">
+            <!-- Top: Title, About, Logo -->
+            <div class="envision-info-col">
+                <h2>Envision Project</h2>
+                <p>Content for the envision project section goes here.</p>
+            </div>
+            <!-- Bottom: Four columns in a row -->
+            <div class="grid-x grid-margin-x envision-cols-row">
+                <div class="cell small-12 medium-3 envision-col envision-encourage">
+                    <h3>Encourage</h3>
+                    <p>Mission Trip</p>
+                    <div>
+                        <p>This is where the paragraph of information about this program is...</p>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3 envision-col envision-enrich">
+                    <h3>Enrich</h3>
+                    <p>Vision Trip</p>
+                    <div>
+                        <p>This is where the paragraph of information about this program is...</p>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3 envision-col envision-engage">
+                    <h3>Engage</h3>
+                    <p>Internship</p>
+                    <div>
+                        <p>This is where the paragraph of information about this program is...</p>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3 envision-col envision-entrust">
+                    <h3>Entrust</h3>
+                    <p>Apprenticeship</p>
+                    <div>
+                        <p>This is where the paragraph of information about this program is...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="envision-logo-wrapper text-center">
+                <img src="{% static 'images/envision_logo.svg' %}" alt="Envision Project Logo" class="envision-logo">
+            </div>
+            
         </div>
+    </div>
     {% endif %}
 
     <!-- Pray for TBM -->

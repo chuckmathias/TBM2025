@@ -111,6 +111,85 @@ h1, h2, h3, h4, h5, h6 {
 .full-height-section.no-bg-image {
     background-color: #000000;
 }
+// Envision Program Section Specific Styling
+.envision-section .envision-grid-bg {
+    background: linear-gradient(135deg, #333333f6 0%, #000000f6 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(0,120,212,0.08);
+    padding: 2.5rem 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.envision-logo-wrapper {
+    max-width: 180px;
+    height: auto;
+}
+
+.envision-info-col {
+    background: transparent;
+    color: #ffffff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        font-size: 2.2rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+        color: #ffffff;
+    }
+    p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: #ffffff;
+    }
+    .envision-logo {
+        max-width: 120px;
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.envision-col {
+    background: #75757552;
+    border-radius: 1rem;
+    box-shadow: 0 2px 16px rgba(0,120,212,0.08);
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        color: #ffffff;
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.7rem;
+    }
+    p {
+        color: #000000;
+        font-size: 1rem;
+    }
+}
+
+/* Optional: Give each envision section a unique accent color */
+.envision-encourage { border-top: 6px solid #0078d4; }
+.envision-enrich    { border-top: 6px solid #00bfae; }
+.envision-engage    { border-top: 6px solid #ffb300; }
+.envision-entrust   { border-top: 6px solid #e53935; }
+
+@media (max-width: 900px) {
+    .envision-info-col, .envision-col {
+        margin-bottom: 1.5rem;
+    }
+    .envision-section .envision-grid-bg {
+        padding: 1.2rem 0.5rem;
+    }
+}
 
 // Overlay for sections (optional, for semi-transparent background over images)
 .full-height-section .overlay {
