@@ -440,6 +440,12 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
     }
 
+    .footer-submenu {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+    }
+
     @media (max-width: 600px) {
     .footer-divider {
         max-width: 95vw;
