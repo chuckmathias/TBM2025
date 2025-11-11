@@ -7454,8 +7454,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .subpage-nav {
-  margin: 3rem 0 2rem 0;
+  background: #222222;
+  margin: 0;
   width: 100%;
+  padding: 2rem 1rem;
 }
 
 .subpage-nav-grid {
@@ -7468,7 +7470,7 @@ h1, h2, h3, h4, h5, h6 {
 .subpage-nav-card {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: rgba(73, 73, 73, 0.2470588235);
   border-radius: 1rem;
   box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
   text-decoration: none;
@@ -7495,7 +7497,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 0 0.5rem 0;
   font-size: 1.2rem;
   font-weight: 700;
-  color: #0078d4;
+  color: #ffffff;
   letter-spacing: 0.01em;
 }
 .subpage-nav-card-content p {
