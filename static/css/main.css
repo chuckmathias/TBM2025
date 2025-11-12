@@ -6667,6 +6667,52 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 1rem;
 }
 
+.pray-section-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+.pray-text-box {
+  background: rgba(51, 51, 51, 0.95);
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 16px rgba(0, 120, 212, 0.08);
+  padding: 2rem 1.5rem;
+  flex: 1 1 0;
+  text-align: left;
+}
+
+.pray-image-box {
+  flex: 0 0 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.pray-image {
+  width: 100%;
+  height: 100%;
+  max-width: 280px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 120, 212, 0.08);
+  object-fit: cover;
+}
+
+@media (max-width: 800px) {
+  .pray-section-container {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem 0.5rem;
+  }
+  .pray-image-box {
+    max-width: 100%;
+  }
+}
 /* Optional: Give each envision section a unique accent color */
 .envision-encourage {
   border-top: 6px solid #0078d4;
