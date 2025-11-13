@@ -1,9 +1,12 @@
 from wagtail.models import Page
 from wagtail.fields import RichTextField
-from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel, InlinePanel
 from django.db import models
 from django.shortcuts import render
 from django.http import Http404
+from modelcluster.fields import ParentalKey
+from wagtail.models import Orderable
+from wagtail.images.models import Image
 
 class MissionaryProfilePage(Page):
     # Required fields
@@ -84,6 +87,9 @@ class MissionaryProfilePage(Page):
         FieldPanel('profile_header_image'),
         FieldPanel('profile_info_image'),
         FieldPanel('profile_location_image'),
+        MultiFieldPanel([
+            InlinePanel('gallery_images', label="Photo Gallery"),
+        ], heading="Photo Gallery"),
     ]
 
     def get_context(self, request):
@@ -171,4 +177,18 @@ class MissionaryUpdatePage(Page):
             FieldPanel('pictures'),
             FieldPanel('show_pictures'),
         ], heading="Pictures Section"),
+    ]
+
+class MissionaryProfileGalleryImage(Orderable):
+    page = ParentalKey('MissionaryProfilePage', related_name='gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=250, blank=True)
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
     ]

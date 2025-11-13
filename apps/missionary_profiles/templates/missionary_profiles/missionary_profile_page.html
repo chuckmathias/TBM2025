@@ -88,7 +88,7 @@
          style="background-image: url('{{ page.profile_info_image.file.url }}');">
         <div class="grid-container">
             <div class="grid-x grid-margin-x">
-                <div class="cell small-12 medium-8">
+                <div class="cell small-12 medium-8 profile-information">
                     <h2>Information</h2>
                     <div>{{ page.information|richtext }}</div>
                 </div>
@@ -115,15 +115,48 @@
         </div>
     </div>
 
-    <div id="profile-pics" class="full-height-section">
+    <!-- Section: Photo Gallery -->
+    {% if page.gallery_images.all %}
+    <div id="profile-pics" class="full-height-section gallery-dark-bg">
         <div class="grid-container">
-            <div class="grid-x">
-                <div class="cell medium-12">
-                    PICS GO HERE
-                </div>
+            <h2 class="text-center">Photo Gallery</h2>
+            <div class="gallery-preview">
+                <img id="gallery-main-image"
+                     src="{{ page.gallery_images.first.image.file.url }}"
+                     alt="{{ page.gallery_images.first.caption|default:'Gallery Image' }}">
+                {% if page.gallery_images.first.caption %}
+                    <div class="caption" id="gallery-main-caption">{{ page.gallery_images.first.caption }}</div>
+                {% endif %}
+            </div>
+            <div class="gallery-grid">
+                {% for image in page.gallery_images.all %}
+                    <div class="gallery-item">
+                        <img src="{{ image.image.file.url }}"
+                             alt="{{ image.caption|default:'Gallery Image' }}"
+                             class="gallery-thumb"
+                             data-full="{{ image.image.file.url }}"
+                             data-caption="{{ image.caption|default:'' }}">
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+    {% endif %}
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const mainImg = document.getElementById('gallery-main-image');
+    const mainCaption = document.getElementById('gallery-main-caption');
+    document.querySelectorAll('.gallery-thumb').forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+            mainImg.src = this.dataset.full;
+            mainImg.alt = this.alt;
+            if (mainCaption) {
+                mainCaption.textContent = this.dataset.caption;
+            }
+        });
+    });
+});
+</script>
 
 {% endblock %}
