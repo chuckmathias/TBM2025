@@ -55,12 +55,14 @@
             </div>
         {% endfor %}
         </div>
-        <div class="text-center">
-            <a href="{% url 'master_updates_list' %}?project={{ page.slug }}" class="button view-all-updates-button">View All Updates</a>
-        </div>
     </div>
 </div>
 {% endif %}
+
+<div class="button-row text-center" style="margin: 2rem 0; display: flex; justify-content: center; gap: 1rem;">
+    <a href="{% url 'master_updates_list' %}?project={{ page.slug }}" class="button view-all-updates-button">View All Updates</a>
+    <button id="show-newsletter-btn" class="button" type="button">Sign Up for Updates</button>
+</div>
 
     <!-- Section: Map -->
     <div id="profile-location" class="half-height-section">
@@ -156,6 +158,42 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     });
+
+    // Newsletter signup toggle
+    const btn = document.getElementById('show-newsletter-btn');
+    if (btn) {
+        btn.addEventListener('click', function() {
+            let section = document.getElementById('newsletter-signup');
+            if (!section) {
+                // Insert the section if it doesn't exist
+                const container = document.createElement('div');
+                container.innerHTML = `
+<div id="newsletter-signup" class="full-height-section newsletter-visible" style="background: #f9f9f9;">
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <div class="cell small-12 medium-8">
+                <h2 class="text-center">Sign Up for Updates from {{ page.name|escapejs }}</h2>
+                <form method="post" action="{% url 'missionary_newsletter_signup' page.slug %}" class="newsletter-form" style="margin: 2rem 0;">
+                    {% csrf_token %}
+                    <input type="hidden" name="missionary" value="{{ page.slug }}">
+                    <label for="id_email"><strong>Email Address:</strong></label>
+                    <input type="email" name="email" id="id_email" required placeholder="you@example.com" style="width:100%;margin-bottom:1rem;">
+                    <button type="submit" class="button expand">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+                `;
+                // Insert after the button row
+                const buttonRow = document.querySelector('.button-row');
+                buttonRow.parentNode.insertBefore(container.firstElementChild, buttonRow.nextSibling);
+            } else {
+                // Remove the section if it exists
+                section.parentNode.removeChild(section);
+            }
+        });
+    }
 });
 </script>
 

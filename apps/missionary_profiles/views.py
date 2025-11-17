@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .models import MissionaryUpdatePage, MissionaryProfilePage
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
+from .models import MissionaryUpdatePage, MissionaryProfilePage, MissionaryNewsletterSignup
 
 # Create your views here.
 
@@ -17,3 +18,18 @@ def master_updates_list(request):
         'missionary': missionary,
         'missionaries': missionaries,
     })
+
+def missionary_newsletter_signup(request, slug):
+    missionary = get_object_or_404(MissionaryProfilePage, slug=slug)
+    if request.method == "POST":
+        email = request.POST.get('email')
+        if email:
+            # Prevent duplicate signups for same missionary/email
+            if not MissionaryNewsletterSignup.objects.filter(missionary=missionary, email=email).exists():
+                MissionaryNewsletterSignup.objects.create(missionary=missionary, email=email)
+                messages.success(request, "Thank you for signing up for updates!")
+            else:
+                messages.info(request, "You are already signed up for updates.")
+        else:
+            messages.error(request, "Please enter a valid email address.")
+    return redirect(missionary.url)

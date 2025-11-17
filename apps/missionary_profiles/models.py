@@ -179,6 +179,14 @@ class MissionaryUpdatePage(Page):
         ], heading="Pictures Section"),
     ]
 
+class MissionaryNewsletterSignup(models.Model):
+    missionary = models.ForeignKey('MissionaryProfilePage', on_delete=models.CASCADE, related_name='newsletter_signups')
+    email = models.EmailField()
+    signup_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.email} for {self.missionary.name}"
+
 class MissionaryProfileGalleryImage(Orderable):
     page = ParentalKey('MissionaryProfilePage', related_name='gallery_images')
     image = models.ForeignKey(
