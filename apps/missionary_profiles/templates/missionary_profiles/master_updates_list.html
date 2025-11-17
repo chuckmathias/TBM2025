@@ -4,7 +4,30 @@
 
 {% block content %}
 <div class="grid-container">
-    <h2 class="text-center">All Missionary Updates</h2>
+    {% if missionary %}
+        <div class="missionary-profile-summary text-center" style="margin-bottom:2rem;">
+            <h2>Updates for {{ missionary.name }}</h2>
+            {% if missionary.profile_header_image %}
+                <img src="{{ missionary.profile_header_image.file.url }}" alt="{{ missionary.name }}" style="max-width:200px;">
+            {% endif %}
+            <p><strong>Project:</strong> {{ missionary.project }}</p>
+            <p><strong>Region:</strong> {{ missionary.region }}</p>
+            <p>{{ missionary.project_summary }}</p>
+            <a href="{{ missionary.url }}" class="button">View Missionary Profile</a>
+        </div>
+    {% else %}
+        <h2 class="text-center">All Missionary Updates</h2>
+    {% endif %}
+    <form method="get" class="text-center" style="margin-bottom: 2rem;">
+        <label for="missionary-select"><strong>Filter by Missionary:</strong></label>
+        <select id="missionary-select" name="project" onchange="this.form.submit()">
+            <option value="">All Missionaries</option>
+            {% for m in missionaries %}
+                <option value="{{ m.slug }}"{% if missionary and m.slug == missionary.slug %} selected{% endif %}>{{ m.name }}</option>
+            {% endfor %}
+        </select>
+        <noscript><button type="submit">Filter</button></noscript>
+    </form>
     <div class="grid-x grid-margin-x align-center">
         {% for update in updates %}
             <div class="cell small-12 medium-4">

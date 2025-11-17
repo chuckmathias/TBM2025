@@ -56,7 +56,7 @@
         {% endfor %}
         </div>
         <div class="text-center">
-            <a href="{% url 'master_updates_list' %}" class="button view-all-updates-button">View All Updates</a>
+            <a href="{% url 'master_updates_list' %}?project={{ page.slug }}" class="button view-all-updates-button">View All Updates</a>
         </div>
     </div>
 </div>
