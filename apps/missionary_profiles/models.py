@@ -181,6 +181,8 @@ class MissionaryUpdatePage(Page):
 
 class MissionaryNewsletterSignup(models.Model):
     missionary = models.ForeignKey('MissionaryProfilePage', on_delete=models.CASCADE, related_name='newsletter_signups')
+    first_name = models.CharField(max_length=100, blank=True)
+    last_name = models.CharField(max_length=100, blank=True)
     email = models.EmailField()
     signup_date = models.DateTimeField(auto_now_add=True)
 

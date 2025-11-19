@@ -23,10 +23,16 @@ def missionary_newsletter_signup(request, slug):
     missionary = get_object_or_404(MissionaryProfilePage, slug=slug)
     if request.method == "POST":
         email = request.POST.get('email')
+        first_name = request.POST.get('first_name', '')
+        last_name = request.POST.get('last_name', '')
         if email:
-            # Prevent duplicate signups for same missionary/email
             if not MissionaryNewsletterSignup.objects.filter(missionary=missionary, email=email).exists():
-                MissionaryNewsletterSignup.objects.create(missionary=missionary, email=email)
+                MissionaryNewsletterSignup.objects.create(
+                    missionary=missionary,
+                    email=email,
+                    first_name=first_name,
+                    last_name=last_name
+                )
                 messages.success(request, "Thank you for signing up for updates!")
             else:
                 messages.info(request, "You are already signed up for updates.")
