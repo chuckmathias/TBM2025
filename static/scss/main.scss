@@ -400,9 +400,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .slider-track {
-   flex: 1 1 auto;
+    margin: 0 auto;
+    flex: 1 1 auto;
     display: flex;
-    align-items: stretch; // Ensures all children have equal height
+    align-items: stretch; 
     gap: 1rem;
     max-width: 1200px;
     transition: transform 0.4s cubic-bezier(.77,0,.18,1);
