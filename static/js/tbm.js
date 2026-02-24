@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 slide.classList.remove('visible');
             }
         });
-        sliderTrack.style.transform = `translateX(-${current * allSlides[0].offsetWidth}px)`;
+        // Calculate the offset accounting for the gap (1rem = 16px)
+        const slideWidth = allSlides[0].offsetWidth;
+        const gapWidth = 16; // 1rem in pixels
+        const totalSlideSpace = slideWidth + gapWidth;
+        sliderTrack.style.transform = `translateX(-${current * totalSlideSpace}px)`;
         renderPagination();
     }
 
