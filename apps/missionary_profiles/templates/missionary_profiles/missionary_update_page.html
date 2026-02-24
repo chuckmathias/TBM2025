@@ -42,15 +42,23 @@
     </div>
     {% endif %}
 
-    <!-- Pictures Section -->
-    {% if page.show_pictures and page.pictures and page.pictures.file %}
-    <div id="pictures-section" class="full-height-section" 
-         style="background-image: url('{{ page.pictures.file.url }}'); 
-                background-size: cover; 
-                background-position: center; 
-                width: 100%; height: 100vh;">
+    <!-- Pictures Gallery Section -->
+    {% if page.show_pictures and page.update_gallery_images.all %}
+    <div id="pictures-section" class="full-height-section" style="width: 100%; min-height: 100vh; background: #f8f8f8;">
         <div class="grid-container text-center">
-            <img src="{{ page.pictures.file.url }}" alt="Pictures Section" style="max-width: 100%; height: auto;">
+            <h2>Gallery</h2>
+            <div class="gallery" style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+                {% for gallery_image in page.update_gallery_images.all %}
+                    {% if gallery_image.image %}
+                        <div class="gallery-item" style="flex: 0 1 300px; max-width: 300px;">
+                            <img src="{{ gallery_image.image.file.url }}" alt="Gallery Image" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            {% if gallery_image.caption %}
+                                <div class="caption" style="margin-top: 8px; color: #555;">{{ gallery_image.caption }}</div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     {% endif %}

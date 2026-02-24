@@ -150,17 +150,8 @@ class MissionaryUpdatePage(Page):
         related_name='+'
     )
 
-    # Pictures Section
-    pictures = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
     show_pictures = models.BooleanField(default=True)
 
-    # Admin panels
     content_panels = Page.content_panels + [
         MultiFieldPanel([
             FieldPanel('missionary_profile'),
@@ -174,9 +165,24 @@ class MissionaryUpdatePage(Page):
             FieldPanel('information_background_image'),
         ], heading="Information Section"),
         MultiFieldPanel([
-            FieldPanel('pictures'),
             FieldPanel('show_pictures'),
+            InlinePanel('update_gallery_images', label="Photo Gallery"),
         ], heading="Pictures Section"),
+    ]
+
+# Gallery model for MissionaryUpdatePage
+class MissionaryUpdateGalleryImage(Orderable):
+    page = ParentalKey('MissionaryUpdatePage', related_name='update_gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        on_delete=models.CASCADE,
+        related_name='+'
+    )
+    caption = models.CharField(max_length=250, blank=True)
+
+    panels = [
+        FieldPanel('image'),
+        FieldPanel('caption'),
     ]
 
 class MissionaryNewsletterSignup(models.Model):
