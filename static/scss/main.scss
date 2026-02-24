@@ -1279,6 +1279,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 1200px;
     margin: 2rem auto;
     padding: 120px;
+    align-items: stretch;
 }
 @media (max-width: 900px) {
     .board-members-grid-modern {
@@ -1310,17 +1311,20 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 2px 16px rgba(0,120,212,0.08);
     overflow: hidden;
     align-items: center;
-    min-height: 220px;
+    height: 100%;
+    min-height: 380px;
     transition: box-shadow 0.2s, transform 0.2s;
     padding: 1.2rem;
     position: relative;
 }
 .member-image {
     width: 100%;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
+    flex-shrink: 0;
     img {
         border-radius: 50%;
         width: 120px;
@@ -1335,22 +1339,39 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    justify-content: center;
+    overflow: hidden;
     h3 {
         margin: 0 0 0.5rem 0;
         font-size: 1.2rem;
         font-weight: 700;
         color: #0078d4;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
     .position {
         font-size: 1.05rem;
         color: #1766a3;
         font-weight: 600;
         margin-bottom: 0.3rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
     .occupation {
         font-size: 0.98rem;
         color: #555;
         margin-bottom: 0.7rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
     }
 }
 
@@ -1707,3 +1728,34 @@ h1, h2, h3, h4, h5, h6 {
         color: #0078d4;
     }
 }
+
+/* //These are just the new colors for all of the website using variables, but I haven't fully implemented them yet. This is just a starting point for the new color scheme.
+//Dark mode Defaults
+:root {
+    --bg-dark: hsl(0, 0%, 0%);
+    --bg: hsl(0, 0%, 5%);
+    --bg-light: hsl(0, 0%, 10%);
+    --text: hsl(0, 0%, 95%);
+    --text-muted: hsl(0, 0%, 70%);  
+    --border: hsl(0, 0%, 30%);
+    --gradient: linear-gradient(0deg, var(--bg), var (--bg-light));
+    --gradient: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --highlight: hsl(0, 0%, 60%);
+    --border-card: solid 1px var(--border);
+    --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+}
+// Light mode colors for when user has light mode enabled in their system preferences
+@media (prefers-color-scheme: light) 
+body.light-mode {
+    --bg-dark: hsl(0, 0%, 90%);
+    --bg: hsl(0, 0%, 95%);
+    --bg-light: hsl(0, 0%, 100%);
+    --text: hsl(0, 0%, 5%);
+    --text-muted: hsl(0, 0%, 30%); 
+    --border: hsl(0, 0%, 30%);
+    --gradient: linear-gradient(0deg, var(--bg), var (--bg-light));
+    --gradient: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --highlight: hsl(0, 0%, 100%);
+    --border-card: solid 1px var(--bg);
+}
+*/
