@@ -6527,12 +6527,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .transparent-nav {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
   position: fixed;
   width: 100%;
   z-index: 10;
   padding: 10px 30px;
   transition: all 0.75s ease;
+}
+.transparent-nav .grid-x {
+  align-items: center;
 }
 .transparent-nav .logo {
   max-height: 70px;
@@ -7160,14 +7163,10 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 .home-header-content h2 {
-  font-family: Lato, sans-serif;
-  font-size: 7rem;
-  font-weight: 900;
-  line-height: 0.5;
-}
-.home-header-content h2 span {
   font-family: Cardo, serif;
   font-size: 4.5rem;
+  font-weight: 900;
+  line-height: 0.75;
 }
 .home-header-content a {
   margin-top: 40px;
@@ -7238,6 +7237,12 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: flex-end;
   align-items: center;
   gap: 0.5em;
+  height: 100%;
+}
+.nav-buttons .button, .nav-buttons .donate-button,
+.nav-buttons .get-involved-button {
+  margin: 0;
+  line-height: 1.1;
 }
 
 @media (max-width: 768px) {
@@ -8143,5 +8148,36 @@ h1, h2, h3, h4, h5, h6 {
 .newsletter-signup-card .newsletter-close-btn:hover {
   color: #0078d4;
 }
+
+/* //These are just the new colors for all of the website using variables, but I haven't fully implemented them yet. This is just a starting point for the new color scheme.
+//Dark mode Defaults
+:root {
+    --bg-dark: hsl(0, 0%, 0%);
+    --bg: hsl(0, 0%, 5%);
+    --bg-light: hsl(0, 0%, 10%);
+    --text: hsl(0, 0%, 95%);
+    --text-muted: hsl(0, 0%, 70%);  
+    --border: hsl(0, 0%, 30%);
+    --gradient: linear-gradient(0deg, var(--bg), var (--bg-light));
+    --gradient: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --highlight: hsl(0, 0%, 60%);
+    --border-card: solid 1px var(--border);
+    --shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.07), 0px 4px 4px hsla(0, 0%, 0%, 0.15);
+}
+// Light mode colors for when user has light mode enabled in their system preferences
+@media (prefers-color-scheme: light) 
+body.light-mode {
+    --bg-dark: hsl(0, 0%, 90%);
+    --bg: hsl(0, 0%, 95%);
+    --bg-light: hsl(0, 0%, 100%);
+    --text: hsl(0, 0%, 5%);
+    --text-muted: hsl(0, 0%, 30%); 
+    --border: hsl(0, 0%, 30%);
+    --gradient: linear-gradient(0deg, var(--bg), var (--bg-light));
+    --gradient: linear-gradient(0deg, var(--bg), var(--bg-light));
+    --highlight: hsl(0, 0%, 100%);
+    --border-card: solid 1px var(--bg);
+}
+*/
 
 /*# sourceMappingURL=main.css.map */
