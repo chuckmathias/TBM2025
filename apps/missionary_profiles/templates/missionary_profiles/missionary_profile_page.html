@@ -57,12 +57,14 @@
         </div>
     </div>
 </div>
-{% endif %}
-
 <div class="button-row text-center" style="margin: 2rem 0; display: flex; justify-content: center; gap: 1rem;">
     <a href="{% url 'master_updates_list' %}?project={{ page.slug }}" class="button view-all-updates-button profile-action-btn">View All Updates</a>
+    {% if page.has_newsletters %}
     <button id="show-newsletter-btn" class="button profile-action-btn" type="button">Sign Up for Updates</button>
+    {% endif %}
 </div>
+{% endif %}
+
 
     <!-- Section: Map -->
     <div id="profile-location" class="half-height-section">

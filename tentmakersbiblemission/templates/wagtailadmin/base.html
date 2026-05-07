@@ -1,0 +1,52 @@
+{% extends "wagtailadmin/base.html" %}
+{% load static %}
+
+{% block branding_title %}Tentmakers Bible Mission{% endblock %}
+
+{% block branding_favicon %}
+<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon-32x32.png' %}">
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon-16x16.png' %}">
+<link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+{% endblock %}
+
+{% block branding_logo %}
+<style>
+.sidebar-custom-branding {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 !important;
+}
+
+.sidebar--slim .sidebar-custom-branding {
+  padding: 12px 0 !important;
+}
+
+.sidebar-custom-branding .tbm-logo-wrap {
+  height: 120px;
+  margin: 0 auto;
+  transition: width 220ms ease;
+  width: 170px;
+  max-width: 170px;
+}
+
+.sidebar-custom-branding .tbm-logo {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  max-height: 110px;
+  width: 100%;
+}
+
+.sidebar--slim .sidebar-custom-branding .tbm-logo-wrap {
+  height: 120px;
+  width: 56px;
+}
+
+</style>
+
+<span class="tbm-logo-wrap">
+  <img class="tbm-logo" src="{% static 'images/tentmakersbiblemission_logo_white.svg' %}" alt="Tentmakers Bible Mission">
+</span>
+{% endblock %}

@@ -92,6 +92,11 @@ class MissionaryProfilePage(Page):
         ], heading="Photo Gallery"),
     ]
 
+    @property
+    def has_newsletters(self):
+        """True if this missionary has any published updates with a PDF newsletter."""
+        return self.related_updates.live().filter(pdf_document__isnull=False).exists()
+
     def get_context(self, request):
         context = super().get_context(request)
         context['recent_updates'] = self.related_updates.live().order_by('-first_published_at')[:4]

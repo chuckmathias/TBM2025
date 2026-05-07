@@ -1,7 +1,10 @@
-//  npx sass --watch static/scss/main.scss:static/css/main.css
+//  npm run sass  (compile once)
+//  npm run sass:watch  (watch mode)
+
+@use 'sass:color';
 
 // Import Foundation's core styles
-@import "../../node_modules/foundation-sites/scss/foundation";
+@use "../../node_modules/foundation-sites/scss/foundation" as *;
 
 // Include Foundation's styles
 @include foundation-everything;
@@ -22,13 +25,16 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+.extramargin-top {
+    margin-top: 50px !important;
+}
 // Transparent navigation bar
 .transparent-nav {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
     position: fixed;
     width: 100%;
     z-index: 10;
-    padding: 10px 30px;
+    padding: 10px 30px 10px; // extra bottom padding extends the gradient shadow downward
     transition: all 0.75s ease;
 
     .grid-x {
@@ -669,16 +675,119 @@ h1, h2, h3, h4, h5, h6 {
 }
 }
 
+// Mission section with Globe background
+.mission-globe-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #000;
+    border-bottom: 10px solid #fff;
+    border-top: 10px solid #fff;
+
+    #globe-container {
+        position: absolute;
+        top: 50%;
+        left: -80%;
+        width: 140%;
+        height: 140%;
+        transform: translateY(-50%);
+        z-index: 1;
+    }
+
+    .globe-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.35) 100%);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .mission-vision-content {
+        position: relative;
+        z-index: 3;
+        // max-width: 75%;
+        padding: 60px 40px;
+        margin-left: auto;
+        margin-right: 80px;
+        color: white;
+        text-align: left;
+
+        h2 {
+            font-family: 'Cardo', serif;
+            font-size: 4.5rem;
+            // margin-bottom: 2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-align: right;
+            line-height: 1.1;
+        }
+
+        h3 {
+            font-family: 'Lato', sans-serif;
+            font-size: 2.75rem;
+            // margin-bottom: 1rem;
+            font-weight: 200;
+            text-align: right;
+        }
+
+        p {
+            font-family: 'Cardo', serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .mission,
+        .vision {
+            margin-bottom: 3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        #globe-container {
+            left: -30%;
+            width: 160%;
+            height: 160%;
+        }
+
+        .mission-vision-content {
+            max-width: 100%;
+            margin-right: 20px;
+            margin-left: 20px;
+            padding: 40px 20px;
+
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.2rem; }
+            p  { font-size: 1.1rem; }
+        }
+    }
+}
+
 // Home header styles
 // #home_header {
 //     
 // }
+
+.video-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.5) 25%, transparent 100%);
+    z-index: 1; // must be below .home-header-content (z-index: 1... so match or adjust)
+}
 
 .video-background {
     position: relative;
     width: 100%;
     height: 100vh; /* Full viewport height */
     overflow: hidden;
+    
 }
 
 .video-content {
@@ -690,7 +799,7 @@ h1, h2, h3, h4, h5, h6 {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -1; /* Send the video to the background */
+    z-index: 0; /* Stays inside the stacking context so text can layer on top */
     object-fit: cover; /* Ensures the video covers the entire area */
 }
 
@@ -711,44 +820,86 @@ h1, h2, h3, h4, h5, h6 {
 .home-header-content {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Vertically center the content */
-    align-items: center; /* Horizontally center the content */
+    // justify-content: center; /* Vertically center the content */
+    // align-items: center; /* Horizontally center the content */
     height: 100%; /* Ensure it takes the full height of the header */
-    text-align: center; /* Center-align the text */
-    z-index: 1; /* Ensure it appears above the video */
+    text-align: left; /* Left-align the text */
+    z-index: 2; /* Ensure it appears above the video */
     position: relative; /* Ensure proper stacking with the video */
-    color: white; 
+    color: white;
+    
+    // Override the .full-height-section .grid-container centering rule
+    &.grid-container {
+        margin-left: 150px;
+        text-align: left;
+    }
 
     h2 {
-        font-family: Cardo, serif;
-        // font-family: Lato, sans-serif;
-        font-size: 4.5rem;
-        // font-size: 7rem;
-        font-weight: 900;
-        line-height: 0.75;
-        // opacity: 0.75;
-        // span {
-        // }
+        font-family: Lato, sans-serif;
+        // font-size: 4.5rem;
+        // font-weight: 900;
+        line-height: 0.90   ;
+        opacity: 0.65;
+        
+        &:nth-child(1) { 
+            text-transform: uppercase;
+            font-size: 5rem;
+            font-weight: 900;
+        }  // PLANTING CHURCHES
+        &:nth-child(2) { 
+            text-transform: uppercase;
+            font-size: 5rem; 
+            font-weight: 900;
+        }  // TRAINING CHURCH PLANTERS
+        &:nth-child(3) { 
+            text-transform: uppercase;
+            font-size: 5rem; 
+            font-weight: 900;
+            margin-top: 30px;
+        }  // together
+        &:nth-child(4) { 
+            text-transform: uppercase;
+            font-size: 5rem; 
+            font-weight: 900;
+        }  // together
+        &:nth-child(5) { 
+            text-transform: uppercase;
+            font-size: 5rem; 
+            font-weight: 900;
+        }  // together
+        &:nth-child(6) { 
+            text-transform: lowercase;
+            margin-top: 30px;
+            font-size: 4rem; 
+            font-family: "Cardo", serif;
+        }  // together
+
+    }
+    h3 {
+        font-family: Lato, sans-serif;
+        font-size: 1.25rem;
+        // max-width: 600px;
+        margin-top: 60px;
     }
     a {
-        margin-top: 40px;
+        margin-top: 60px;
     }
 }
 
-.header-logo {
-    position: absolute; /* Position the logo relative to the parent container */
-    bottom: 20px; /* Align it at the bottom of the screen with some spacing */
-    left: 50%; /* Move it to the horizontal center */
-    transform: translateX(-50%); /* Center it horizontally */
-    text-align: center; /* Ensure the content inside is centered */
-    width: 100%; /* Optional: Ensure it spans the full width */
-}
+// .header-logo {
+//     position: absolute; /* Position the logo relative to the parent container */
+//     bottom: 20px; /* Align it at the bottom of the screen with some spacing */
+//     left: 50%; /* Move it to the horizontal center */
+//     transform: translateX(-50%); /* Center it horizontally */
+//     text-align: center; /* Ensure the content inside is centered */
+//     width: 100%; /* Optional: Ensure it spans the full width */
+// }
 
-.header-logo img {
-    max-width: 100px;
-    height: auto;
-    margin: 0 auto; /* Center the image horizontally */
-}
+// .header-logo img {
+//     max-width: 100px;
+//     height: auto;
+//     margin: 0 auto; /* Center the image horizontally */
+// }
 
 // Buttons (use Foundation's button styles)
 .button {
@@ -760,7 +911,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 
     &:hover {
-        background-color: darken(#0078d4, 10%);
+        background-color: color.adjust(#0078d4, $lightness: -10%);
     }
 }
 
@@ -785,7 +936,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #0b8a00;
     color: white;
     &:hover {
-        background-color: darken(#0c9400, 10%);
+        background-color: color.adjust(#0c9400, $lightness: -10%);
     }
 }
 
@@ -793,7 +944,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #0078d4;
     color: white;
     &:hover {
-        background-color: darken(#0078d4, 10%);
+        background-color: color.adjust(#0078d4, $lightness: -10%);
     }
 }
 
@@ -832,42 +983,125 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
 }
 
+// Shared base styles for all profile cards
 .profile-card {
     position: relative;
     width: 100%;
     height: 50vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; // Ensure no tiling
-    border-radius: 5px;
-    overflow: hidden; 
+    border-radius: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transition for hover effects
+    transition: box-shadow 0.3s ease;
     z-index: 0;
 
     .overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5); // Semi-transparent overlay
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 20px;
-        z-index: 1; // Ensure overlay stays above the background
     }
 
     h2 {
         margin: 0;
-        font-size: 2rem;
+        font-size: 1.5rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 200;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.479);
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    p {
+        margin: 5px 0;
+        font-size: 1.25rem;
+        line-height: 1.2;
+        font-family: 'Cardo', serif;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    &:hover {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// Home values section — scoped overrides
+#home_values .profile-card {
+    border: solid 2px #fff;
+
+    // Background image div: scales on hover without moving text
+    .profile-card-bg {
+        position: absolute;
+        inset: -6px; // extends past edges to hide blur bleed
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        transform: scale(1);
+        will-change: transform;
+        transition: transform 0.4s ease;
+        filter: grayscale(100%) brightness(0.35) sepia(60%) hue-rotate(180deg) blur(3px);
+    }
+
+    // Content sits above overlay
+    .card-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    p {
+        max-width: 65%;
+        margin: 5px auto;
+    }
+
+    &:hover .profile-card-bg {
+        transform: scale(1.08);
+    }
+}
+
+// Projects page cards — add styles here
+#projects-page .profile-card {
+    height: 40vh;
+
+    .profile-card-bg {
+        position: absolute;
+        inset: 0;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        transform: scale(1);
+        will-change: transform;
+        transition: transform 0.4s ease;
+    }
+
+    &:hover {
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+
+        .profile-card-bg {
+            transform: scale(1.08);
+        }
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.35rem;
         font-family: 'Lato', sans-serif;
         font-weight: 900;
         text-transform: uppercase;
@@ -876,26 +1110,27 @@ h1, h2, h3, h4, h5, h6 {
 
     h3 {
         margin: 0;
-        font-size: 2.5rem;
-        font-family: 'Cardo', serif;
+        font-size: 1rem;
+        font-family: 'Lato', sans-serif;
+        font-weight: 200;
+        text-transform: uppercase;
         text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
 
     p {
         margin: 5px 0;
         font-size: 1rem;
-        font-family: 'Lato', sans-serif;
+        line-height: 1.2;
+        font-family: 'Cardo', serif;
         text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     }
+}
 
-    // Add hover effect
-    &:hover {
-        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); // Add a stronger shadow on hover
-        transform: scale(1.1) rotate(1deg); // Add slight rotation
-
-    }
+#home_projects {
+    border-top: solid 10px #fff;
 
 }
+
 
 #projects-intro {
     width: 100%;
@@ -1017,7 +1252,7 @@ h1, h2, h3, h4, h5, h6 {
             cursor: pointer;
 
             &:hover {
-                background-color: darken(#0078d4, 10%);
+                background-color: color.adjust(#0078d4, $lightness: -10%);
             }
         }
     }
@@ -1719,7 +1954,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .button.expand:hover {
-        background: darken(#0078d4, 10%);
+        background: color.adjust(#0078d4, $lightness: -10%);
     }
 
     .newsletter-close-btn {

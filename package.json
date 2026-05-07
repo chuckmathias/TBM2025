@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "sass": "sass --silence-deprecation=import --silence-deprecation=global-builtin static/scss/main.scss static/css/main.css",
+    "sass:watch": "sass --watch --silence-deprecation=import --silence-deprecation=global-builtin static/scss/main.scss:static/css/main.css"
+  },
   "dependencies": {
     "foundation-sites": "^6.9.0",
     "sass": "^1.87.0"

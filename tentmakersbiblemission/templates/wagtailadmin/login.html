@@ -1,0 +1,14 @@
+{% extends "wagtailadmin/login.html" %}
+{% load static i18n %}
+
+{% block branding_login %}{% trans "Sign in to Tentmakers Bible Mission" %}{% endblock %}
+
+{% block branding_logo %}
+<div class="login-logo" style="width: 11rem;">
+  <img
+    src="{% static 'images/tentmakersbiblemission_logo_white.svg' %}"
+    alt="Tentmakers Bible Mission"
+    style="display: block; width: 100%; height: auto;"
+  >
+</div>
+{% endblock %}

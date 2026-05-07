@@ -23,6 +23,77 @@ document.addEventListener("DOMContentLoaded", () => {
         },
     });
 
+    // Home hero intro sequence and scroll-driven photo reveal
+    const hero = document.querySelector("#home_header.home-hero");
+
+    if (hero) {
+        const heroMedia = hero.querySelector(".home-hero__media");
+        const heroOverlay = hero.querySelector(".home-hero__overlay");
+        const heroWords = hero.querySelectorAll(".hero-word");
+        const heroSegments = hero.querySelectorAll(".hero-build__segment");
+        const heroSlogan = hero.querySelector(".home-hero__slogan");
+        const heroExtras = hero.querySelectorAll(".hero-cta, .home-hero__mark, .home-hero__scroll-indicator");
+        const heroInner = hero.querySelector(".home-hero__inner");
+        const heroMark = hero.querySelector(".home-hero__mark");
+
+        gsap.set([heroWords, heroSegments, heroSlogan, heroExtras], { autoAlpha: 0 });
+
+        const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        heroTimeline
+            .fromTo(heroMedia, { scale: 1.08 }, { scale: 1, duration: 1.4 }, 0)
+            .fromTo(heroWords, { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.6, stagger: 0.14 }, 0.1)
+            .fromTo(heroSegments, { y: 20, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.45, stagger: 0.16 }, 0.75)
+            .to(heroSegments, { y: -12, autoAlpha: 0, duration: 0.35, stagger: 0.08 }, "+=1.0")
+            .fromTo(heroSlogan, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.65 }, "-=0.05")
+            .fromTo(heroExtras, { y: 18, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.55, stagger: 0.08 }, "-=0.25");
+
+        gsap.to(heroOverlay, {
+            opacity: 0.35,
+            scrollTrigger: {
+                trigger: hero,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        gsap.to(heroMedia, {
+            scale: 1.08,
+            yPercent: 4,
+            scrollTrigger: {
+                trigger: hero,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        gsap.to(heroInner, {
+            y: 45,
+            autoAlpha: 0.15,
+            scrollTrigger: {
+                trigger: hero,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            },
+        });
+
+        if (heroMark) {
+            gsap.to(heroMark, {
+                y: 30,
+                autoAlpha: 0.05,
+                scrollTrigger: {
+                    trigger: hero,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true,
+                },
+            });
+        }
+    }
+
     // Fade in elements with the class "fade-in" on page load
     gsap.from(".fade-in", {
         opacity: 0,

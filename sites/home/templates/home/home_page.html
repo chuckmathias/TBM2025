@@ -6,26 +6,27 @@
     <!-- Home Header -->
     {% if page.show_home_header %}
     <div id="home_header" class="full-height-section" style="padding:0;">
-            <div class="video-background">
-                <video class="video-content" preload="auto" playsinline autoplay muted loop poster="static/videos/TBM-bg2.jpg">
-                    <source src="static/videos/TBM-bg2.mp4" type="video/mp4" />
-                    <source src="static/videos/TBM-bg2.webm" type="video/webm" />
-                    <source src="static/videos/TBM-bg2.ogv" type="video/ogg" />
-                </video>
-                <div class="home-header-content grid-container full">
-                    <div class="grid-x">
-                        <div class="cell medium-12">
-                            <h2>PLANTING CHURCHES.</h2>
-                            <h2>TRAINING CHURCH PLANTERS.</h2>
-                            <h2>together.</h2>
-                            <h3>Local churches are God’s strategy for reaching the world. We exist to help plant healthy, Bible-centered churches and to train the leaders who will shepherd and reproduce them for generations to come.</h3>
-                            <a class="button fade-in">Learn More</a>
-    
-                        </div>
-                        <div class="header-logo fade-in">
-                            <img src="static/images/tbm_logo_wireframe_white.svg" alt="">
-                        </div>
+        <div class="video-background">
+            <video class="video-content" preload="auto" playsinline autoplay muted loop poster="{% static 'videos/TBM-bg2.jpg' %}">
+                <source src="{% static 'videos/TBM-bg4-web.mp4' %}" type="video/mp4" />
+                <source src="{% static 'videos/TBM-bg4-web.webm' %}" type="video/webm" />
+                <source src="{% static 'videos/TBM-bg4-web.ogv' %}" type="video/ogg" />
+            </video>
+            <div class="home-header-content grid-container full">
+                <div class="grid-x">
+                    <div class="cell medium-12">
+                        <h2>Planting</h2>
+                        <h2>Churches.</h2>
+                        <h2>Training</h2>
+                        <h2>Church</h2>
+                        <h2>Planters.</h2>
+                        <h2>Together.</h2>
+                        <!-- <h3>Local churches are God's strategy for reaching the world.<br>We exist to help plant healthy, Bible-centered churches and to train <br>the leaders who will shepherd and reproduce them for generations to come.</h3> -->
+                        <a class="button fade-in">Learn More</a>
                     </div>
+                    <!-- <div class="header-logo fade-in">
+                        <img src="{% static 'images/tbm_logo_wireframe_white.svg' %}" alt="">
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -34,21 +35,69 @@
 
     <!-- Mission of TBM -->
     {% if page.show_home_mission %}
-        <div id="home_mission" class="full-height-section" 
-             style="background-image: url('{{ page.home_mission_image.file.url }}');">
-            <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                    <div class="cell medium-6">
-                        <h2>Mission of TBM</h2>
-                        <p>Content for the mission section goes here.</p>
-                    </div>
-                    <div class="cell medium-6">
-                        <h2>More Mission Details</h2>
-                        <p>Additional content for the mission section.</p>
-                    </div>
-                </div>
+    <section id="home_mission" class="mission-globe-section">
+        <!-- Rotating globe background -->
+        <div id="globe-container"></div>
+
+        <!-- Gradient overlay for readability -->
+        <div class="globe-overlay"></div>
+
+        <!-- Mission/Vision content -->
+        <div class="mission-vision-content">
+            <h2>...and you will be my witnesses</h2>
+            <h3>in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.</h3>
+
+
+            <!-- <div class="mission">
+                <h3>Our Mission</h3>
+                <p>
+                    To support church-planting missionaries serving around the world through
+                    partnership with local churches, equipping national workers, and empowering
+                    those called by God to make disciples among the nations.
+                </p>
             </div>
+
+            <div class="vision">
+                <h3>Our Vision</h3>
+                <p>
+                    To see vibrant, multiplying churches established in every corner of the earth,
+                    led by equipped national leaders, sent and supported by faithful local
+                    congregations who understand their calling to the Great Commission.
+                </p>
+            </div> -->
         </div>
+    </section>
+
+    <!-- globe.gl library (loaded only on this page) -->
+    <script src="https://unpkg.com/globe.gl"></script>
+    <script>
+        window.addEventListener('load', function () {
+            const globeContainer = document.getElementById('globe-container');
+
+            const globe = Globe()(globeContainer)
+                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+                .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+                .showAtmosphere(true)
+                .atmosphereColor('#6b93d6')
+                .atmosphereAltitude(0.15);
+
+            globe.controls().autoRotate = true;
+            globe.controls().autoRotateSpeed = 0.15;
+            globe.controls().enableZoom = false;
+            globe.controls().enabled = true;
+
+            globe.pointOfView({ lat: 31.7, lng: 25.2, altitude: 1.2 });
+
+            window.addEventListener('resize', () => {
+                globe.width(globeContainer.offsetWidth);
+                globe.height(globeContainer.offsetHeight);
+            });
+
+            globe.width(globeContainer.offsetWidth);
+            globe.height(globeContainer.offsetHeight);
+        });
+    </script>
     {% endif %}
 
     <!-- Values of TBM -->
@@ -61,10 +110,10 @@
                         {% if value.value.link %}
                             <a href="{{ value.value.link }}">
                         {% endif %}
-                                <div class="profile-card" 
+                                <div class="profile-card">
                                     {% if value.value.background_image %}
-                                    style="background-image: url('{{ value.value.background_image.file.url }}');"
-                                    {% endif %}>
+                                    <div class="profile-card-bg" style="background-image: url('{{ value.value.background_image.file.url }}');"></div>
+                                    {% endif %}
                                     <div class="card-content">
                                         <h2>We Value...</h2>
                                         <h3>{{ value.value.title }}</h3>
@@ -86,11 +135,14 @@
     {% if page.show_home_projects %}
         <div id="home_projects" class="full-height-section" 
              style="background-image: url('{{ page.home_projects_image.file.url }}');">
+  
             <div class="grid-container">
                 <div class="grid-x grid-margin-x">
                     <div class="cell medium-12">
                         <h2>Projects of TBM</h2>
-                        <p>Content for the projects section goes here.</p>
+                    </div>
+                    <div class="cell medium-12">
+                        
                         
                         <!-- World Map Section -->
                         {% if page.show_home_map and page.home_map %}
