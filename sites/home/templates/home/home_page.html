@@ -67,8 +67,219 @@
             </div> -->
         </div>
     </section>
+    {% endif %}
 
-    <!-- globe.gl library (loaded only on this page) -->
+      <!-- Missionary Index / Projects -->
+    {% if page.show_home_projects %}
+    <div id="home_projects">
+
+        <!-- Section header -->
+        <div class="missionaries-section-header">
+            <h2>Our Missionaries</h2>
+            <div class="view-toggle">
+                <button class="toggle-view-btn active" id="toggle-map-btn"><i class="fa-solid fa-globe"></i> Map</button>
+                <button class="toggle-view-btn" id="toggle-browse-btn"><i class="fa-solid fa-list"></i> Browse All</button>
+            </div>
+        </div>
+
+        <!-- MAP VIEW (default) -->
+        <div id="missionary-map-view" class="missionary-view active">
+            <div id="missionary-index-map"></div>
+            <!-- <p class="map-subtitle">Serving biblical church planting around the world</p> -->
+            <div id="missionary-map-popup" class="missionary-popup hidden">
+                <button class="popup-close" id="popup-close-btn">&times;</button>
+                <div class="popup-img-wrap">
+                    <img id="popup-img" src="" alt="">
+                </div>
+                <div class="popup-body">
+                    <div class="region-line" id="popup-region-line"></div>
+                    <h3 id="popup-name"></h3>
+                    <p id="popup-project"></p>
+                    <p id="popup-location"></p>
+                    <div class="popup-actions">
+                        <a id="popup-profile-link" href="#" class="button small">View Profile</a>
+                        <a id="popup-donate-link" href="#" class="button small hollow" target="_blank" rel="noopener">Donate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BROWSE VIEW -->
+        <div id="missionary-browse-view" class="missionary-view">
+            <div class="browse-controls">
+                <input type="text" id="missionary-search" placeholder="Search missionaries..." autocomplete="off">
+                <div class="region-tabs">
+                    <button class="region-tab active" data-region="all">All</button>
+                    <button class="region-tab" data-region="Africa">Africa</button>
+                    <button class="region-tab" data-region="Asia">Asia</button>
+                    <button class="region-tab" data-region="Europe">Europe</button>
+                    <button class="region-tab" data-region="North America">N. America</button>
+                    <button class="region-tab" data-region="South America">S. America</button>
+                    <button class="region-tab" data-region="Home Office">Home Office</button>
+                </div>
+            </div>
+            <div id="missionary-card-grid" class="grid-x grid-margin-x small-up-1 medium-up-3 large-up-4">
+                <!-- Cards injected by JS -->
+            </div>
+            <p id="no-results-msg" class="no-results hidden">No missionaries found.</p>
+        </div>
+
+        <!-- Safe JSON data for JS -->
+        {{ missionaries_data|json_script:"missionary-data" }}
+
+    </div>
+
+    <script>
+    (function () {
+        var missionaries = JSON.parse(document.getElementById('missionary-data').textContent);
+
+        function regionToClass(r) {
+            return r.toLowerCase().replace(/\s+/g, '-');
+        }
+
+        // ---- View Toggle ----
+        function switchView(v) {
+            ['map', 'browse'].forEach(function (name) {
+                document.getElementById('missionary-' + name + '-view').classList.toggle('active', name === v);
+                document.getElementById('toggle-' + name + '-btn').classList.toggle('active', name === v);
+            });
+            if (v === 'browse' && !window._missionaryBrowseBuilt) {
+                buildCards();
+                window._missionaryBrowseBuilt = true;
+            }
+        }
+
+        document.getElementById('toggle-map-btn').addEventListener('click', function () { switchView('map'); });
+        document.getElementById('toggle-browse-btn').addEventListener('click', function () { switchView('browse'); });
+
+        // ---- MAP VIEW ----
+        var validM = missionaries.filter(function (m) { return m.lat && m.lng; });
+
+        var indexMap = new maptalks.Map('missionary-index-map', {
+            center: [20, 25],
+            zoom: 2,
+            minZoom: 1,
+            maxZoom: 14,
+            baseLayer: new maptalks.TileLayer('base', {
+                urlTemplate: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+                subdomains: ['a', 'b', 'c'],
+                attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors \u00a9 <a href="https://carto.com/">CARTO</a>'
+            })
+        });
+        indexMap.config({ scrollWheelZoom: false });
+        indexMap.addControl(new maptalks.control.Zoom({ position: 'top-right' }));
+
+        var vLayer = new maptalks.VectorLayer('vector').addTo(indexMap);
+
+        validM.forEach(function (m) {
+            var marker = new maptalks.Marker([m.lng, m.lat], {
+                symbol: {
+                    markerFile: '/static/images/tbm-marker.png',
+                    markerWidth: 40,
+                    markerHeight: 28
+                }
+            });
+            marker.on('click', function () { showMapPopup(m); });
+            marker.addTo(vLayer);
+        });
+
+        function showMapPopup(m) {
+            var imgEl = document.getElementById('popup-img');
+            document.getElementById('popup-name').textContent = m.name;
+            document.getElementById('popup-project').textContent = m.project;
+            var loc = [m.place, m.country].filter(Boolean).join(', ');
+            document.getElementById('popup-location').textContent = loc;
+            if (m.img) {
+                imgEl.src = m.img;
+                imgEl.alt = m.name;
+                imgEl.parentElement.style.display = '';
+            } else {
+                imgEl.parentElement.style.display = 'none';
+            }
+            document.getElementById('popup-region-line').className = 'region-line region-' + regionToClass(m.region);
+            document.getElementById('popup-profile-link').href = m.url;
+            var donateLink = document.getElementById('popup-donate-link');
+            if (m.donation_link) {
+                donateLink.href = m.donation_link;
+                donateLink.style.display = '';
+            } else {
+                donateLink.style.display = 'none';
+            }
+            document.getElementById('missionary-map-popup').classList.remove('hidden');
+        }
+
+        document.getElementById('popup-close-btn').addEventListener('click', function () {
+            document.getElementById('missionary-map-popup').classList.add('hidden');
+        });
+
+        // ---- BROWSE VIEW ----
+        function escHtml(str) {
+            var d = document.createElement('div');
+            d.textContent = String(str);
+            return d.innerHTML;
+        }
+
+        function buildCards() {
+            var grid = document.getElementById('missionary-card-grid');
+            missionaries.forEach(function (m) {
+                var loc = [m.place, m.country].filter(Boolean).join(', ');
+                var imgHtml = m.img
+                    ? '<img src="' + escHtml(m.img) + '" alt="' + escHtml(m.name) + '" loading="lazy">'
+                    : '<div class="no-photo-placeholder"></div>';
+                var donateHtml = m.donation_link
+                    ? '<a href="' + escHtml(m.donation_link) + '" class="button small hollow" target="_blank" rel="noopener">Donate</a>'
+                    : '';
+                var locHtml = loc ? '<p class="card-location">' + escHtml(loc) + '</p>' : '';
+                var col = document.createElement('div');
+                col.className = 'cell small-12 medium-4 large-3 missionary-index-card-wrap';
+                col.dataset.name = m.name.toLowerCase();
+                col.dataset.region = m.region;
+                col.innerHTML =
+                    '<div class="missionary-index-card">' +
+                      '<div class="card-img-wrap">' + imgHtml + '</div>' +
+                      '<div class="region-line region-' + regionToClass(m.region) + '"></div>' +
+                      '<div class="card-body">' +
+                        '<h4>' + escHtml(m.name) + '</h4>' +
+                        '<p class="card-project">' + escHtml(m.project) + '</p>' +
+                        locHtml +
+                      '</div>' +
+                      '<div class="card-actions">' +
+                        '<a href="' + escHtml(m.url) + '" class="button small">View Profile</a>' +
+                        donateHtml +
+                      '</div>' +
+                    '</div>';
+                grid.appendChild(col);
+            });
+            document.getElementById('missionary-search').addEventListener('input', filterCards);
+            document.querySelectorAll('.region-tab').forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    document.querySelectorAll('.region-tab').forEach(function (t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+                    filterCards();
+                });
+            });
+        }
+
+        function filterCards() {
+            var search = document.getElementById('missionary-search').value.toLowerCase().trim();
+            var activeTab = document.querySelector('.region-tab.active');
+            var region = activeTab ? activeTab.dataset.region : 'all';
+            var visible = 0;
+            document.querySelectorAll('.missionary-index-card-wrap').forEach(function (card) {
+                var nameOk = card.dataset.name.indexOf(search) !== -1;
+                var regionOk = region === 'all' || card.dataset.region === region;
+                var show = nameOk && regionOk;
+                card.classList.toggle('hidden', !show);
+                if (show) visible++;
+            });
+            document.getElementById('no-results-msg').classList.toggle('hidden', visible > 0);
+        }
+    }());
+    </script>
+    {% endif %}
+
+    <!-- globe.gl library (loaded only when mission section is shown) -->
+    {% if page.show_home_mission %}
     <script src="https://unpkg.com/globe.gl"></script>
     <script>
         window.addEventListener('load', function () {
@@ -107,124 +318,244 @@
                 <div class="grid-x">
                     {% for value in page.values %}
                     <div class="profile-card-container cell small-12 medium-6 large-4">
-                        {% if value.value.link %}
-                            <a href="{{ value.value.link }}">
-                        {% endif %}
-                                <div class="profile-card">
-                                    {% if value.value.background_image %}
-                                    <div class="profile-card-bg" style="background-image: url('{{ value.value.background_image.file.url }}');"></div>
-                                    {% endif %}
-                                    <div class="card-content">
-                                        <h2>We Value...</h2>
-                                        <h3>{{ value.value.title }}</h3>
-                                        <p>{{ value.value.description|richtext }}</p>
-                                        
-                                    </div>
-                                </div>
-                        {% if value.value.link %}
-                            </a>
-                        {% endif %}
+                        <div class="profile-card">
+                            {% if value.value.background_image %}
+                            <div class="profile-card-bg" style="background-image: url('{{ value.value.background_image.file.url }}');"></div>
+                            {% endif %}
+                            <div class="card-content">
+                                <h2>We Value...</h2>
+                                <h3>{{ value.value.title }}</h3>
+                                <p>{{ value.value.description|richtext }}</p>
+                                {% if value.value.link %}
+                                <a href="{{ value.value.link }}" class="button value-card-btn">Learn More</a>
+                                {% else %}
+                                <a href="#" class="button value-card-btn disabled" aria-disabled="true">Learn More</a>
+                                {% endif %}
+                            </div>
                         </div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
         </div>
     {% endif %}
 
-    <!-- Projects of TBM -->
-    {% if page.show_home_projects %}
-        <div id="home_projects" class="full-height-section" 
-             style="background-image: url('{{ page.home_projects_image.file.url }}');">
   
-            <div class="grid-container">
-                <div class="grid-x grid-margin-x">
-                    <div class="cell medium-12">
-                        <h2>Projects of TBM</h2>
-                    </div>
-                    <div class="cell medium-12">
-                        
-                        
-                        <!-- World Map Section -->
-                        {% if page.show_home_map and page.home_map %}
-                            <div class="projects-map-section">
-                                {% for block in page.home_map %}
-                                    {% if block.block_type == 'world_map' %}
-                                        {% include_block block %}
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endif %}
 
     <!-- Envision Project -->
     {% if page.show_home_envision %}
-    <div id="home_envision" class="full-height-section envision-section" 
-        style="background-image: url('{{ page.home_envision_image.file.url }}');">
-        <div class="grid-container envision-grid-bg">
-            <!-- Top: Title, About, Logo -->
-            <div class="envision-info-col">
-                <h2>Envision Project</h2>
-                <p>Content for the envision project section goes here.</p>
+    <div id="home_envision" class="envision-section full-height-section"
+        {% if page.home_envision_image %}style="background-image: url('{{ page.home_envision_image.file.url }}');"{% endif %}>
+
+        <div class="envision-inner grid-container">
+
+            <!-- Logo + Headline -->
+            <div class="envision-hero">
+                <img src="{% static 'images/envision_logo.svg' %}" alt="Envision" class="envision-logo">
+                <p class="envision-intro">Cross-cultural missions isn't something you can easily learn from a distance. Envision connects you with missionaries working around the world — not from the sidelines, but as a participant.</p>
             </div>
-            <!-- Bottom: Four columns in a row -->
-            <div class="grid-x grid-margin-x envision-cols-row">
-                <div class="cell small-12 medium-3 envision-col envision-encourage">
-                    <h3>Encourage</h3>
-                    <p>Mission Trip</p>
-                    <div>
-                        <p>This is where the paragraph of information about this program is...</p>
+
+            <!-- Four Levels -->
+            <!-- <div class="grid-x grid-margin-x envision-levels">
+                <div class="cell small-12 medium-6 large-3">
+                    <div class="envision-level-card envision-encourage">
+                        <div class="level-accent"></div>
+                        <div class="level-duration">1–2 weeks</div>
+                        <h3>Encourage</h3>
+                        <p class="level-type">Mission Trip</p>
                     </div>
                 </div>
-                <div class="cell small-12 medium-3 envision-col envision-enrich">
-                    <h3>Enrich</h3>
-                    <p>Vision Trip</p>
-                    <div>
-                        <p>This is where the paragraph of information about this program is...</p>
+                <div class="cell small-12 medium-6 large-3">
+                    <div class="envision-level-card envision-enrich">
+                        <div class="level-accent"></div>
+                        <div class="level-duration">2–4 weeks</div>
+                        <h3>Enrich</h3>
+                        <p class="level-type">Vision Trip</p>
                     </div>
                 </div>
-                <div class="cell small-12 medium-3 envision-col envision-engage">
-                    <h3>Engage</h3>
-                    <p>Internship</p>
-                    <div>
-                        <p>This is where the paragraph of information about this program is...</p>
+                <div class="cell small-12 medium-6 large-3">
+                    <div class="envision-level-card envision-engage">
+                        <div class="level-accent"></div>
+                        <div class="level-duration">2–6 months</div>
+                        <h3>Engage</h3>
+                        <p class="level-type">Internship</p>
                     </div>
                 </div>
-                <div class="cell small-12 medium-3 envision-col envision-entrust">
-                    <h3>Entrust</h3>
-                    <p>Apprenticeship</p>
-                    <div>
-                        <p>This is where the paragraph of information about this program is...</p>
+                <div class="cell small-12 medium-6 large-3">
+                    <div class="envision-level-card envision-entrust">
+                        <div class="level-accent"></div>
+                        <div class="level-duration">6–12 months</div>
+                        <h3>Entrust</h3>
+                        <p class="level-type">Apprenticeship</p>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Testimonial Row -->
+            <div class="grid-x grid-margin-x envision-testimonials">
+                <div class="cell small-12 medium-6">
+                    <div class="envision-testimonial-card">
+                        <div class="testimonial-inner">
+                            <div class="envision-photo-placeholder">
+                                <i class="fa-solid fa-image"></i>
+                                <span>Haley</span>
+                            </div>
+                            <div class="testimonial-body">
+                                <i class="fa-solid fa-quote-left"></i>
+                                <p>"It was amazing to have the opportunity to experience missions in this way and to help determine how the Lord plans to use me to further His kingdom."</p>
+                                <cite>&mdash; Haley Thomalla, Peru</cite>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-6">
+                    <div class="envision-testimonial-card envision-testimonial-placeholder">
+                        <div class="testimonial-inner">
+                            <div class="envision-photo-placeholder">
+                                <i class="fa-solid fa-image"></i>
+                                <span>Austin</span>
+                            </div>
+                            <div class="testimonial-body">
+                                <i class="fa-solid fa-quote-left"></i>
+                                <p><em>Testimonial from Austin coming soon.</em></p>
+                                <cite>&mdash; Austin, Envision Participant</cite>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="envision-logo-wrapper text-center">
-                <img src="{% static 'images/envision_logo.svg' %}" alt="Envision Project Logo" class="envision-logo">
+
+            <!-- CTA -->
+            <div class="envision-cta">
+                <a href="#" class="button envision-btn">Explore the Envision Program <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            
+
         </div>
     </div>
     {% endif %}
 
     <!-- Pray for TBM -->
     {% if page.show_home_pray %}
-        <div id="home_pray" class="half-height-section pray-section" 
-             style="background-image: url('{{ page.home_pray_image.file.url }}');">
-            <div class="pray-section-container">
-                    <div class="pray-text-box">
-                        <h2>Pray for TBM</h2>
-                        <p>Our missionaries need your faithful prayer.</p>
-                        <p>If you would like to pray for our TBM missionaries you can download our weekly prayer guide.</p>
-                        <button class="button">Download Prayer Guide</button>
+    <div id="home_pray" class="pray-section full-height-section"
+         {% if page.home_pray_image %}style="background-image: url('{{ page.home_pray_image.file.url }}');"{% endif %}>
+
+        <div class="pray-content grid-container">
+            <div class="grid-x grid-margin-x align-middle">
+
+                <!-- Left: Quote Carousel -->
+                <div class="cell small-12 medium-6 pray-col-quotes">
+                    <div class="pray-quote-carousel" id="prayQuoteCarousel">
+                        <div class="pray-quote active">
+                            <blockquote>
+                                <p>&ldquo;The man who mobilizes the Christian church to pray will make the greatest contribution to world evangelization in history.&rdquo;</p>
+                                <footer>&mdash; Andrew Murray</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;You can do more than pray after you have prayed, but you cannot do more than pray until you have prayed.&rdquo;</p>
+                                <footer>&mdash; S.D. Gordon</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;Prayer is the key that unlocks all the storehouses of God&rsquo;s infinite grace and power. All that God is, and all that God has, is at the disposal of prayer.&rdquo;</p>
+                                <footer>&mdash; R.A. Torrey</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;Prayer does not fit us for the greater work; prayer is the greater work.&rdquo;</p>
+                                <footer>&mdash; Oswald Chambers</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;Every great movement of God can be traced to a kneeling figure.&rdquo;</p>
+                                <footer>&mdash; D.L. Moody</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;We have all eternity to celebrate the victories, but only a few hours before sunset to win them.&rdquo;</p>
+                                <footer>&mdash; Amy Carmichael</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;What the church needs today is not more machinery or better, not new organizations or more and novel methods, but men whom the Holy Spirit can use: men of prayer, men mighty in prayer.&rdquo;</p>
+                                <footer>&mdash; E.M. Bounds</footer>
+                            </blockquote>
+                        </div>
+                        <div class="pray-quote">
+                            <blockquote>
+                                <p>&ldquo;In the history of missions we see it&hellip;where men and women have given themselves to prayer, wonderful things have happened.&rdquo;</p>
+                                <footer>&mdash; Andrew Murray</footer>
+                            </blockquote>
+                        </div>
                     </div>
-                    <div class="pray-image-box">
-                        <img src="{{ page.home_pray_image.file.url }}" alt="Pray for TBM" class="pray-image">
+
+                </div>
+
+                <!-- Right: CTA, Download, Newsletter -->
+                <div class="cell small-12 medium-6 pray-col-cta">
+                    <div class="pray-cta">
+                        <h2>Pray for Our Missionaries</h2>
+                        <p>Your faithful prayer moves mountains. Join us in interceding for the nations.</p>
+
+                        {% if page.prayer_guide_document %}
+                        <a href="{{ page.prayer_guide_document.url }}" class="button pray-btn" download>
+                            <i class="fa-solid fa-file-arrow-down"></i> Download Prayer Guide
+                        </a>
+                        {% else %}
+                        <button class="button pray-btn" disabled title="Coming soon">
+                            <i class="fa-solid fa-file-arrow-down"></i> Download Prayer Guide
+                        </button>
+                        {% endif %}
+
+                        <div class="pray-newsletter">
+                            <h3>Get the Prayer Newsletter</h3>
+                            <p>Sign up to receive monthly updates and prayer requests from our missionaries.</p>
+                            <form class="pray-newsletter-form" action="#" method="post">
+                                <input type="email" name="email" placeholder="Your email address" required>
+                                <button type="submit" class="button pray-btn pray-btn-outline">Subscribe</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
+            </div>
         </div>
+
+        <script>
+        (function () {
+            var carousel = document.getElementById('prayQuoteCarousel');
+            var quotes = carousel.querySelectorAll('.pray-quote');
+            var current = 0;
+            var timer;
+            var INTERVAL = 7000;
+
+            function goTo(n) {
+                quotes[current].classList.remove('active');
+                current = (n + quotes.length) % quotes.length;
+                quotes[current].classList.add('active');
+            }
+
+            function next() { goTo(current + 1); }
+
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, INTERVAL);
+            }
+
+            // Pause on hover
+            carousel.addEventListener('mouseenter', function () { clearInterval(timer); });
+            carousel.addEventListener('mouseleave', resetTimer);
+
+            resetTimer();
+        }());
+        </script>
+    </div>
     {% endif %}
 
     <!-- Promotional Materials of TBM -->

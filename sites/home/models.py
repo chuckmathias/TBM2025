@@ -4,6 +4,7 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.blocks import StructBlock, BooleanBlock, CharBlock, RichTextBlock, URLBlock
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from wagtail import blocks
+from wagtail.documents.models import Document
 from django.db import models
 from apps.missionary_profiles.models import MissionaryProfilePage
 from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
@@ -84,6 +85,14 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    prayer_guide_document = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+',
+        help_text="Weekly prayer guide PDF (downloadable by visitors)"
+    )
     home_promo_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -114,10 +123,36 @@ class HomePage(Page):
         FieldPanel('home_envision_image'),
         FieldPanel('show_home_envision'),
         FieldPanel('home_pray_image'),
+        FieldPanel('prayer_guide_document'),
         FieldPanel('show_home_pray'),
         FieldPanel('home_promo_image'),
         FieldPanel('show_home_promo'),
     ]
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        missionaries = (
+            MissionaryProfilePage.objects
+            .live()
+            .order_by('name')
+            .select_related('profile_header_image')
+        )
+        missionary_data = []
+        for m in missionaries:
+            missionary_data.append({
+                'name': m.name,
+                'project': m.project,
+                'region': m.region,
+                'country': m.country or '',
+                'place': m.place or '',
+                'lat': m.latitude,
+                'lng': m.longitude,
+                'url': m.url,
+                'donation_link': m.donation_link or '',
+                'img': m.profile_header_image.file.url if m.profile_header_image_id else '',
+            })
+        context['missionaries_data'] = missionary_data
+        return context
 
 class FullHeightSectionBlock(StructBlock):
     """A single full-height section block."""

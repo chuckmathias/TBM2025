@@ -6611,139 +6611,486 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #000000;
 }
 
-.envision-section .envision-grid-bg {
-  background: linear-gradient(135deg, rgba(51, 51, 51, 0.9647058824) 0%, rgba(0, 0, 0, 0.9647058824) 100%);
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 24px rgba(0, 120, 212, 0.08);
-  padding: 2.5rem 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+#home_envision.envision-section {
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color: #fff;
+  border-top: solid 2px #fff;
 }
 
-.envision-logo-wrapper {
-  max-width: 180px;
+.envision-inner {
+  position: relative;
+  z-index: 2;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.envision-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.envision-logo {
+  max-width: 280px;
   height: auto;
-}
-
-.envision-info-col {
-  background: transparent;
-  color: #ffffff;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.envision-info-col h2 {
-  font-size: 2.2rem;
-  font-weight: 900;
-  margin-bottom: 1rem;
-  color: #ffffff;
-}
-.envision-info-col p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #ffffff;
-}
-.envision-info-col .envision-logo {
-  max-width: 120px;
-  margin: 0 auto;
+  margin: 0 auto 1.5rem;
   display: block;
+  filter: brightness(0) invert(1);
 }
 
-.envision-col {
-  background: rgba(117, 117, 117, 0.3215686275);
-  border-radius: 1rem;
-  box-shadow: 0 2px 16px rgba(0, 120, 212, 0.08);
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.envision-col h3 {
-  color: #ffffff;
-  font-size: 1.3rem;
+.envision-tagline {
+  font-family: "Lato", sans-serif;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
   font-weight: 700;
-  margin-bottom: 0.7rem;
-}
-.envision-col p {
-  color: #000000;
-  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #a8d5a2;
+  margin-bottom: 1rem;
 }
 
-.pray-section-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  max-width: 900px;
+.envision-intro {
+  font-family: "Cardo", serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.7;
+  color: #ddd;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 2.5rem 1rem;
-  height: 100%;
 }
 
-.pray-text-box {
-  background: rgba(51, 51, 51, 0.95);
-  border-radius: 1.2rem;
-  box-shadow: 0 2px 16px rgba(0, 120, 212, 0.08);
-  padding: 2rem 1.5rem;
-  flex: 1 1 0;
+.envision-quote {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3.5rem;
+  padding: 2rem;
+  border-left: 4px solid #a8d5a2;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 0 8px 8px 0;
   text-align: left;
 }
+.envision-quote .envision-quote-icon {
+  color: #a8d5a2;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.envision-quote blockquote {
+  margin: 0 0 0.75rem;
+  font-family: "Cardo", serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: #f0ede8;
+}
+.envision-quote cite {
+  font-family: "Lato", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #a8d5a2;
+}
 
-.pray-image-box {
-  flex: 0 0 300px;
+.envision-levels {
+  margin-bottom: 3rem;
+}
+
+.envision-level-card {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.75rem 1.25rem 1.5rem;
+  height: 100%;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.envision-level-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+.envision-level-card .level-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+.envision-level-card .level-duration {
+  font-family: "Lato", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+.envision-level-card h3 {
+  font-family: "Lato", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.15rem;
+  color: #fff;
+}
+.envision-level-card .level-type {
+  font-family: "Lato", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+.envision-level-card .level-desc {
+  font-family: "Cardo", serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin: 0;
+}
+.envision-level-card.envision-encourage .level-accent {
+  background: #0078d4;
+}
+.envision-level-card.envision-encourage h3 {
+  color: #5ab4ff;
+}
+.envision-level-card.envision-enrich .level-accent {
+  background: #00bfae;
+}
+.envision-level-card.envision-enrich h3 {
+  color: #4dd9ce;
+}
+.envision-level-card.envision-engage .level-accent {
+  background: #ffb300;
+}
+.envision-level-card.envision-engage h3 {
+  color: #ffd666;
+}
+.envision-level-card.envision-entrust .level-accent {
+  background: #e53935;
+}
+.envision-level-card.envision-entrust h3 {
+  color: #ff7b78;
+}
+
+.envision-testimonials {
+  margin-bottom: 3rem;
+}
+
+.envision-testimonial-card {
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(168, 213, 162, 0.2);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  height: 100%;
+  margin-bottom: 1.5rem;
+}
+.envision-testimonial-card .testimonial-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+.envision-testimonial-card .testimonial-body {
+  flex: 1;
+}
+.envision-testimonial-card .testimonial-body i {
+  color: #a8d5a2;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.envision-testimonial-card .testimonial-body p {
+  font-family: "Cardo", serif;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #e8e5e0;
+  margin-bottom: 0.5rem;
+}
+.envision-testimonial-card .testimonial-body cite {
+  font-family: "Lato", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #a8d5a2;
+}
+.envision-testimonial-card.envision-testimonial-placeholder {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.envision-photos {
+  margin-bottom: 2.5rem;
+}
+
+.envision-photo-placeholder {
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
+  gap: 0.3rem;
+}
+.envision-photo-placeholder i {
+  font-size: 1.25rem;
+}
+.envision-photo-placeholder span {
+  font-family: "Lato", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.envision-cta {
+  text-align: center;
+  padding-top: 0;
+}
+.envision-cta p {
+  font-family: "Cardo", serif;
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.65;
+}
+
+.envision-btn {
+  background-color: #0078d4;
+  color: #fff;
+  border-radius: 6px;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.7rem 2rem;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid #0078d4;
+  transition: background 0.2s, border-color 0.2s;
+}
+.envision-btn i {
+  margin-left: 0.5rem;
+}
+.envision-btn:hover {
+  background-color: #005fa3;
+  border-color: #005fa3;
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  #home_envision.envision-section {
+    background-attachment: scroll;
+  }
+}
+#home_pray {
+  position: relative;
+  border-top: solid 2px #fff;
+  color: #fff;
+}
+
+.pray-content {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 1rem;
+  color: #fff;
+}
+
+.pray-col-quotes {
+  padding-right: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+@media (max-width: 639px) {
+  .pray-col-quotes {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding-right: 0;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.pray-col-cta {
+  padding-left: 2rem;
+}
+@media (max-width: 639px) {
+  .pray-col-cta {
+    padding-left: 0;
+  }
+}
+
+.pray-quote-carousel {
+  width: 100%;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  position: relative;
 }
 
-.pray-image {
-  width: 100%;
-  height: 100%;
-  max-width: 280px;
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(0, 120, 212, 0.08);
-  object-fit: cover;
+.pray-quote {
+  display: none;
+  animation: prayFadeIn 0.6s ease;
+}
+.pray-quote.active {
+  display: block;
+}
+.pray-quote blockquote {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+.pray-quote blockquote p {
+  font-family: "Cardo", serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.55rem);
+  line-height: 1.65;
+  color: #f0f0f0;
+  font-style: italic;
+  margin-bottom: 1rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+.pray-quote blockquote footer {
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #aad4f5;
 }
 
-@media (max-width: 800px) {
-  .pray-section-container {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem 0.5rem;
+@keyframes prayFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  .pray-image-box {
-    max-width: 100%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.pray-cta h2 {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.pray-cta > p {
+  font-family: "Cardo", serif;
+  font-size: 1.05rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.pray-btn {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.65rem 1.75rem;
+  border-radius: 6px;
+  background-color: #0078d4;
+  border: 2px solid #0078d4;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, border-color 0.2s;
+  margin-bottom: 2rem;
+}
+.pray-btn i {
+  margin-right: 0.4rem;
+}
+.pray-btn:hover {
+  background-color: #005fa3;
+  border-color: #005fa3;
+  color: #fff;
+}
+.pray-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.pray-btn.pray-btn-outline {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  margin-bottom: 0;
+}
+.pray-btn.pray-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+.pray-newsletter {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 1.5rem;
+}
+.pray-newsletter h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+.pray-newsletter p {
+  font-family: "Cardo", serif;
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+  line-height: 1.55;
+}
+
+.pray-newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.pray-newsletter-form input[type=email] {
+  flex: 1;
+  min-width: 180px;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+}
+.pray-newsletter-form input[type=email]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.pray-newsletter-form input[type=email]:focus {
+  outline: none;
+  border-color: #0078d4;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 640px) {
+  .pray-content {
+    padding: 3rem 1.25rem;
+    gap: 1.5rem;
   }
 }
 /* Optional: Give each envision section a unique accent color */
-.envision-encourage {
-  border-top: 6px solid #0078d4;
-}
-
-.envision-enrich {
-  border-top: 6px solid #00bfae;
-}
-
-.envision-engage {
-  border-top: 6px solid #ffb300;
-}
-
-.envision-entrust {
-  border-top: 6px solid #e53935;
-}
-
 @media (max-width: 900px) {
-  .envision-info-col, .envision-col {
-    margin-bottom: 1.5rem;
-  }
-  .envision-section .envision-grid-bg {
-    padding: 1.2rem 0.5rem;
+  .envision-inner {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 }
 .full-height-section .overlay {
@@ -7129,8 +7476,8 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   overflow: hidden;
   background: #000;
-  border-bottom: 10px solid #fff;
-  border-top: 10px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-top: 2px solid #fff;
 }
 .mission-globe-section #globe-container {
   position: absolute;
@@ -7439,6 +7786,9 @@ h1, h2, h3, h4, h5, h6 {
 #home_values .profile-card {
   border: solid 2px #fff;
 }
+#home_values .profile-card .overlay {
+  background-color: rgba(38, 38, 38, 0.55);
+}
 #home_values .profile-card .profile-card-bg {
   position: absolute;
   inset: -6px;
@@ -7449,7 +7799,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1);
   will-change: transform;
   transition: transform 0.4s ease;
-  filter: grayscale(100%) brightness(0.35) sepia(60%) hue-rotate(180deg) blur(3px);
+  filter: brightness(0.4) blur(1px);
 }
 #home_values .profile-card .card-content {
   position: relative;
@@ -7461,6 +7811,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 #home_values .profile-card:hover .profile-card-bg {
   transform: scale(1.08);
+}
+#home_values .profile-card .value-card-btn {
+  position: relative;
+  z-index: 3;
+  margin-top: 1.875rem;
+  background-color: #0078d4;
+  color: #fff;
+  border-radius: 5px;
+  font-family: "Lato", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 2rem;
+  border: 2px solid #0078d4;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, border-color 0.2s;
+  pointer-events: auto;
+}
+#home_values .profile-card .value-card-btn:hover {
+  background-color: #005fa3;
+  border-color: #005fa3;
+  color: #fff;
+}
+#home_values .profile-card .value-card-btn.disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
 }
 
 #projects-page .profile-card {
@@ -7508,7 +7886,332 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #home_projects {
-  border-top: solid 10px #fff;
+  border-top: solid 2px #fff;
+  overflow-x: hidden;
+  background: #0e0e0e;
+  padding: 0;
+  color: #fff;
+  position: relative;
+}
+
+/* ---- Missionary Index: Section Header ---- */
+.missionaries-section-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  text-align: center;
+  padding: 1.75rem 1rem 3rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.72) 0%, transparent 100%);
+  pointer-events: none;
+}
+.missionaries-section-header h2 {
+  font-size: 2.5rem;
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+.missionaries-section-header .view-toggle {
+  pointer-events: auto;
+}
+
+.view-toggle {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.toggle-view-btn {
+  background: rgba(0, 0, 0, 0.45);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  color: #ccc;
+  padding: 0.3rem 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+.toggle-view-btn i {
+  margin-right: 0.35rem;
+}
+.toggle-view-btn.active {
+  background: #0078d4;
+  border-color: #0078d4;
+  color: #fff;
+}
+.toggle-view-btn:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+/* ---- Shared view container ---- */
+.missionary-view {
+  display: none;
+}
+.missionary-view.active {
+  display: block;
+}
+
+/* ---- Map View ---- */
+#missionary-map-view {
+  position: relative;
+}
+
+.map-subtitle {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  margin: 0;
+  padding: 0.35rem 1rem;
+  color: #ccc;
+  font-family: "Cardo", serif;
+  text-transform: uppercase;
+  font-size: 1rem;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+#missionary-index-map {
+  width: 100%;
+  height: 65vh;
+  min-height: 400px;
+  display: block;
+}
+
+.missionary-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 280px;
+  background: #1c1c1c;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.7);
+  z-index: 500;
+}
+.missionary-popup.hidden {
+  display: none;
+}
+.missionary-popup .popup-close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  cursor: pointer;
+  z-index: 1;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+.missionary-popup .popup-close:hover {
+  opacity: 1;
+}
+.missionary-popup .popup-img-wrap {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  background: #333;
+}
+.missionary-popup .popup-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.missionary-popup .popup-body {
+  padding: 0.9rem 1rem 1rem;
+  color: #fff;
+}
+.missionary-popup .popup-body h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  font-size: 1.05rem;
+  margin: 0.3rem 0 0.2rem;
+}
+.missionary-popup .popup-body #popup-project {
+  font-size: 0.85rem;
+  color: #bbb;
+  margin: 0 0 0.15rem;
+}
+.missionary-popup .popup-body #popup-location {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0 0 0.8rem;
+}
+.missionary-popup .popup-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+.missionary-popup .popup-actions a.button, .missionary-popup .popup-actions a.donate-button,
+.missionary-popup .popup-actions a.get-involved-button {
+  flex: 1;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.25rem;
+  white-space: nowrap;
+}
+
+/* ---- Browse View ---- */
+#missionary-browse-view {
+  background: #0e0e0e;
+  padding: 9rem 1rem 3.5rem;
+}
+#missionary-browse-view .browse-controls {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#missionary-browse-view #missionary-search {
+  display: block;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto 1.25rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: 50px;
+  border: 1px solid #444;
+  background: #1e1e1e;
+  color: #fff;
+  font-size: 1rem;
+  font-family: "Lato", sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#missionary-browse-view #missionary-search:focus {
+  border-color: #01577d;
+}
+#missionary-browse-view #missionary-search::placeholder {
+  color: #666;
+}
+#missionary-browse-view .region-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+}
+#missionary-browse-view .region-tab {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-family: "Lato", sans-serif;
+  transition: all 0.2s ease;
+}
+#missionary-browse-view .region-tab.active, #missionary-browse-view .region-tab:hover {
+  border-color: #01577d;
+  background: #01577d;
+  color: #fff;
+}
+
+#missionary-card-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#missionary-card-grid .missionary-index-card-wrap {
+  margin-bottom: 1.5rem;
+}
+#missionary-card-grid .missionary-index-card-wrap.hidden {
+  display: none;
+}
+
+.missionary-index-card {
+  background: #1a1a1a;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.missionary-index-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.7);
+}
+.missionary-index-card .card-img-wrap {
+  width: 100%;
+  height: 165px;
+  overflow: hidden;
+  background: #2a2a2a;
+  flex-shrink: 0;
+}
+.missionary-index-card .card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+.missionary-index-card:hover .card-img-wrap img {
+  transform: scale(1.06);
+}
+.missionary-index-card .no-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1e3a5f 0%, #0e2040 100%);
+}
+.missionary-index-card .region-line {
+  height: 4px;
+  border-radius: 0;
+  margin: 0;
+}
+.missionary-index-card .card-body {
+  padding: 0.85rem 1rem 0.5rem;
+  flex: 1;
+}
+.missionary-index-card .card-body h4 {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+  color: #fff;
+  font-size: 1rem;
+  margin: 0 0 0.2rem;
+}
+.missionary-index-card .card-body .card-project {
+  font-size: 0.82rem;
+  color: #aaa;
+  margin: 0 0 0.15rem;
+}
+.missionary-index-card .card-body .card-location {
+  font-size: 0.78rem;
+  color: #777;
+  margin: 0;
+}
+.missionary-index-card .card-actions {
+  display: flex;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem 0.9rem;
+}
+.missionary-index-card .card-actions a.button, .missionary-index-card .card-actions a.donate-button,
+.missionary-index-card .card-actions a.get-involved-button {
+  flex: 1;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.25rem;
+  white-space: nowrap;
+}
+
+.no-results {
+  text-align: center;
+  color: #666;
+  padding: 2.5rem;
+  font-family: "Lato", sans-serif;
+}
+.no-results.hidden {
+  display: none;
 }
 
 #projects-intro {
