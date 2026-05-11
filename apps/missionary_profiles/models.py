@@ -1,5 +1,6 @@
 from wagtail.models import Page
-from wagtail.fields import RichTextField
+from wagtail import blocks
+from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, FieldRowPanel, InlinePanel
 from django.db import models
 from django.shortcuts import render
@@ -24,7 +25,36 @@ class MissionaryProfilePage(Page):
         ],
         default='North America'
     )
-    information = RichTextField()
+    information = RichTextField(blank=True)
+    information_sections = StreamField(
+        [
+            (
+                'section',
+                blocks.StructBlock([
+                    ('heading', blocks.CharBlock(required=False, help_text="Example: OUR MISSION")),
+                    ('content', blocks.RichTextBlock(required=True)),
+                ])
+            ),
+            (
+                'person_profile',
+                blocks.StructBlock([
+                    ('name', blocks.CharBlock(required=True, help_text="Example: Colby")),
+                    ('summary_line', blocks.CharBlock(required=False, help_text="Example: Hands-on mechanical, strategist, pianist")),
+                    ('bio', blocks.RichTextBlock(required=True)),
+                ])
+            ),
+            (
+                'scripture',
+                blocks.StructBlock([
+                    ('intro', blocks.CharBlock(required=False, default="One of our favorite verses")),
+                    ('verse_text', blocks.TextBlock(required=True)),
+                    ('reference', blocks.CharBlock(required=True, help_text="Example: 1 Corinthians 15:1-3 NASB1995")),
+                ])
+            ),
+        ],
+        blank=True,
+        use_json_field=True,
+    )
 
     # Optional fields
     special_project = models.CharField(max_length=255, blank=True, null=True)
@@ -40,6 +70,13 @@ class MissionaryProfilePage(Page):
 
     # Background images for each section
     profile_header_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    profile_photo = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -70,7 +107,18 @@ class MissionaryProfilePage(Page):
         FieldPanel('country'),
         FieldPanel('state'),
         FieldPanel('place'),
-        FieldPanel('information'),
+        FieldPanel(
+            'information_sections',
+            help_text=(
+                "Recommended order: 1) section (OUR MISSION), 2) section (WHO WE ARE), "
+                "3) person_profile blocks (one per person), 4) scripture block. "
+                "Use headings in ALL CAPS for consistency."
+            ),
+        ),
+        FieldPanel(
+            'information',
+            help_text="Legacy fallback only. If Information Sections has content, this field is ignored on the page.",
+        ),
         MultiFieldPanel(
             [
                 FieldRowPanel([
@@ -85,6 +133,7 @@ class MissionaryProfilePage(Page):
         FieldPanel('donation_link'),
         FieldPanel('project_summary'),
         FieldPanel('profile_header_image'),
+        FieldPanel('profile_photo'),
         FieldPanel('profile_info_image'),
         FieldPanel('profile_location_image'),
         MultiFieldPanel([

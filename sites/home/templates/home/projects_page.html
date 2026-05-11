@@ -4,26 +4,20 @@
 {% block content %}
 <div id="projects-page">
 
-    <!-- Full-Height Intro Section -->
-    {% if page.intro %}
-    <div id="projects-intro" class="full-height-section" 
-         style="background-image: url('{{ page.header_image.file.url }}'); 
-                background-size: cover; 
-                background-position: center;">
-        <div class="overlay">
-            <div class="grid-container">
-                <div class="grid-x align-center align-middle">
-                    <div class="cell medium-12">
-                        <h1>{{ page.title }}</h1>
-                        <div class="intro-content">
-                            {{ page.intro|richtext }}
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Globe Header -->
+    <section id="home_mission" class="mission-globe-section">
+        <!-- Rotating globe background -->
+        <div id="globe-container"></div>
+
+        <!-- Gradient overlay for readability -->
+        <div class="globe-overlay"></div>
+
+        <!-- Mission/Vision content -->
+        <div class="mission-vision-content">
+            <h2>...and you will be my witnesses in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.</h2>
+            <h3>Acts 1:8</h3>
         </div>
-    </div>
-    {% endif %}
+    </section>
 
     <!-- Missionary Profiles Grid -->
     <div class="grid-container full">
@@ -55,4 +49,34 @@
         </div>
     </div>
 </div>
+
+<script src="https://unpkg.com/globe.gl"></script>
+<script>
+    window.addEventListener('load', function () {
+        const globeContainer = document.getElementById('globe-container');
+
+        const globe = Globe()(globeContainer)
+            .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+            .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+            .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+            .showAtmosphere(true)
+            .atmosphereColor('#6b93d6')
+            .atmosphereAltitude(0.15);
+
+        globe.controls().autoRotate = true;
+        globe.controls().autoRotateSpeed = 0.15;
+        globe.controls().enableZoom = false;
+        globe.controls().enabled = true;
+
+        globe.pointOfView({ lat: 31.7, lng: 25.2, altitude: 1.2 }, 0);
+
+        window.addEventListener('resize', () => {
+            globe.width(globeContainer.offsetWidth);
+            globe.height(globeContainer.offsetHeight);
+        });
+
+        globe.width(globeContainer.offsetWidth);
+        globe.height(globeContainer.offsetHeight);
+    });
+</script>
 {% endblock %}

@@ -33,42 +33,6 @@
     </div>
     {% endif %}
 
-    <!-- Mission of TBM -->
-    {% if page.show_home_mission %}
-    <section id="home_mission" class="mission-globe-section">
-        <!-- Rotating globe background -->
-        <div id="globe-container"></div>
-
-        <!-- Gradient overlay for readability -->
-        <div class="globe-overlay"></div>
-
-        <!-- Mission/Vision content -->
-        <div class="mission-vision-content">
-            <h2>...and you will be my witnesses</h2>
-            <h3>in Jerusalem, and in all Judea and Samaria, and to the ends of the earth.</h3>
-
-
-            <!-- <div class="mission">
-                <h3>Our Mission</h3>
-                <p>
-                    To support church-planting missionaries serving around the world through
-                    partnership with local churches, equipping national workers, and empowering
-                    those called by God to make disciples among the nations.
-                </p>
-            </div>
-
-            <div class="vision">
-                <h3>Our Vision</h3>
-                <p>
-                    To see vibrant, multiplying churches established in every corner of the earth,
-                    led by equipped national leaders, sent and supported by faithful local
-                    congregations who understand their calling to the Great Commission.
-                </p>
-            </div> -->
-        </div>
-    </section>
-    {% endif %}
-
       <!-- Missionary Index / Projects -->
     {% if page.show_home_projects %}
     <div id="home_projects">
@@ -156,7 +120,7 @@
         var validM = missionaries.filter(function (m) { return m.lat && m.lng; });
 
         var indexMap = new maptalks.Map('missionary-index-map', {
-            center: [20, 25],
+            center: [20, 35],
             zoom: 2,
             minZoom: 1,
             maxZoom: 14,
@@ -278,38 +242,7 @@
     </script>
     {% endif %}
 
-    <!-- globe.gl library (loaded only when mission section is shown) -->
-    {% if page.show_home_mission %}
-    <script src="https://unpkg.com/globe.gl"></script>
-    <script>
-        window.addEventListener('load', function () {
-            const globeContainer = document.getElementById('globe-container');
 
-            const globe = Globe()(globeContainer)
-                .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-                .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-                .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
-                .showAtmosphere(true)
-                .atmosphereColor('#6b93d6')
-                .atmosphereAltitude(0.15);
-
-            globe.controls().autoRotate = true;
-            globe.controls().autoRotateSpeed = 0.15;
-            globe.controls().enableZoom = false;
-            globe.controls().enabled = true;
-
-            globe.pointOfView({ lat: 31.7, lng: 25.2, altitude: 1.2 });
-
-            window.addEventListener('resize', () => {
-                globe.width(globeContainer.offsetWidth);
-                globe.height(globeContainer.offsetHeight);
-            });
-
-            globe.width(globeContainer.offsetWidth);
-            globe.height(globeContainer.offsetHeight);
-        });
-    </script>
-    {% endif %}
 
     <!-- Values of TBM -->
     {% if page.show_home_values %}
@@ -352,6 +285,7 @@
             <!-- Logo + Headline -->
             <div class="envision-hero">
                 <img src="{% static 'images/envision_logo.svg' %}" alt="Envision" class="envision-logo">
+                <h2 class="envision-tagline">Find Your Path</h2>
                 <p class="envision-intro">Cross-cultural missions isn't something you can easily learn from a distance. Envision connects you with missionaries working around the world — not from the sidelines, but as a participant.</p>
             </div>
 
@@ -391,10 +325,10 @@
                 </div>
             </div> -->
 
-            <!-- Testimonial Row -->
-            <div class="grid-x grid-margin-x envision-testimonials">
-                <div class="cell small-12 medium-6">
-                    <div class="envision-testimonial-card">
+            <!-- Testimonial Carousel -->
+            <div class="envision-testimonials">
+                <div class="testimonial-carousel" id="envision-testimonial-carousel">
+                    <div class="envision-testimonial-card active">
                         <div class="testimonial-inner">
                             <div class="envision-photo-placeholder">
                                 <i class="fa-solid fa-image"></i>
@@ -403,25 +337,11 @@
                             <div class="testimonial-body">
                                 <i class="fa-solid fa-quote-left"></i>
                                 <p>"It was amazing to have the opportunity to experience missions in this way and to help determine how the Lord plans to use me to further His kingdom."</p>
-                                <cite>&mdash; Haley Thomalla, Peru</cite>
+                                <cite>Haley Thomalla, Peru</cite>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="cell small-12 medium-6">
-                    <div class="envision-testimonial-card envision-testimonial-placeholder">
-                        <div class="testimonial-inner">
-                            <div class="envision-photo-placeholder">
-                                <i class="fa-solid fa-image"></i>
-                                <span>Austin</span>
-                            </div>
-                            <div class="testimonial-body">
-                                <i class="fa-solid fa-quote-left"></i>
-                                <p><em>Testimonial from Austin coming soon.</em></p>
-                                <cite>&mdash; Austin, Envision Participant</cite>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Additional testimonials can be added here -->
                 </div>
             </div>
 
@@ -440,6 +360,11 @@
          {% if page.home_pray_image %}style="background-image: url('{{ page.home_pray_image.file.url }}');"{% endif %}>
 
         <div class="pray-content grid-container">
+            <!-- Section Heading -->
+            <div class="pray-section-heading">
+                <h2>Pray for Our Missionaries</h2>
+            </div>
+
             <div class="grid-x grid-margin-x align-middle">
 
                 <!-- Left: Quote Carousel -->
@@ -447,50 +372,44 @@
                     <div class="pray-quote-carousel" id="prayQuoteCarousel">
                         <div class="pray-quote active">
                             <blockquote>
-                                <p>&ldquo;The man who mobilizes the Christian church to pray will make the greatest contribution to world evangelization in history.&rdquo;</p>
-                                <footer>&mdash; Andrew Murray</footer>
-                            </blockquote>
-                        </div>
-                        <div class="pray-quote">
-                            <blockquote>
                                 <p>&ldquo;You can do more than pray after you have prayed, but you cannot do more than pray until you have prayed.&rdquo;</p>
-                                <footer>&mdash; S.D. Gordon</footer>
+                                <footer>S.D. Gordon</footer>
                             </blockquote>
                         </div>
                         <div class="pray-quote">
                             <blockquote>
                                 <p>&ldquo;Prayer is the key that unlocks all the storehouses of God&rsquo;s infinite grace and power. All that God is, and all that God has, is at the disposal of prayer.&rdquo;</p>
-                                <footer>&mdash; R.A. Torrey</footer>
+                                <footer>R.A. Torrey</footer>
                             </blockquote>
                         </div>
                         <div class="pray-quote">
                             <blockquote>
                                 <p>&ldquo;Prayer does not fit us for the greater work; prayer is the greater work.&rdquo;</p>
-                                <footer>&mdash; Oswald Chambers</footer>
+                                <footer>Oswald Chambers</footer>
                             </blockquote>
                         </div>
                         <div class="pray-quote">
                             <blockquote>
                                 <p>&ldquo;Every great movement of God can be traced to a kneeling figure.&rdquo;</p>
-                                <footer>&mdash; D.L. Moody</footer>
+                                <footer>D.L. Moody</footer>
                             </blockquote>
                         </div>
                         <div class="pray-quote">
                             <blockquote>
                                 <p>&ldquo;We have all eternity to celebrate the victories, but only a few hours before sunset to win them.&rdquo;</p>
-                                <footer>&mdash; Amy Carmichael</footer>
+                                <footer>Amy Carmichael</footer>
                             </blockquote>
                         </div>
                         <div class="pray-quote">
                             <blockquote>
                                 <p>&ldquo;What the church needs today is not more machinery or better, not new organizations or more and novel methods, but men whom the Holy Spirit can use: men of prayer, men mighty in prayer.&rdquo;</p>
-                                <footer>&mdash; E.M. Bounds</footer>
+                                <footer>E.M. Bounds</footer>
                             </blockquote>
                         </div>
                         <div class="pray-quote">
                             <blockquote>
                                 <p>&ldquo;In the history of missions we see it&hellip;where men and women have given themselves to prayer, wonderful things have happened.&rdquo;</p>
-                                <footer>&mdash; Andrew Murray</footer>
+                                <footer>Andrew Murray</footer>
                             </blockquote>
                         </div>
                     </div>
@@ -499,9 +418,8 @@
 
                 <!-- Right: CTA, Download, Newsletter -->
                 <div class="cell small-12 medium-6 pray-col-cta">
-                    <div class="pray-cta">
-                        <h2>Pray for Our Missionaries</h2>
-                        <p>Your faithful prayer moves mountains. Join us in interceding for the nations.</p>
+                    <div class="pray-cta">                        
+                        <p>We believe that intercessory prayer is the heartbeat of God's work in the world. When you pray for our missionaries, you become a vital part of the Great Commission. Your prayers make a tangible difference in the lives of those serving on the mission field.</p>
 
                         {% if page.prayer_guide_document %}
                         <a href="{{ page.prayer_guide_document.url }}" class="button pray-btn" download>

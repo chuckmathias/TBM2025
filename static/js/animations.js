@@ -102,14 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
         stagger: 0.3, // Adds a delay between animations for multiple elements
     });
 
-    // Slide up the footer on page load
-    gsap.from("footer", {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-    });
-
     // Scroll-triggered animations
     // Example 1: Fade in elements when they scroll into view and fade out when scrolling back up
     gsap.fromTo(

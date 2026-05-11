@@ -3,35 +3,35 @@
 <footer class="site-footer">
     <!-- <img class="footer-divider" src="{% static 'images/book_footer.svg' %}" alt="Tentmakers BIBLE Mission"> -->
     <div class="grid-container">
-        <div class="grid-x grid-margin-x">
-            <div class="cell small-12 medium-6">
-                <img src="{% static 'images/tentmakersbiblemission_logo_white.svg' %}" alt="Logo" class="logo">
-                <h4>About Us</h4>
-                <p>Tentmakers Bible Mission is dedicated to spreading the Gospel worldwide.</p>
+        <div class="grid-x">
+
+            <div class="cell small-12 large-3">
+                <a href="/" class="site-footer__brand" aria-label="Tentmakers Bible Mission home">
+                    <img src="{% static 'images/tentmakersbiblemission_logo_white.svg' %}" alt="Tentmakers Bible Mission" class="site-footer__logo">
+                </a>
             </div>
-            <div class="cell small-12 medium-3">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <div class="footer-submenu">
-                        <li><a href="/about/board-members-index-page/">Board Members</a></li>
-                        <li><a href="/about/tbm-doctrinal-statement/">Doctrinal Statement</a></li>
-                        <li><a href="/about/history-of-tbm/">History</a></li>
-                    </div>
-                    <li><a href="/contact-us/">Contact</a></li>
-                </ul>
+            <div class="cell small-12 large-5">
+                <div class="site-footer-org">
+                    <p class="site-footer_copyright">Copyright &copy; 2026</p>
+                    <p class="site-footer_name">Tentmakers Bible Mission</p>
+                    <p>PO Box 160 | 401B Highway 151</p>
+                    <p>LaGrange, WY 82221</p>
+                    <p><a href="tel:+13072239400">307-223-9400</a></p>
+                </div>
             </div>
-            <div class="cell small-12 medium-3">
-                <h4>Contact</h4>
-                <p>Email: <a href="mailto:info@tbm.org">info@tbm.org</a></p>
-                <p>Phone: +1 (555) 123-4567</p>
+            <div class="cell small-12 large-4">
+                <div class="site-footer_social-wrap">
+                    <h4>Connect With Us</h4>
+                    <ul class="site-footer__social">
+                        <li><a href="mailto:info@tentmakersbiblemission.org" aria-label="Email"><i class="fa-solid fa-square-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/Tentmakers-Bible-Mission-110043115730854/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-square-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/tentmakersbiblemission/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/user/TentmakersBible" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-square-youtube"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/tentmakers-bible-mission/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div class="grid-x grid-margin-x">
-            <div class="cell small-12 text-center">
-                <p>&copy; {{ now|date:"Y" }} Tentmakers Bible Mission. All rights reserved.</p>
-            </div>
-        </div>
+        
     </div>
 </footer>

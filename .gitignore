@@ -22,3 +22,5 @@ node_modules
 # Sass and CSS generated files
 .sass-cache/
 *.css.mappydb.sqlite3
+node_modules
+

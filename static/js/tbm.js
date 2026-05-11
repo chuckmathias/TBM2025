@@ -107,4 +107,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initial slider setup
     updateSlider();
+
+    // Testimonial carousel setup
+    const testimonialCarousel = document.getElementById('envision-testimonial-carousel');
+    if (testimonialCarousel) {
+        const testimonialCards = Array.from(testimonialCarousel.querySelectorAll('.envision-testimonial-card'));
+        let currentTestimonial = 0;
+
+        if (testimonialCards.length > 0) {
+            // Set first testimonial as active
+            testimonialCards[0].classList.add('active');
+
+            // Cycle through testimonials every 8 seconds (if more than one exists)
+            if (testimonialCards.length > 1) {
+                setInterval(() => {
+                    testimonialCards[currentTestimonial].classList.remove('active');
+                    currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+                    testimonialCards[currentTestimonial].classList.add('active');
+                }, 8000);
+            }
+        }
+    }
 });

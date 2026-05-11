@@ -5,26 +5,37 @@
     <!-- Section: Name, Project, Location, Summary, and Donation -->
     <div id="profile-header" class="full-height-section" 
          style="background-image: url('{{ page.profile_header_image.file.url }}'); ">
-        <div class="grid-container">
-
-            <div class="grid-x">
-                <div class="cell medium-4">
-                    <img src="{{ page.profile_header_image.file.url }}" alt="">
-                    {% if page.donation_link %}
-                        <a href="{{ page.donation_link }}" class="button expand" target="_blank">Support the Missionary</a>
-                    {% endif %}
-                </div>
-                <div class="cell medium-8">
-                    <h1>{{ page.name }}</h1>
-                    <h2>{{ page.project }}</h2>
-                    <p><strong>Country:</strong> {{ page.country }}</p>
-                    <p><strong>State:</strong> {{ page.state }}</p>
-                    <p><strong>Place:</strong> {{ page.place }}</p>
-                    <p>{{ page.project_summary }}</p>
-
-                </div>
+        <div class="grid-container profile-header-inner">
+            <div class="profile-header-photo-wrap">
+                {% if page.profile_photo %}
+                    <img src="{{ page.profile_photo.file.url }}" alt="{{ page.name }}">
+                {% elif page.profile_header_image %}
+                    <img src="{{ page.profile_header_image.file.url }}" alt="{{ page.name }}">
+                {% endif %}
             </div>
-            
+
+            <div class="profile-header-identity">
+                <h1>{{ page.name }}</h1>
+                <h2>{{ page.project }}</h2>
+                <p class="profile-header-location">
+                    {% if page.place %}
+                        {{ page.place }}
+                        {% if page.state %}
+                            , {{ page.state }}
+                        {% elif page.country %}
+                            , {{ page.country }}
+                        {% endif %}
+                    {% elif page.state %}
+                        {{ page.state }}
+                    {% elif page.country %}
+                        {{ page.country }}
+                    {% endif %}
+                </p>
+
+                {% if page.donation_link %}
+                    <a href="{{ page.donation_link }}" class="button profile-header-support-btn" target="_blank">Partner with {{ page.name }}</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 
@@ -94,9 +105,40 @@
             <div class="grid-x grid-margin-x">
                 <div class="cell small-12 medium-8 profile-information">
                     <h2>Information</h2>
-                    <div>{{ page.information|richtext }}</div>
+                    <div class="profile-information-content">
+                        {% if page.information_sections %}
+                            {% for block in page.information_sections %}
+                                {% if block.block_type == 'section' %}
+                                    <section class="info-section-block">
+                                        {% if block.value.heading %}
+                                            <h3>{{ block.value.heading }}</h3>
+                                        {% endif %}
+                                        <div class="info-richtext">{{ block.value.content }}</div>
+                                    </section>
+                                {% elif block.block_type == 'person_profile' %}
+                                    <section class="info-person-block">
+                                        <h3>{{ block.value.name }}</h3>
+                                        {% if block.value.summary_line %}
+                                            <p class="info-person-summary">{{ block.value.summary_line }}</p>
+                                        {% endif %}
+                                        <div class="info-richtext">{{ block.value.bio }}</div>
+                                    </section>
+                                {% elif block.block_type == 'scripture' %}
+                                    <section class="info-scripture-block">
+                                        {% if block.value.intro %}
+                                            <h3>{{ block.value.intro }}</h3>
+                                        {% endif %}
+                                        <blockquote>{{ block.value.verse_text|linebreaksbr }}</blockquote>
+                                        <p class="info-scripture-reference">{{ block.value.reference }}</p>
+                                    </section>
+                                {% endif %}
+                            {% endfor %}
+                        {% elif page.information %}
+                            <div class="info-richtext">{{ page.information|richtext }}</div>
+                        {% endif %}
+                    </div>
                 </div>
-                <div class="cell small-12 medium-4">
+                <!-- <div class="cell small-12 medium-4">
                     <h2>Links</h2>
                     {% if page.video_links %}
                         <h3>Video Links</h3>
@@ -114,33 +156,27 @@
                             {% endfor %}
                         </ul>
                     {% endif %}
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 
     <!-- Section: Photo Gallery -->
     {% if page.gallery_images.all %}
-    <div id="profile-pics" class="full-height-section gallery-dark-bg">
-        <div class="grid-container">
-            <h2 class="text-center">Photo Gallery</h2>
+    <div id="profile-pics" class="full-height-section gallery-dark-bg" style="background-image: url('{{ page.gallery_images.first.image.file.url }}');">
+        <div class="profile-gallery-overlay">
             <div class="gallery-preview">
-                <img id="gallery-main-image"
-                     src="{{ page.gallery_images.first.image.file.url }}"
-                     alt="{{ page.gallery_images.first.caption|default:'Gallery Image' }}">
-                {% if page.gallery_images.first.caption %}
-                    <div class="caption" id="gallery-main-caption">{{ page.gallery_images.first.caption }}</div>
-                {% endif %}
+                <div class="caption" id="gallery-main-caption">{{ page.gallery_images.first.caption|default:'' }}</div>
             </div>
-            <div class="gallery-grid">
+            <div class="gallery-grid" aria-label="Missionary photo gallery thumbnails">
                 {% for image in page.gallery_images.all %}
-                    <div class="gallery-item">
+                    <button type="button" class="gallery-item{% if forloop.first %} is-active{% endif %}">
                         <img src="{{ image.image.file.url }}"
                              alt="{{ image.caption|default:'Gallery Image' }}"
                              class="gallery-thumb"
                              data-full="{{ image.image.file.url }}"
                              data-caption="{{ image.caption|default:'' }}">
-                    </div>
+                    </button>
                 {% endfor %}
             </div>
         </div>
@@ -149,17 +185,65 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const mainImg = document.getElementById('gallery-main-image');
+    const gallerySection = document.getElementById('profile-pics');
     const mainCaption = document.getElementById('gallery-main-caption');
-    document.querySelectorAll('.gallery-thumb').forEach(function(thumb) {
+    const galleryThumbs = Array.from(document.querySelectorAll('.gallery-thumb'));
+    let galleryTimer = null;
+    let currentGalleryIndex = galleryThumbs.findIndex(function(thumb) {
+        return thumb.parentElement && thumb.parentElement.classList.contains('is-active');
+    });
+
+    if (currentGalleryIndex < 0) {
+        currentGalleryIndex = 0;
+    }
+
+    function showGalleryImage(index) {
+        if (!galleryThumbs.length) {
+            return;
+        }
+
+        currentGalleryIndex = (index + galleryThumbs.length) % galleryThumbs.length;
+        const activeThumb = galleryThumbs[currentGalleryIndex];
+
+        if (gallerySection) {
+            gallerySection.style.backgroundImage = "url('" + activeThumb.dataset.full + "')";
+            gallerySection.querySelectorAll('.gallery-item').forEach(function(item) {
+                item.classList.remove('is-active');
+            });
+        }
+
+        if (activeThumb.parentElement) {
+            activeThumb.parentElement.classList.add('is-active');
+        }
+
+        if (mainCaption) {
+            mainCaption.textContent = activeThumb.dataset.caption;
+        }
+    }
+
+    function startGalleryAutoRotate() {
+        if (!galleryThumbs.length) {
+            return;
+        }
+        if (galleryTimer) {
+            clearInterval(galleryTimer);
+        }
+        galleryTimer = setInterval(function() {
+            showGalleryImage(currentGalleryIndex + 1);
+        }, 7000);
+    }
+
+    galleryThumbs.forEach(function(thumb, index) {
         thumb.addEventListener('click', function() {
-            mainImg.src = this.dataset.full;
-            mainImg.alt = this.alt;
-            if (mainCaption) {
-                mainCaption.textContent = this.dataset.caption;
-            }
+            showGalleryImage(index);
+            startGalleryAutoRotate();
         });
     });
+
+    if (galleryThumbs.length) {
+        showGalleryImage(currentGalleryIndex);
+        startGalleryAutoRotate();
+    }
 
     // Newsletter signup toggle
     const btn = document.getElementById('show-newsletter-btn');
